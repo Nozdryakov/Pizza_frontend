@@ -1,5 +1,16 @@
-.main-container{
+.main-container {
   width: 100%;
   max-width: 1146px;
   margin: 0 auto;
+}
+@media (max-width: 1146px) {
+  .main-container {
+    max-width: 90%; /* Например, 90% от ширины экрана */
+  }
+}
+
+@media (max-width: 900px) {
+  .main-container {
+    max-width: 90%; /* Например, 80% от ширины экрана */
+  }
 }

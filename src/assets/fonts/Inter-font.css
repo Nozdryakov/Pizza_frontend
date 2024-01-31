@@ -1,47 +1,45 @@
 @font-face {
-    font-family: 'Inter-100';
-    font-weight: 100;
-    src: url('iter/static/Inter-Thin.ttf') format('truetype');
+  font-family: 'Inter-100';
+  font-weight: 100;
+  src: url('iter/static/Inter-Thin.ttf') format('truetype');
 }
 @font-face {
-    font-family: 'Inter-200';
-    font-weight: 200;
-    src: url('iter/static/Inter-ExtraLight.ttf') format('truetype');
+  font-family: 'Inter-200';
+  font-weight: 200;
+  src: url('iter/static/Inter-ExtraLight.ttf') format('truetype');
 }
 @font-face {
-    font-family: 'Inter-300';
-    font-weight: 300;
-    src: url('iter/static/Inter-Light.ttf') format('truetype');
+  font-family: 'Inter-300';
+  font-weight: 300;
+  src: url('iter/static/Inter-Light.ttf') format('truetype');
 }
 @font-face {
-    font-family: 'Inter-400';
-    font-weight: 400;
-    src: url('./iter/static/Inter-Regular.ttf') format('truetype');
+  font-family: 'Inter-400';
+  font-weight: 400;
+  src: url('./iter/static/Inter-Regular.ttf') format('truetype');
 }
 @font-face {
-    font-family: 'Inter-500';
-    font-weight: 500;
-    src: url('./iter/static/Inter-Medium.ttf') format('truetype');
+  font-family: 'Inter-500';
+  font-weight: 500;
+  src: url('./iter/static/Inter-Medium.ttf') format('truetype');
 }
 @font-face {
-    font-family: 'Inter-600';
-    font-weight: 600;
-    src: url('./iter/static/Inter-SemiBold.ttf') format('truetype');
+  font-family: 'Inter-600';
+  font-weight: 600;
+  src: url('./iter/static/Inter-SemiBold.ttf') format('truetype');
 }
 @font-face {
-    font-family: 'Inter-700';
-    font-weight: 700;
-    src: url('./iter/static/Inter-Bold.ttf') format('truetype');
+  font-family: 'Inter-700';
+  font-weight: 700;
+  src: url('./iter/static/Inter-Bold.ttf') format('truetype');
 }
 @font-face {
-    font-family: 'Inter-800';
-    font-weight: 800;
-    src: url('./iter/static/Inter-ExtraBold.ttf') format('truetype');
+  font-family: 'Inter-800';
+  font-weight: 800;
+  src: url('./iter/static/Inter-ExtraBold.ttf') format('truetype');
 }
 @font-face {
-    font-family: 'Inter-900';
-    font-weight: 900;
-    src: url('./iter/static/Inter-Black.ttf') format('truetype');
+  font-family: 'Inter-900';
+  font-weight: 900;
+  src: url('./iter/static/Inter-Black.ttf') format('truetype');
 }
-
-

@@ -5,11 +5,9 @@
 <script>
 export default {
   setup() {
-
-
-    return {};
+    return {}
   }
-};
+}
 </script>
 
 <style lang="scss" src="./CardButton.scss" scoped></style>

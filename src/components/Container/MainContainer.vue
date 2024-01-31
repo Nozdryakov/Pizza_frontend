@@ -7,9 +7,9 @@
 <script>
 export default {
   setup() {
-    return {};
+    return {}
   }
-};
+}
 </script>
 
 <style lang="scss" scoped src="./MainContainer.scss"></style>

@@ -1,53 +1,53 @@
 @font-face {
-    font-family: 'Raleway-100';
-    font-weight: 100;
-    src: url('./raleway/static/Raleway-Thin.ttf') format('truetype');
+  font-family: 'Raleway-100';
+  font-weight: 100;
+  src: url('./raleway/static/Raleway-Thin.ttf') format('truetype');
 }
 
 @font-face {
-    font-family: 'Raleway-200';
-    font-weight: 200;
-    src: url('./raleway/static/Raleway-ExtraLight.ttf') format('truetype');
+  font-family: 'Raleway-200';
+  font-weight: 200;
+  src: url('./raleway/static/Raleway-ExtraLight.ttf') format('truetype');
 }
 
 @font-face {
-    font-family: 'Raleway-300';
-    font-weight: 300;
-    src: url('./raleway/static/Raleway-Light.ttf') format('truetype');
+  font-family: 'Raleway-300';
+  font-weight: 300;
+  src: url('./raleway/static/Raleway-Light.ttf') format('truetype');
 }
 
 @font-face {
-    font-family: 'Raleway-400';
-    font-weight: 400;
-    src: url('./raleway/static/Raleway-Regular.ttf') format('truetype');
+  font-family: 'Raleway-400';
+  font-weight: 400;
+  src: url('./raleway/static/Raleway-Regular.ttf') format('truetype');
 }
 
 @font-face {
-    font-family: 'Raleway-500';
-    font-weight: 500;
-    src: url('./raleway/static/Raleway-Medium.ttf') format('truetype');
+  font-family: 'Raleway-500';
+  font-weight: 500;
+  src: url('./raleway/static/Raleway-Medium.ttf') format('truetype');
 }
 
 @font-face {
-    font-family: 'Raleway-600';
-    font-weight: 600;
-    src: url('./raleway/static/Raleway-SemiBold.ttf') format('truetype');
+  font-family: 'Raleway-600';
+  font-weight: 600;
+  src: url('./raleway/static/Raleway-SemiBold.ttf') format('truetype');
 }
 
 @font-face {
-    font-family: 'Raleway-700';
-    font-weight: 700;
-    src: url('./raleway/static/Raleway-Bold.ttf') format('truetype');
+  font-family: 'Raleway-700';
+  font-weight: 700;
+  src: url('./raleway/static/Raleway-Bold.ttf') format('truetype');
 }
 
 @font-face {
-    font-family: 'Raleway-800';
-    font-weight: 800;
-    src: url('./raleway/static/Raleway-ExtraBold.ttf') format('truetype');
+  font-family: 'Raleway-800';
+  font-weight: 800;
+  src: url('./raleway/static/Raleway-ExtraBold.ttf') format('truetype');
 }
 
 @font-face {
-    font-family: 'Raleway-900';
-    font-weight: 900;
-    src: url('./raleway/static/Raleway-Black.ttf') format('truetype');
+  font-family: 'Raleway-900';
+  font-weight: 900;
+  src: url('./raleway/static/Raleway-Black.ttf') format('truetype');
 }

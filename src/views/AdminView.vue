@@ -1,19 +1,13 @@
 <template>
-  <div>
-    admin
-  </div>
+  <div>admin</div>
 </template>
 
 <script>
 export default {
   setup() {
-
-
-    return {};
+    return {}
   }
-};
+}
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>
