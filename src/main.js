@@ -1,11 +1,18 @@
-import './assets/main.css'
+import './assets/scss/main.scss';
 
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
-import App from './App.vue'
+import { createApp } from 'vue';
+import { createPinia } from 'pinia';
+import './assets/fonts/Inter-font.css';
+import './assets/fonts/Raleway-font.css';
 
-const app = createApp(App)
+import App from './App.vue';
+import router from './router';
 
-app.use(createPinia())
+const app = createApp(App);
+const pinia = createPinia();
+app.use(pinia);
 
-app.mount('#app')
+
+app
+  .use(router)
+  .mount('#app');
