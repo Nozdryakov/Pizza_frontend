@@ -1,13 +1,10 @@
 <template>
-  <button class="btn">Корзина</button>
+  <button class="btn">
+    <slot></slot>
+  </button>
 </template>
 
-<script>
-export default {
-  setup() {
-    return {}
-  }
-}
+<script setup>
 </script>
 
 <style lang="scss" src="./CardButton.scss" scoped></style>

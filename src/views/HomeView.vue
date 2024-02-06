@@ -1,14 +1,15 @@
 <template>
   <header-component></header-component>
+  <intro-main></intro-main>
 </template>
 
 <script>
-import MainContainer from '@/components/Container/MainContainer.vue'
-import HeaderComponent from '@/components/Header/HeaderComponent.vue'
+import HeaderComponent from '@/components/Header/HeaderComponent.vue';
+import IntroMain from "@/components/Intro/IntroMain.vue";
 
 export default {
-  components: { HeaderComponent, MainContainer }
-}
+  components: { IntroMain, HeaderComponent}
+};
 </script>
 
 <style lang="scss" scoped></style>
