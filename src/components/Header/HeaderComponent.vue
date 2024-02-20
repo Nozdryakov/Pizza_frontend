@@ -1,5 +1,5 @@
 <template>
-  <div class="header" @click.stop="toggleNav">
+  <div class="header">
     <main-container>
       <div class="header__inner">
         <div class="container-toggle">

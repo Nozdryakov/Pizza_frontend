@@ -4,7 +4,8 @@
   justify-content: center;
   width: 100%;
   position: relative;
-  height: calc(100vh - 45px);
+  height: 100vh;
+  //height: calc(100vh - 45px);
   margin-top: 40px;
 }
 .item__intro{
@@ -184,7 +185,7 @@ img{
 }
 @media (max-height: 550px) {
 .intro{
-  margin-top: 140px;
+  height: calc(100vh + 120px);
 
 }
 }
