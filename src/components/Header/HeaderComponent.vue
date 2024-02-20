@@ -1,11 +1,11 @@
 <template>
-  <div class="header">
+  <div class="header" @click.stop="toggleNav">
     <main-container>
       <div class="header__inner">
         <div class="container-toggle">
           <button
             class="nav-toggle"
-            @click="toggleNav"
+            @click.stop="toggleNav"
             :class="{ active: isNavActive }"
             id="nav_toggle"
             type="button"
@@ -43,6 +43,7 @@ const isNavActive = ref(false);
 const toggleNav = () => {
   isNavActive.value = !isNavActive.value;
 };
+
 </script>
 
 <style lang="scss" src="./HeaderComponent.scss" scoped></style>

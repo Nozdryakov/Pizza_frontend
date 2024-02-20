@@ -1,16 +1,22 @@
 <template>
   <header-component></header-component>
   <intro-main></intro-main>
-  <stock-swiper></stock-swiper>
+  <background>
+    <stock-swiper></stock-swiper>
+    <often-buy-swiper></often-buy-swiper>
+  </background>
+
 </template>
 
 <script>
 import HeaderComponent from '@/components/Header/HeaderComponent.vue';
 import IntroMain from "@/components/Intro/IntroMain.vue";
-import StockSwiper from "@/components/StocksSwiper/StockSwiper.vue";
+import StockSwiper from "@/components/Swiper/Stocks/StockSwiper.vue";
+import OftenBuySwiper from "@/components/Swiper/OftenBuy/OftenBuySwiper.vue";
+import Background from "@/components/Swiper/BackgroundSwiper/Background.vue";
 
 export default {
-  components: { StockSwiper, IntroMain, HeaderComponent}
+  components: { Background, OftenBuySwiper, StockSwiper, IntroMain, HeaderComponent}
 };
 </script>
 

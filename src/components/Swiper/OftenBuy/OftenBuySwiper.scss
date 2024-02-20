@@ -1,0 +1,74 @@
+.wrapper-slider{
+  position: relative;
+  width: 100%;
+  max-width: 1260px;
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+}
+h1{
+  color: #FF1313;
+  font-family: "Raleway-700", serif;
+  margin-bottom: 40px;
+  font-size: 28px;
+}
+.mySwiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  width: 350px;
+  height: 125px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.swiper-button-prev-often-buy,
+.swiper-button-next-often-buy {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.swiper-button-prev-often-buy::before,
+.swiper-button-next-often-buy::before {
+  content: "";
+  display: block;
+  width: 10px;
+  height: 10px;
+  background-color: #333;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.swiper-button-prev-often-buy {
+  left: 0;
+}
+
+.swiper-button-prev-often-buy::before {
+  border-left: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+}
+
+.swiper-button-next-often-buy {
+  right: 0;
+}
+
+.swiper-button-next-often-buy::before {
+  border-right: 2px solid #fff;
+  border-top: 2px solid #fff;
+}
+@media (max-width: 990px) {
+  h1{
+    margin-bottom: 20px;
+  }
+}
