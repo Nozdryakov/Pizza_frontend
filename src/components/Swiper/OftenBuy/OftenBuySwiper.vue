@@ -6,7 +6,7 @@
     <main-container>
       <swiper
         :slidesPerView="slidesPerView"
-        :spaceBetween="40"
+        :spaceBetween="30"
         :navigation="{
           nextEl: '.swiper-button-next-often-buy',
           prevEl: '.swiper-button-prev-often-buy'

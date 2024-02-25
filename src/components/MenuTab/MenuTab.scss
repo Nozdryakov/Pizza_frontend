@@ -1,0 +1,13 @@
+.tabs-list {
+  display: flex;
+  justify-content: space-evenly;
+  list-style: none;
+}
+.tabs-list li{
+  padding: 5px 10px;
+  background-color: #C1C1C1;
+  cursor: pointer;
+}
+.active{
+  color: #FF1313;
+}

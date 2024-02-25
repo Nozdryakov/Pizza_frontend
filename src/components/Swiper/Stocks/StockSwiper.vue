@@ -6,13 +6,14 @@
     <main-container>
       <swiper
         :slidesPerView="slidesPerView"
-        :spaceBetween="40"
+        :spaceBetween="30"
         :navigation="{
           nextEl: '.swiper-button-next-stock',
           prevEl: '.swiper-button-prev-stock'
         }"
         :modules="modules"
       >
+        <swiper-slide><img class="swiper-img" src="@/assets/images/pizza-no.jpg"></swiper-slide>
         <swiper-slide><img class="swiper-img" src="@/assets/images/swiper-card-1.png"></swiper-slide>
         <swiper-slide><img class="swiper-img" src="@/assets/images/swiper-card-2.png"></swiper-slide>
         <swiper-slide><img class="swiper-img" src="@/assets/images/swiper-card-3.png"></swiper-slide>
@@ -39,6 +40,8 @@ import 'swiper/css/navigation';
 const screenWidth = ref(window.innerWidth);
 const slidesPerView = ref(getSlidesPerView());
 
+const modules = [Navigation];
+
 function getSlidesPerView() {
   if (screenWidth.value <= 500) {
     return 1;
@@ -62,7 +65,6 @@ function handleResize() {
   screenWidth.value = window.innerWidth;
 }
 
-const modules = [Navigation];
 watch(screenWidth, () => {
   slidesPerView.value = getSlidesPerView();
 });
