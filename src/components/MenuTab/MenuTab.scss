@@ -1,13 +1,89 @@
-.tabs-list {
-  display: flex;
-  justify-content: space-evenly;
-  list-style: none;
+.tabs__wrapper{
+  margin: 160px auto 0;
+  width: 90%;
+}
+h1{
+  font-family: "Raleway-700", serif;
+  font-size: 3.125rem;
+  text-align: center;
 }
 .tabs-list li{
-  padding: 5px 10px;
-  background-color: #C1C1C1;
+  color: #121010;
   cursor: pointer;
+  font-size: 16px;
+  font-family: "Raleway-600", serif;
+  text-align: center;
+  padding: 10px 25px;
+  position: relative;
+  &::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: #FF1313;
+    opacity: 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 22px;
+    z-index: 10;
+
+    transition: opacity 100ms linear;
+  }
+  &:hover{
+    color: #FF1313;
+  }
+  &:hover:after {
+    opacity: 1;
+  }
 }
-.active{
+li.active{
   color: #FF1313;
+}
+.tabs-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin-top: 60px;
+  font-family: 'Raleway-600', serif;
+  text-decoration: none;
+  color: #121010;
+  position: relative;
+  &::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: #C1C1C1;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+    margin-top: 22px;
+  }
+  &:hover{
+    color: #000000;
+  }
+  &:hover:after {
+    opacity: 1;
+  }
+}
+.tabs-content{
+  margin-top: 92px;
+}
+h2{
+  color: #FF1313;
+  font-size: 28px;
+  font-family: "Raleway-700", serif;
+  letter-spacing: 2px;
+}
+.product{
+
+}
+.tab-img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }

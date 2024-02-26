@@ -1,30 +1,36 @@
 <template>
-  <div>
-    <ul class="tabs-list">
-      <li
-        v-for="(category, index) in data.list"
-        :key="index"
-        :class="{ active: category.show }"
-        @click="showCategory(category.id)"
-      >
-        {{ category.id }}
-      </li>
-    </ul>
-    <div class="tabs-content">
-      <div v-for="(category, index) in visibleTabs" :key="index">
-        <h2>{{ category.id }}</h2>
-        <ul>
-          <li v-for="(product, i) in category.list" :key="i">
-            {{ product.name }}
-          </li>
-        </ul>
+  <main-container>
+    <div class="tabs__wrapper">
+      <h1>Меню</h1>
+      <ul class="tabs-list">
+        <li
+          v-for="(category, index) in data.list"
+          :key="index"
+          :class="{ active: category.show }"
+          @click="showCategory(category.id)"
+        >
+          {{ category.id }}
+        </li>
+      </ul>
+      <div class="tabs-content">
+        <div v-for="(category, index) in visibleTabs" :key="index">
+          <h2>{{ category.id }}</h2>
+          <ul>
+            <li v-for="(product, i) in category.list" :key="i" class="product">
+<!--              {{ product.name }}-->
+              <img src="@/assets/images/swiper-card-1.png" class="tab-img">
+
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
+  </main-container>
 </template>
 
 <script setup>
 import { ref, computed } from 'vue';
+import MainContainer from "@/components/Container/MainContainer.vue";
 
 const data = ref({
   list: [

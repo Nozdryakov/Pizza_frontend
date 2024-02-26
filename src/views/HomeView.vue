@@ -5,7 +5,7 @@
     <stock-swiper></stock-swiper>
     <often-buy-swiper></often-buy-swiper>
   </background>
-<!--  <menu-tab></menu-tab>-->
+  <menu-tab></menu-tab>
 
 </template>
 
@@ -18,7 +18,7 @@ import Background from "@/components/Swiper/BackgroundSwiper/Background.vue";
 import MenuTab from "@/components/MenuTab/MenuTab.vue";
 
 export default {
-  components: { Background, OftenBuySwiper, StockSwiper, IntroMain, HeaderComponent}
+  components: { MenuTab, Background, OftenBuySwiper, StockSwiper, IntroMain, HeaderComponent}
 };
 </script>
 
