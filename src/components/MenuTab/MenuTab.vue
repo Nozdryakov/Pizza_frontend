@@ -46,6 +46,7 @@ const data = ref({
         { name: 'Домашняя', description: 'Куриные кусочки, сладкий перец, моцарелла, красный лук, соус сладкий чили, соус альфре', price: 10 },
         { name: 'Product 2', description: 'Описание продукта 2', price: 12 },
         { name: 'Product 3', description: 'Описание продукта 3', price: 8 },
+        { name: 'Product 4', description: 'Описание продукта 4', price: 15 },
         { name: 'Product 4', description: 'Описание продукта 4', price: 15 }
       ]
     },
