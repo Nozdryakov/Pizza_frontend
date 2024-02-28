@@ -1,7 +1,7 @@
 <template>
   <main-container>
     <div class="tabs__wrapper">
-      <h1>Меню</h1>
+      <head-title>Меню</head-title>
       <ul class="tabs-list">
         <li
           v-for="(category, index) in data.list"
@@ -36,6 +36,7 @@
 <script setup>
 import { ref, computed } from 'vue';
 import MainContainer from "@/components/Container/MainContainer.vue";
+import HeadTitle from "@/components/HeadTitle/HeadTitle.vue";
 
 const data = ref({
   list: [

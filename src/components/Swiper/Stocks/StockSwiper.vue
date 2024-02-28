@@ -1,6 +1,6 @@
 <template>
   <main-container>
-    <h1>Акции</h1>
+    <head-title>Акции</head-title>
   </main-container>
   <div class="wrapper-slider">
     <main-container>
@@ -35,6 +35,7 @@ import MainContainer from "@/components/Container/MainContainer.vue";
 import { Navigation } from "swiper/modules";
 import 'swiper/css';
 import 'swiper/css/navigation';
+import HeadTitle from "@/components/HeadTitle/HeadTitle.vue";
 
 
 const screenWidth = ref(window.innerWidth);
