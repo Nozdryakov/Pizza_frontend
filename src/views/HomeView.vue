@@ -7,6 +7,7 @@
   </background>
   <menu-tab></menu-tab>
   <shipping-payment></shipping-payment>
+  <map-info></map-info>
 
 </template>
 
@@ -18,9 +19,10 @@ import OftenBuySwiper from "@/components/Swiper/OftenBuy/OftenBuySwiper.vue";
 import Background from "@/components/Swiper/BackgroundSwiper/Background.vue";
 import MenuTab from "@/components/MenuTab/MenuTab.vue";
 import ShippingPayment from "@/components/ShippingPayment/ShippingPayment.vue";
+import MapInfo from "@/components/MapInfo/MapInfo.vue";
 
 export default {
-  components: { ShippingPayment, MenuTab, Background, OftenBuySwiper, StockSwiper, IntroMain, HeaderComponent}
+  components: { MapInfo, ShippingPayment, MenuTab, Background, OftenBuySwiper, StockSwiper, IntroMain, HeaderComponent}
 };
 </script>
 
