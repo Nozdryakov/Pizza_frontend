@@ -1,15 +1,16 @@
 <template>
-  <header-component></header-component>
-  <intro-main></intro-main>
-  <background>
-    <stock-swiper></stock-swiper>
-    <often-buy-swiper></often-buy-swiper>
-  </background>
-  <menu-tab></menu-tab>
-  <shipping-payment></shipping-payment>
-  <map-info></map-info>
-  <footer-component></footer-component>
-
+  <div class="page">
+    <header-component></header-component>
+    <intro-main></intro-main>
+    <background>
+      <stock-swiper></stock-swiper>
+      <often-buy-swiper></often-buy-swiper>
+    </background>
+    <menu-tab></menu-tab>
+    <shipping-payment></shipping-payment>
+    <map-info></map-info>
+    <footer-component></footer-component>
+  </div>
 </template>
 
 <script>

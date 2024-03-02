@@ -15,16 +15,16 @@
             <a class="nav__link" href="#">Контакты</a>
             <a class="nav__link" href="#">О нас</a>
           </nav>
-          <div class="phone">+3803047076</div>
+          <div class="phone">+3803047076<p class="label">(номер телефона)</p></div>
         </div>
         <div class="social">
           <div class="el">
+            <div class="text none"></div>
             <div class="text"></div>
-            <div class="text"></div>
-            <div class="text">Доступно в</div>
+            <div class="text store__spacing">Доступно в</div>
           </div>
           <div class="el">
-            <div class="text"></div>
+            <div class="text none"></div>
             <div class="text icons__spacing">
               <a class="link__social" href="#"><twitter-icon></twitter-icon></a>
               <a class="link__social" href="#"><vk-icon></vk-icon></a>
