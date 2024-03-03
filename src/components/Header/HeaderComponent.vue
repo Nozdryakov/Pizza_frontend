@@ -33,17 +33,16 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import MainContainer from '@/components/Container/MainContainer.vue';
-import VikiLogoIcon from '@/assets/icons/VikiLogoIcon.vue';
-import CardButton from '@/components/Buttons/CardButton/CardButton.vue';
+import { ref } from 'vue'
+import MainContainer from '@/components/Container/MainContainer.vue'
+import VikiLogoIcon from '@/assets/icons/VikiLogoIcon.vue'
+import CardButton from '@/components/Buttons/CardButton/CardButton.vue'
 
-const isNavActive = ref(false);
+const isNavActive = ref(false)
 
 const toggleNav = () => {
-  isNavActive.value = !isNavActive.value;
-};
-
+  isNavActive.value = !isNavActive.value
+}
 </script>
 
 <style lang="scss" src="./HeaderComponent.scss" scoped></style>

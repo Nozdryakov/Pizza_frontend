@@ -20,10 +20,9 @@
 }
 .title {
   font-family: 'Inter-800', serif;
-
 }
 .red {
-  color: #FF1313;
+  color: #ff1313;
   margin-right: 2px;
   margin-left: 8px;
 }
@@ -49,16 +48,16 @@
 
     transition: opacity 100ms linear;
   }
-  &:hover{
+  &:hover {
     color: #000000;
   }
   &:hover:after {
     opacity: 1;
   }
 }
-.card-header-fon{
+.card-header-fon {
   position: absolute;
-  background-image: url("@/assets/images/card-header-fon.png");
+  background-image: url('@/assets/images/card-header-fon.png');
   z-index: -2;
   width: 243px;
   height: 243px;
@@ -145,7 +144,7 @@
 }
 
 @media (max-width: 990px) {
-  .container-toggle{
+  .container-toggle {
     display: block;
   }
   .nav {

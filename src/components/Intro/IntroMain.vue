@@ -2,9 +2,9 @@
   <div class="intro">
     <main-container>
       <div class="intro__inner">
-        <img class="fon-blur blur-two" src="@/assets/images/pizza-fon-1-intro.png">
-        <img class="fon-blur blur-third" src="@/assets/images/pizza-fon-2-intro.png">
-        <img class="fon-blur blur-third part-one" src="@/assets/images/pizza-fon-2-intro.png">
+        <img class="fon-blur blur-two" src="@/assets/images/pizza-fon-1-intro.png" />
+        <img class="fon-blur blur-third" src="@/assets/images/pizza-fon-2-intro.png" />
+        <img class="fon-blur blur-third part-one" src="@/assets/images/pizza-fon-2-intro.png" />
         <div class="item__intro first-el">
           <span class="price">19.90 р</span>
           <div class="title">Pizza Delicious</div>
@@ -16,12 +16,12 @@
             <card-button class="btn red">Купить</card-button>
             <div class="btn-blur">
               <card-button class="btn btn-menu">Меню</card-button>
-              <img class="fon-blur blur-one" src="@/assets/images/menu-fon-intro.png">
+              <img class="fon-blur blur-one" src="@/assets/images/menu-fon-intro.png" />
             </div>
           </div>
         </div>
         <div class="item__intro second-el">
-          <img src="@/assets/images/pizza-fon.png">
+          <img src="@/assets/images/pizza-fon.png" />
         </div>
         <div class="item__intro third-el">
           <div class="item__element">
@@ -52,9 +52,8 @@
 </template>
 
 <script setup>
-
-import MainContainer from "@/components/Container/MainContainer.vue";
-import CardButton from "@/components/Buttons/CardButton/CardButton.vue";
+import MainContainer from '@/components/Container/MainContainer.vue'
+import CardButton from '@/components/Buttons/CardButton/CardButton.vue'
 </script>
 
 <style lang="scss" scoped src="./IntroMain.scss"></style>

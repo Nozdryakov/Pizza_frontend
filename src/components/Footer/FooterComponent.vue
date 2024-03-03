@@ -15,7 +15,10 @@
             <a class="nav__link" href="#">Контакты</a>
             <a class="nav__link" href="#">О нас</a>
           </nav>
-          <div class="phone">+3803047076<p class="label">(номер телефона)</p></div>
+          <div class="phone">
+            +3803047076
+            <p class="label">(номер телефона)</p>
+          </div>
         </div>
         <div class="social">
           <div class="el">
@@ -36,23 +39,19 @@
             </div>
           </div>
         </div>
-
       </div>
     </main-container>
   </div>
 </template>
 
 <script setup>
-
-import MainContainer from "@/components/Container/MainContainer.vue";
-import VikiLogoIcon from "@/assets/icons/VikiLogoIcon.vue";
-import TwitterIcon from "@/components/Footer/icons/TwitterIcon.vue";
-import VkIcon from "@/components/Footer/icons/VkIcon.vue";
-import FacebookIcon from "@/components/Footer/icons/FacebookIcon.vue";
-import AppStoteIcon from "@/components/Footer/icons/AppStoteIcon.vue";
-import PlayMarketIcon from "@/components/Footer/icons/PlayMarketIcon.vue";
+import MainContainer from '@/components/Container/MainContainer.vue'
+import VikiLogoIcon from '@/assets/icons/VikiLogoIcon.vue'
+import TwitterIcon from '@/components/Footer/icons/TwitterIcon.vue'
+import VkIcon from '@/components/Footer/icons/VkIcon.vue'
+import FacebookIcon from '@/components/Footer/icons/FacebookIcon.vue'
+import AppStoteIcon from '@/components/Footer/icons/AppStoteIcon.vue'
+import PlayMarketIcon from '@/components/Footer/icons/PlayMarketIcon.vue'
 </script>
 
-<style lang="scss" src="./FooterComponent.scss" scoped>
-
-</style>
+<style lang="scss" src="./FooterComponent.scss" scoped></style>

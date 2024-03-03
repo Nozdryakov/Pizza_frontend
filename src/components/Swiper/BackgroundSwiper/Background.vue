@@ -4,10 +4,6 @@
   </div>
 </template>
 
-<script setup>
+<script setup></script>
 
-</script>
-
-<style lang="scss" src="./Background.scss" scoped>
-
-</style>
+<style lang="scss" src="./Background.scss" scoped></style>

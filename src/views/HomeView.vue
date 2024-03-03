@@ -14,19 +14,29 @@
 </template>
 
 <script>
-import HeaderComponent from '@/components/Header/HeaderComponent.vue';
-import IntroMain from "@/components/Intro/IntroMain.vue";
-import StockSwiper from "@/components/Swiper/Stocks/StockSwiper.vue";
-import OftenBuySwiper from "@/components/Swiper/OftenBuy/OftenBuySwiper.vue";
-import Background from "@/components/Swiper/BackgroundSwiper/Background.vue";
-import MenuTab from "@/components/MenuTab/MenuTab.vue";
-import ShippingPayment from "@/components/ShippingPayment/ShippingPayment.vue";
-import MapInfo from "@/components/MapInfo/MapInfo.vue";
-import FooterComponent from "@/components/Footer/FooterComponent.vue";
+import HeaderComponent from '@/components/Header/HeaderComponent.vue'
+import IntroMain from '@/components/Intro/IntroMain.vue'
+import StockSwiper from '@/components/Swiper/Stocks/StockSwiper.vue'
+import OftenBuySwiper from '@/components/Swiper/OftenBuy/OftenBuySwiper.vue'
+import Background from '@/components/Swiper/BackgroundSwiper/Background.vue'
+import MenuTab from '@/components/MenuTab/MenuTab.vue'
+import ShippingPayment from '@/components/ShippingPayment/ShippingPayment.vue'
+import MapInfo from '@/components/MapInfo/MapInfo.vue'
+import FooterComponent from '@/components/Footer/FooterComponent.vue'
 
 export default {
-  components: { FooterComponent, MapInfo, ShippingPayment, MenuTab, Background, OftenBuySwiper, StockSwiper, IntroMain, HeaderComponent}
-};
+  components: {
+    FooterComponent,
+    MapInfo,
+    ShippingPayment,
+    MenuTab,
+    Background,
+    OftenBuySwiper,
+    StockSwiper,
+    IntroMain,
+    HeaderComponent
+  }
+}
 </script>
 
 <style lang="scss" scoped></style>

@@ -4,8 +4,6 @@
   </h1>
 </template>
 
-<script setup>
-
-</script>
+<script setup></script>
 
 <style lang="scss" src="./HeadTitle.scss" scoped></style>

@@ -1,11 +1,11 @@
-.footer{
+.footer {
   width: 100%;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
   margin-top: 160px;
-  background-color: #FAFAFA;
+  background-color: #fafafa;
   padding: 100px 0 60px 0;
 }
 .footer__inner {
@@ -15,10 +15,10 @@
   flex-direction: column;
   justify-content: center;
 }
-.social{
+.social {
   margin-top: 30px;
 }
-.el{
+.el {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -31,14 +31,13 @@
 }
 .title {
   font-family: 'Inter-800', serif;
-
 }
 .red {
-  color: #FF1313;
+  color: #ff1313;
   margin-right: 2px;
   margin-left: 8px;
 }
-.nav{
+.nav {
   display: flex;
   flex-wrap: wrap;
 }
@@ -64,103 +63,102 @@
 
     transition: opacity 100ms linear;
   }
-  &:hover{
+  &:hover {
     color: #000000;
   }
   &:hover:after {
     opacity: 1;
   }
 }
-.text{
+.text {
   display: flex;
   justify-content: space-between;
   font-size: 16px;
-  font-family: "Raleway-400", serif;
+  font-family: 'Raleway-400', serif;
   flex-wrap: wrap;
 
   color: #626262;
 }
-.icons__spacing{
+.icons__spacing {
   width: 12%;
 }
-.store__spacing{
+.store__spacing {
   width: 12%;
 }
-.phone{
+.phone {
   font-size: 16px;
-  font-family: "Raleway-600", serif;
+  font-family: 'Raleway-600', serif;
 }
-.label{
+.label {
   display: none;
 }
 @media (max-width: 990px) {
-  .footer{
+  .footer {
     margin-top: 40px;
     padding: 60px 0 20px 0;
   }
-  .nav__link{
+  .nav__link {
     width: 45%;
     margin: 0;
     padding: 10px;
-    &:after{
+    &:after {
       width: 50%;
     }
   }
-  .nav{
+  .nav {
     margin: 15px 0;
   }
-  .icons__spacing{
+  .icons__spacing {
     width: 20%;
   }
-  .phone{
+  .phone {
     width: 100%;
     display: flex;
   }
-  .label{
+  .label {
     display: block;
     margin-left: 15px;
   }
-  .none{
+  .none {
     display: none;
   }
 }
 @media (max-width: 775px) {
-  .nav__link{
-    &:after{
+  .nav__link {
+    &:after {
       display: none;
     }
-    &:hover{
-      color: #FF1313;
+    &:hover {
+      color: #ff1313;
     }
-
   }
-  .icons__spacing{
+  .icons__spacing {
     width: 30%;
   }
-  .store__spacing{
+  .store__spacing {
     width: 30%;
   }
 }
 @media (max-width: 630px) {
-  .footer{
+  .footer {
     margin-top: 30px;
     padding: 40px 0 0 0;
   }
-  .icons__spacing{
+  .icons__spacing {
     width: 35%;
   }
-  .store__spacing{
+  .store__spacing {
     width: 35%;
   }
 }
 @media (max-width: 410px) {
-  .footer{
+  .footer {
     padding: 10px 0 0 0;
   }
-  .icons__spacing{
+  .icons__spacing {
     width: 40%;
   }
-  .store__spacing{
+  .store__spacing {
     width: 40%;
   }
 }
