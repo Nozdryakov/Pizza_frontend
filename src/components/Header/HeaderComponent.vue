@@ -12,6 +12,7 @@
           >
             <span class="nav-toggle__item">Menu</span>
           </button>
+
         </div>
         <div class="logo-container">
           <viki-logo-icon></viki-logo-icon>
@@ -55,7 +56,18 @@ const scrollToSection = (event) => {
       behavior: 'smooth'
     });
   }
+  isNavActive.value = false;
 };
+document.addEventListener('click', (event) => {
+  const navToggle = document.getElementById('nav_toggle');
+  const navMenu = document.querySelector('.nav');
+
+  if (navToggle.contains(event.target) || navMenu.contains(event.target)) {
+    return;
+  }
+  isNavActive.value = false;
+});
+
 </script>
 
 <style lang="scss" src="./HeaderComponent.scss" scoped></style>
