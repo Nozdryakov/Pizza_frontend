@@ -9,11 +9,11 @@
             <div class="title black">Pizza</div>
           </div>
           <nav class="nav">
-            <a class="nav__link" href="#">Акции</a>
-            <a class="nav__link" href="#">Меню</a>
-            <a class="nav__link" href="#">Доставка</a>
-            <a class="nav__link" href="#">Контакты</a>
-            <a class="nav__link" href="#">О нас</a>
+            <a class="nav__link" href="#actions" @click="scrollToSection">Акции</a>
+            <a class="nav__link" href="#menu" @click="scrollToSection">Меню</a>
+            <a class="nav__link" href="#delivery" @click="scrollToSection">Доставка</a>
+            <a class="nav__link" href="#contacts" @click="scrollToSection">Контакты</a>
+            <a class="nav__link" href="#about" @click="scrollToSection">О нас</a>
           </nav>
           <div class="phone">
             +3803047076
@@ -52,6 +52,19 @@ import VkIcon from '@/components/Footer/icons/VkIcon.vue'
 import FacebookIcon from '@/components/Footer/icons/FacebookIcon.vue'
 import AppStoteIcon from '@/components/Footer/icons/AppStoteIcon.vue'
 import PlayMarketIcon from '@/components/Footer/icons/PlayMarketIcon.vue'
+const scrollToSection = (event) => {
+  event.preventDefault();
+
+  const targetId = event.target.getAttribute('href');
+  const targetElement = document.querySelector(targetId);
+  if (targetElement) {
+    const offsetTop = targetElement.offsetTop - 65;
+    window.scrollTo({
+      top: offsetTop,
+      behavior: 'smooth'
+    });
+  }
+};
 </script>
 
 <style lang="scss" src="./FooterComponent.scss" scoped></style>
