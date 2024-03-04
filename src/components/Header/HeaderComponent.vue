@@ -19,11 +19,11 @@
           <div class="title black">Pizza</div>
         </div>
         <nav class="nav" :class="{ active: isNavActive }">
-          <a class="nav__link" href="#">Акции</a>
-          <a class="nav__link" href="#">Меню</a>
-          <a class="nav__link" href="#">Доставка</a>
-          <a class="nav__link" href="#">Контакты</a>
-          <a class="nav__link" href="#">О нас</a>
+          <a class="nav__link" href="#actions" @click="scrollToSection">Акции</a>
+          <a class="nav__link" href="#menu" @click="scrollToSection">Меню</a>
+          <a class="nav__link" href="#delivery" @click="scrollToSection">Доставка</a>
+          <a class="nav__link" href="#contacts" @click="scrollToSection">Контакты</a>
+          <a class="nav__link" href="#about" @click="scrollToSection">О нас</a>
         </nav>
         <div class="card-header-fon"></div>
         <card-button>Корзина</card-button>
@@ -43,6 +43,19 @@ const isNavActive = ref(false)
 const toggleNav = () => {
   isNavActive.value = !isNavActive.value
 }
+const scrollToSection = (event) => {
+  event.preventDefault();
+
+  const targetId = event.target.getAttribute('href');
+  const targetElement = document.querySelector(targetId);
+  if (targetElement) {
+    const offsetTop = targetElement.offsetTop - 65;
+    window.scrollTo({
+      top: offsetTop,
+      behavior: 'smooth'
+    });
+  }
+};
 </script>
 
 <style lang="scss" src="./HeaderComponent.scss" scoped></style>

@@ -1,6 +1,6 @@
 <template>
+  <head-title id="actions">Акции</head-title>
   <main-container>
-    <head-title>Акции</head-title>
   </main-container>
   <div class="wrapper-slider">
     <main-container>

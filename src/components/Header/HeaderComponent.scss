@@ -1,11 +1,13 @@
 .header {
   width: 100%;
-  padding-top: 30px;
-  position: absolute;
+  padding: 18px 0;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
+  box-shadow: 9px 10px 100px 0px rgba(207, 207, 207, 1);
+  background-color: #ffffff;
 }
 .header__inner {
   display: flex;

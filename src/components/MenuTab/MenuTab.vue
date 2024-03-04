@@ -1,6 +1,6 @@
 <template>
   <main-container>
-    <div class="tabs__wrapper">
+    <div id="menu" class="tabs__wrapper">
       <head-title>Меню</head-title>
       <ul class="tabs-list">
         <li

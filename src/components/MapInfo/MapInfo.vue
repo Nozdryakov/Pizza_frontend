@@ -1,7 +1,7 @@
 <template>
   <div class="map-info">
     <main-container>
-      <head-title>Контакты</head-title>
+      <head-title id="contacts">Контакты</head-title>
       <div class="map-info__inner">
         <div class="block-map">
           <a
