@@ -12,7 +12,6 @@
           >
             <span class="nav-toggle__item">Menu</span>
           </button>
-
         </div>
         <div class="logo-container">
           <viki-logo-icon></viki-logo-icon>
