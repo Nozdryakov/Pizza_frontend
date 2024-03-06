@@ -1,0 +1,19 @@
+.intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+  height: 100vh;
+}
+.intro__inner{
+  display: flex;
+  justify-content: space-between;
+
+}
+.intro__item:first-child{
+  width: 60%;
+}
+.intro__item:last-child{
+  width: 25%;
+}
