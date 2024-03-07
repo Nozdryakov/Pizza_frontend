@@ -5,17 +5,17 @@
         <div class="intro__item">
           <div class="head-title">О нас</div>
           <div class="title">
-            <p class="title__text">Vikki</p>
-            <p class="title__text">Pizza</p>
+            <p class="title__text">Viki</p>
+            <p>Pizza</p>
           </div>
           <div class="subtitle">
-            <p class="subtitle__text">Viki Pizza — пиццерия г. Минска, которая открылась совсем недавно и уже радует своих покупателей изысканными вкусами и быстрой доставкой, Для нас Viki Pizza — каждое утро просыпаться и с интересом продолжать работу.</p>
+            <p class="subtitle__text">Viki Pizza — пиццерия г. Киева, которая открылась совсем недавно и уже радует своих покупателей изысканными вкусами и быстрой доставкой, Для нас Viki Pizza — каждое утро просыпаться и с интересом продолжать работу.</p>
             <p class="subtitle__text">Для нас Viki Pizza —  это то дело, которое вдохновляет нас, заставляет каждое утро просыпаться и с интересом продолжать работу.</p>
             <p class="subtitle__text">Наша миссия - расширять границы возможного!</p>
           </div>
           <div class="block__button">
-            <card-button>Меню</card-button>
-            <card-button>Главная</card-button>
+            <card-button class="btn">Меню</card-button>
+            <card-button class="btn">Главная</card-button>
           </div>
         </div>
         <div class="intro__item">
