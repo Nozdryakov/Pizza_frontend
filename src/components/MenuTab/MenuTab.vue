@@ -22,7 +22,7 @@
               <div class="subtitle">{{ product.description }}</div>
               <div class="buy__block">
                 <p class="price">{{ product.price }} ₴</p>
-                <button class="btn-buy">Выбрать</button>
+                <button class="btn-buy" @click="addToCart(product)">Выбрать</button>
               </div>
             </li>
           </ul>
@@ -33,9 +33,12 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
-import MainContainer from '@/components/Container/MainContainer.vue'
-import HeadTitle from '@/components/HeadTitle/HeadTitle.vue'
+import MainContainer from '@/components/Container/MainContainer.vue';
+import HeadTitle from '@/components/HeadTitle/HeadTitle.vue';
+import { useCard } from "@/stores/CardStore.js";
+import { useCookies } from "vue3-cookies";
+import { computed, ref } from "vue";
+
 
 const data = ref({
   list: [
@@ -96,17 +99,35 @@ const data = ref({
       ]
     }
   ]
-})
+});
 
 const visibleTabs = computed(() => {
-  return data.value.list.filter((item) => item.show)
-})
+  return data.value.list.filter((item) => item.show);
+});
 
 const showCategory = (itemId) => {
   data.value.list.forEach((item) => {
-    item.show = item.id === itemId
-  })
-}
+    item.show = item.id === itemId;
+  });
+};
+const cardStore = useCard();
+const { cookies } = useCookies();
+const products = [];
+
+const addToCart = (product) => {
+  const newProduct = {
+    name: product,
+    volume: ++cardStore.volume
+  };
+
+  products.push(newProduct);
+
+  cookies.set('cookie', JSON.stringify(products));
+
+  cardStore.products = products;
+};
+
+
 </script>
 
 <style scoped lang="scss" src="./MenuTab.scss"></style>

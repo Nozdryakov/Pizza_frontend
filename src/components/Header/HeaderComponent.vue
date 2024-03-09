@@ -26,18 +26,43 @@
           <a class="nav__link" href="#about" @click="scrollToSection">О нас</a>
         </nav>
         <div class="card-header-fon"></div>
-        <card-button>Корзина</card-button>
+        <card-button @click="test">Корзина {{cardStore.volume}}</card-button>
       </div>
     </main-container>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, watch } from "vue";
 import MainContainer from '@/components/Container/MainContainer.vue'
 import VikiLogoIcon from '@/assets/icons/VikiLogoIcon.vue'
 import CardButton from '@/components/Buttons/CardButton/CardButton.vue'
+import { useCard } from "@/stores/CardStore.js";
+import { useCookies } from "vue3-cookies";
+const { cookies } = useCookies();
+const cardStore = useCard();
 
+const volumes = ref([]);
+
+watch(() => {
+  if (!cookies.isKey("cookie")) {
+    cardStore.volume = 0;
+    return;
+  }
+  const raw = cookies.get("cookie");
+  let jsonArray = 0;
+
+  if (raw) {
+    jsonArray = JSON.parse(raw);
+  } else {
+    jsonArray = [];
+  }
+  volumes.value = jsonArray.map(item => item.volume);
+  cardStore.volume = volumes.value[volumes.value.length - 1];
+});
+const test = () => {
+  console.log(cardStore.products);
+};
 const isNavActive = ref(false)
 
 const toggleNav = () => {
