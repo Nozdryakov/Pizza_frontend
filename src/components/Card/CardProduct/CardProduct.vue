@@ -45,9 +45,7 @@ watchEffect(() => {
   }));
   cardStore.products = products.value;
 });
-const countProduct = (productName) => {
-  return products.value.filter(product => product.name === productName).length;
-};
+
 // Конфиг для настройик жизни куки
 const config = {
   current_default_config: {
@@ -58,16 +56,11 @@ const config = {
 };
 
 const expireTimes = config.current_default_config.expireTimes;
-const DeleteProduct = (product) => {
-  // Находим индекс удаляемого продукта в массиве
-  const index = products.value.findIndex(item => item.name === product.name);
+const DeleteProduct = (productName) => {
+  const index = products.value.findIndex(item => item.name === productName);
   if (index !== -1) {
-    // Удаляем продукт из массива
     products.value.splice(index, 1);
     cardStore.volume--;
-
-
-    // Обновляем данные в куки
     cookies.set('cookie', JSON.stringify(products.value), expireTimes);
     console.log("product delete");
   }
