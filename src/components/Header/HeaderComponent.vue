@@ -43,7 +43,6 @@ import { useCard } from "@/stores/CardStore.js";
 import { useCookies } from "vue3-cookies";
 const { cookies } = useCookies();
 const cardStore = useCard();
-const volumes = ref([]);
 onMounted(() => {
   const raw = cookies.get("cookie");
   if(!raw || cardStore.volume === undefined){
@@ -52,15 +51,12 @@ onMounted(() => {
 });
 watchEffect(() => {
   const raw = cookies.get("cookie");
-  let jsonArray = 0;
+  let jsonArray = [];
 
   if (raw) {
     jsonArray = JSON.parse(raw);
-  } else {
-    jsonArray = [];
   }
-  volumes.value = jsonArray.map(item => item.volume);
-  cardStore.volume = volumes.value[volumes.value.length - 1];
+  cardStore.volume = jsonArray.length;
 });
 
 const isNavActive = ref(false);

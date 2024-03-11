@@ -125,16 +125,26 @@ const { cookies } = useCookies();
 const products = [];
 
 const addToCart = (product) => {
+  // Создаем новый продукт для добавления в корзину
   const newProduct = {
-    name: product,
+    name: product.name,
+    description: product.description,
+    price: product.price,
     volume: products.length + 1
   };
 
-  products.push(newProduct);
-  cookies.set('cookie', JSON.stringify(products), expireTimes);
+  // Получаем текущий массив товаров из куки, если он есть
+  const existingProducts = cookies.get('cookie') ? JSON.parse(cookies.get('cookie')) : [];
 
-  cardStore.products = products;
-  cardStore.volume = products.length;
+  // Добавляем новый продукт к существующему массиву товаров
+  const updatedProducts = [...existingProducts, newProduct];
+
+  // Сохраняем обновленный массив продуктов в куки
+  cookies.set('cookie', JSON.stringify(updatedProducts), expireTimes);
+
+  // Обновляем данные в хранилище состояния
+  cardStore.products = updatedProducts;
+  cardStore.volume = updatedProducts.length;
 };
 
 const isCookieExpired = () => {
@@ -147,7 +157,7 @@ const isCookieExpired = () => {
   const cookieExpirationTime = cookies.expireTimes;
 
   if (cookieExpirationTime <= currentTime) {
-    cookies.remove('cookie');
+    console.log(cookies.remove('cookie'));
 
     return true;
   }

@@ -7,6 +7,7 @@
         <button @click="DeleteProduct(productName)">Удалить</button>
       </li>
     </ul>
+    {{cardStore.products}}
   </div>
 </template>
 
@@ -38,12 +39,16 @@ watchEffect(() => {
   const raw = cookies.get("cookie");
   const jsonArray = raw ? JSON.parse(raw) : [];
   products.value = jsonArray.map(item => ({
-    name: item.name.name,
-    description: item.name.description,
-    price: item.name.price,
+    name: item.name,
+    description: item.description,
+    price: item.price,
     volume: item.volume
   }));
-  cardStore.products = products.value;
+  console.log(products.value);
+  if (cardStore) {
+    cardStore.products = products.value;
+    cardStore.volume = jsonArray.length;
+  }
 });
 
 // Конфиг для настройик жизни куки
@@ -61,10 +66,11 @@ const DeleteProduct = (productName) => {
   if (index !== -1) {
     products.value.splice(index, 1);
     cardStore.volume--;
-    cookies.set('cookie', JSON.stringify(products.value), expireTimes);
+    cookies.set('cookie', JSON.stringify(products.value), expireTimes); // Обновляем куки после удаления продукта
     console.log("product delete");
   }
 };
+
 
 </script>
 
