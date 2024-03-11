@@ -4,4 +4,9 @@ export const useCard = defineStore('Card', {
     volume: 0,
     products: [],
   }),
+  actions: {
+    setVolume(volume) {
+      this.volume = volume;
+    },
+  },
 });

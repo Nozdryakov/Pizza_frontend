@@ -110,6 +110,16 @@ const showCategory = (itemId) => {
     item.show = item.id === itemId;
   });
 };
+// Конфиг для настройик жизни куки
+const config = {
+  current_default_config: {
+    expireTimes: "4h",
+    path: "; path=/",
+    secure: false,
+  }
+};
+
+const expireTimes = config.current_default_config.expireTimes;
 const cardStore = useCard();
 const { cookies } = useCookies();
 const products = [];
@@ -117,16 +127,39 @@ const products = [];
 const addToCart = (product) => {
   const newProduct = {
     name: product,
-    volume: ++cardStore.volume
+    volume: products.length + 1
   };
 
   products.push(newProduct);
-
-  cookies.set('cookie', JSON.stringify(products));
+  cookies.set('cookie', JSON.stringify(products), expireTimes);
 
   cardStore.products = products;
+  cardStore.volume = products.length;
 };
 
+const isCookieExpired = () => {
+  const cookieValue = cookies.get('cookie');
+  if (!cookieValue) {
+    return true;
+  }
+
+  const currentTime = new Date().getTime();
+  const cookieExpirationTime = cookies.expireTimes;
+
+  if (cookieExpirationTime <= currentTime) {
+    cookies.remove('cookie');
+
+    return true;
+  }
+  return false;
+};
+
+function checkCookieStatus() {
+  if (isCookieExpired()) {
+    cardStore.setVolume(0);
+  }
+}
+setInterval(checkCookieStatus, 600000);
 
 </script>
 

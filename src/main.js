@@ -9,9 +9,6 @@ import App from './App.vue';
 import router from './router';
 import { useCard } from "@/stores/CardStore.js";
 
-
-
-
 const app = createApp(App);
 const pinia = createPinia();
 app.use(pinia);

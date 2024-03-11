@@ -26,29 +26,31 @@
           <a class="nav__link" href="#about" @click="scrollToSection">О нас</a>
         </nav>
         <div class="card-header-fon"></div>
-        <card-button @click="test">Корзина {{cardStore.volume}}</card-button>
+        <router-link to="/card" class="cart-link">
+          <card-button>Корзина {{cardStore.volume}}</card-button>
+        </router-link>
       </div>
     </main-container>
   </div>
 </template>
 
 <script setup>
-import { ref, watch } from "vue";
-import MainContainer from '@/components/Container/MainContainer.vue'
-import VikiLogoIcon from '@/assets/icons/VikiLogoIcon.vue'
-import CardButton from '@/components/Buttons/CardButton/CardButton.vue'
+import { onMounted, ref, watchEffect } from "vue";
+import MainContainer from '@/components/Container/MainContainer.vue';
+import VikiLogoIcon from '@/assets/icons/VikiLogoIcon.vue';
+import CardButton from '@/components/Buttons/CardButton/CardButton.vue';
 import { useCard } from "@/stores/CardStore.js";
 import { useCookies } from "vue3-cookies";
 const { cookies } = useCookies();
 const cardStore = useCard();
-
 const volumes = ref([]);
-
-watch(() => {
-  if (!cookies.isKey("cookie")) {
-    cardStore.volume = 0;
-    return;
+onMounted(() => {
+  const raw = cookies.get("cookie");
+  if(!raw || cardStore.volume === undefined){
+    cardStore.setVolume(0);
   }
+});
+watchEffect(() => {
   const raw = cookies.get("cookie");
   let jsonArray = 0;
 
@@ -60,14 +62,12 @@ watch(() => {
   volumes.value = jsonArray.map(item => item.volume);
   cardStore.volume = volumes.value[volumes.value.length - 1];
 });
-const test = () => {
-  console.log(cardStore.products);
-};
-const isNavActive = ref(false)
+
+const isNavActive = ref(false);
 
 const toggleNav = () => {
-  isNavActive.value = !isNavActive.value
-}
+  isNavActive.value = !isNavActive.value;
+};
 const scrollToSection = (event) => {
   event.preventDefault();
 
