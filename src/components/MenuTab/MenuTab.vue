@@ -96,7 +96,6 @@ const addToCart = (product) => {
   // Создаем новый продукт для добавления в корзину
   const newProduct = {
     name: product.name,
-    description: product.description,
     price: product.price,
     volume: products.length + 1
   };
