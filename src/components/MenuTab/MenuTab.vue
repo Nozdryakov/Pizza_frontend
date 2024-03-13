@@ -38,67 +38,34 @@ import HeadTitle from '@/components/HeadTitle/HeadTitle.vue';
 import { useCard } from "@/stores/CardStore.js";
 import { useCookies } from "vue3-cookies";
 import { computed, ref } from "vue";
+import { onMounted } from 'vue';
+import axios from 'axios';
 
-
+// const data = ref(null);
 const data = ref({
-  list: [
-    {
-      id: 'Пицца',
-      show: true,
-      list: [
-        {
-          name: 'Домашняя',
-          description:
-            'Куриные кусочки, сладкий перец, моцарелла, красный лук, соус сладкий чили, соус альфре',
-          price: 10
-        },
-        { name: 'Product 2', description: 'Описание продукта 2', price: 12 },
-        { name: 'Product 3', description: 'Описание продукта 3', price: 8 },
-        { name: 'Product 4', description: 'Описание продукта 4', price: 15 },
-        { name: 'Product 4', description: 'Описание продукта 4', price: 15 }
-      ]
-    },
-    {
-      id: 'Закуски',
+  list: []
+});
+
+onMounted(async () => {
+  try {
+    const response = await axios.get('http://localhost:8000/api/applications/index');
+    data.value = response.data;
+
+    data.value.list = data.value.products.map(category => ({
+      id: category.title,
       show: false,
-      list: [
-        { name: 'Закуски 1', description: 'Описание закуски 1', price: 5 },
-        { name: 'Закуски 2', description: 'Описание закуски 2', price: 7 },
-        { name: 'Закуски 3', description: 'Описание закуски 3', price: 4 },
-        { name: 'Закуски 4', description: 'Описание закуски 4', price: 6 }
-      ]
-    },
-    {
-      id: 'Десерты',
-      show: false,
-      list: [
-        { name: 'Десерт 1', description: 'Описание десерта 1', price: 3 },
-        { name: 'Десерт 2', description: 'Описание десерта 2', price: 4 },
-        { name: 'Десерт 3', description: 'Описание десерта 3', price: 5 },
-        { name: 'Десерт 4', description: 'Описание десерта 4', price: 6 }
-      ]
-    },
-    {
-      id: 'Напитки',
-      show: false,
-      list: [
-        { name: 'Напиток 1', description: 'Описание напитка 1', price: 2 },
-        { name: 'Напиток 2', description: 'Описание напитка 2', price: 3 },
-        { name: 'Напиток 3', description: 'Описание напитка 3', price: 2 },
-        { name: 'Напиток 4', description: 'Описание напитка 4', price: 4 }
-      ]
-    },
-    {
-      id: 'Комбо',
-      show: false,
-      list: [
-        { name: 'Комбо 1', description: 'Описание комбо 1', price: 20 },
-        { name: 'Комбо 2', description: 'Описание комбо 2', price: 25 },
-        { name: 'Комбо 3', description: 'Описание комбо 3', price: 18 },
-        { name: 'Комбо 4', description: 'Описание комбо 4', price: 30 }
-      ]
+      list: category.products.map(product => ({
+        name: product.title,
+        description: product.description,
+        price: parseFloat(product.price)
+      }))
+    }))
+    if (data.value.list.length > 0) {
+      data.value.list[0].show = true;
     }
-  ]
+  } catch (error) {
+    console.error('Произошла ошибка при выполнении запроса:', error);
+  }
 });
 
 const visibleTabs = computed(() => {
@@ -110,6 +77,7 @@ const showCategory = (itemId) => {
     item.show = item.id === itemId;
   });
 };
+
 // Конфиг для настройик жизни куки
 const config = {
   current_default_config: {
