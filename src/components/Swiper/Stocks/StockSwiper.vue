@@ -14,8 +14,7 @@
         :modules="modules"
       >
         <swiper-slide><img class="swiper-img" src="@/assets/images/pizza-no.jpg" /></swiper-slide>
-        <swiper-slide
-          ><img class="swiper-img" src="@/assets/images/swiper-card-1.png"
+        <swiper-slide><img class="swiper-img" src="@/assets/images/swiper-card-1.png"
         /></swiper-slide>
         <swiper-slide
           ><img class="swiper-img" src="@/assets/images/swiper-card-2.png"

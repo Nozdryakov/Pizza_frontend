@@ -2,12 +2,15 @@
   <div class="card">
     <h2>Названия продуктов:</h2>
     <ul>
-      <li v-for="(productName, index) in uniqueProductNames" :key="index">
-        {{ productName }} <span>х{{ productCounts[productName] }}</span>
-        <button @click="DeleteProduct(productName)">Удалить</button>
+      <li v-for="(product, index) in products" :key="index">
+        {{ product.name }} <span>х{{ product.count }}</span>
+        <button @click="minusProduct(product)">Уменьшить</button>
+        <button @click="plusProduct(product)">Увеличить</button>
+        <button @click="DeleteProduct(product.name)">Удалить</button>
+        <h3>{{product.price * product.count}}</h3>
       </li>
     </ul>
-    {{cardStore.products}}
+    <h2>Общая стоимость: {{ totalCost }}</h2>
   </div>
 </template>
 
@@ -15,42 +18,33 @@
 import { useCard } from "@/stores/CardStore.js";
 import { computed, ref, watchEffect } from "vue";
 import { useCookies } from "vue3-cookies";
+
 const { cookies } = useCookies();
 
 const cardStore = useCard();
 
-
 const products = ref([]);
-const productCounts = computed(() => {
-  const counts = {};
-  for (const product of products.value) {
-    if (counts[product.name]) {
-      counts[product.name]++;
-    } else {
-      counts[product.name] = 1;
-    }
-  }
-  return counts;
-});
-const uniqueProductNames = computed(() => {
-  return Object.keys(productCounts.value);
-});
+
 watchEffect(() => {
   const raw = cookies.get("cookie");
   const jsonArray = raw ? JSON.parse(raw) : [];
   products.value = jsonArray.map(item => ({
     name: item.name,
-    description: item.description,
     price: item.price,
-    volume: item.volume
+    count: item.count || 1,
   }));
-  console.log(products.value);
+
+  cookies.set("cookie", JSON.stringify(products.value));
+
   if (cardStore) {
     cardStore.products = products.value;
     cardStore.volume = jsonArray.length;
   }
 });
 
+const totalCost = computed(() => {
+  return products.value.reduce((total, product) => total + (product.price * product.count), 0);
+});
 // Конфиг для настройик жизни куки
 const config = {
   current_default_config: {
@@ -66,12 +60,24 @@ const DeleteProduct = (productName) => {
   if (index !== -1) {
     products.value.splice(index, 1);
     cardStore.volume--;
-    cookies.set('cookie', JSON.stringify(products.value), expireTimes); // Обновляем куки после удаления продукта
+    cookies.set('cookie', JSON.stringify(products.value), expireTimes);
     console.log("product delete");
   }
 };
+const minusProduct = (product) => {
+  if (product.count > 1) {
+    product.count--;
+    updateCookie();
+  }
+};
 
-
+const plusProduct = (product) => {
+  product.count++;
+  updateCookie();
+};
+const updateCookie = () => {
+  cookies.set('cookie', JSON.stringify(products.value));
+};
 </script>
 
 <style lang="scss" src="./CardProduct.scss" scoped>

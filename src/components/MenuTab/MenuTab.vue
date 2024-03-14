@@ -22,7 +22,12 @@
               <div class="subtitle">{{ product.description }}</div>
               <div class="buy__block">
                 <p class="price">{{ product.price }} ₴</p>
-                <button class="btn-buy" @click="addToCart(product)">Выбрать</button>
+                <button v-if="product.addedToCart" class="btn-buy">
+                  <span>Добавлено</span>
+                </button>
+                <button v-else class="btn-buy" @click="addToCart(product)">
+                  <span>Выбрать</span>
+                </button>
               </div>
             </li>
           </ul>
@@ -57,12 +62,22 @@ onMounted(async () => {
       list: category.products.map(product => ({
         name: product.title,
         description: product.description,
-        price: parseFloat(product.price)
+        price: parseFloat(product.price),
+        addedToCart: false
       }))
-    }))
+    }));
     if (data.value.list.length > 0) {
       data.value.list[0].show = true;
     }
+    const existingProducts = cookies.get('cookie') ? JSON.parse(cookies.get('cookie')) : [];
+    data.value.list.forEach(category => {
+      category.list.forEach(product => {
+        const existingProduct = existingProducts.find(item => item.name === product.name);
+        if (existingProduct) {
+          product.addedToCart = true;
+        }
+      });
+    });
   } catch (error) {
     console.error('Произошла ошибка при выполнении запроса:', error);
   }
@@ -90,29 +105,28 @@ const config = {
 const expireTimes = config.current_default_config.expireTimes;
 const cardStore = useCard();
 const { cookies } = useCookies();
-const products = [];
 
 const addToCart = (product) => {
-  // Создаем новый продукт для добавления в корзину
-  const newProduct = {
-    name: product.name,
-    price: product.price,
-    volume: products.length + 1
-  };
-
-  // Получаем текущий массив товаров из куки, если он есть
   const existingProducts = cookies.get('cookie') ? JSON.parse(cookies.get('cookie')) : [];
+  const existingProductIndex = existingProducts.findIndex(item => item.name === product.name);
 
-  // Добавляем новый продукт к существующему массиву товаров
-  const updatedProducts = [...existingProducts, newProduct];
-
-  // Сохраняем обновленный массив продуктов в куки
-  cookies.set('cookie', JSON.stringify(updatedProducts), expireTimes);
-
-  // Обновляем данные в хранилище состояния
-  cardStore.products = updatedProducts;
-  cardStore.volume = updatedProducts.length;
+  if (existingProductIndex !== -1) {
+    existingProducts[existingProductIndex].count = (existingProducts[existingProductIndex].count || 1) + 1;
+    existingProducts[existingProductIndex].addedToCart = true;
+  } else {
+    existingProducts.push({
+      name: product.name,
+      price: product.price,
+      count: 1,
+      addedToCart: true
+    });
+  }
+  product.addedToCart = true;
+  cookies.set('cookie', JSON.stringify(existingProducts), expireTimes);
+  cardStore.products = existingProducts;
+  cardStore.volume = existingProducts.length;
 };
+
 
 const isCookieExpired = () => {
   const cookieValue = cookies.get('cookie');
