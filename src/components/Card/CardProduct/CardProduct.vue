@@ -16,12 +16,13 @@
 
 <script setup>
 import { useCard } from "@/stores/CardStore.js";
-import { computed, ref, watchEffect } from "vue";
+import { ref, watch, watchEffect } from "vue";
 import { useCookies } from "vue3-cookies";
 
 const { cookies } = useCookies();
 
 const cardStore = useCard();
+const totalCost = ref(cookies.get('totalCost') || 0);
 
 const products = ref([]);
 
@@ -42,9 +43,6 @@ watchEffect(() => {
   }
 });
 
-const totalCost = computed(() => {
-  return products.value.reduce((total, product) => total + (product.price * product.count), 0);
-});
 // Конфиг для настройик жизни куки
 const config = {
   current_default_config: {
@@ -62,8 +60,10 @@ const DeleteProduct = (productName) => {
     cardStore.volume--;
     cookies.set('cookie', JSON.stringify(products.value), expireTimes);
     console.log("product delete");
+    calculateTotalCost();
   }
 };
+
 const minusProduct = (product) => {
   if (product.count > 1) {
     product.count--;
@@ -75,10 +75,23 @@ const plusProduct = (product) => {
   product.count++;
   updateCookie();
 };
+
+
 const updateCookie = () => {
   cookies.set('cookie', JSON.stringify(products.value));
 };
+
+function calculateTotalCost() {
+  const totalCostValue = products.value.reduce((total, product) => total + (product.price * product.count), 0);
+  totalCost.value = totalCostValue;
+  cookies.set('totalCost', totalCostValue.toString());
+}
+watch(totalCost, (newValue) => {
+  cardStore.total = newValue;
+});
+watch(products, calculateTotalCost, { deep: true });
 </script>
+
 
 <style lang="scss" src="./CardProduct.scss" scoped>
 

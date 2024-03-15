@@ -14,6 +14,7 @@
   border: 1px solid #fcefef;
   position: relative;
   overflow: hidden;
+  transition: width 0.8s ease;
 }
 .btn:hover {
   -webkit-box-shadow: 10px 10px 34px 8px rgba(255,191,206,0.29);

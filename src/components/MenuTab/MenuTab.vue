@@ -78,6 +78,7 @@ onMounted(async () => {
         }
       });
     });
+
   } catch (error) {
     console.error('Произошла ошибка при выполнении запроса:', error);
   }
@@ -125,6 +126,12 @@ const addToCart = (product) => {
   cookies.set('cookie', JSON.stringify(existingProducts), expireTimes);
   cardStore.products = existingProducts;
   cardStore.volume = existingProducts.length;
+
+  const totalCost = existingProducts.reduce((total, item) => {
+    return total + (item.price * item.count);
+  }, 0);
+  cardStore.total = totalCost;
+  cookies.set('totalCost', totalCost.toString());
 };
 
 
@@ -138,7 +145,7 @@ const isCookieExpired = () => {
   const cookieExpirationTime = cookies.expireTimes;
 
   if (cookieExpirationTime <= currentTime) {
-    console.log(cookies.remove('cookie'));
+    cookies.remove('cookie');
 
     return true;
   }

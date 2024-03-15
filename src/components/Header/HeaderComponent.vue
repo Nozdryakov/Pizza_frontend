@@ -26,8 +26,17 @@
           <a class="nav__link" href="#about" @click="scrollToSection">О нас</a>
         </nav>
         <div class="card-header-fon"></div>
-        <router-link to="/card" class="cart-link">
-          <card-button>Корзина {{cardStore.volume}}</card-button>
+        <router-link to="/card" class="card-link">
+          <transition name="slide-up">
+            <card-button
+              v-if="cardStore.volume === 0"
+              class="card-button"
+            >Корзина</card-button>
+            <card-button
+              v-else
+              class="card-button volume"
+            >Корзина {{ cardStore.volume }} | {{cardStore.total}} грн. </card-button>
+          </transition>
         </router-link>
       </div>
     </main-container>
@@ -35,7 +44,7 @@
 </template>
 
 <script setup>
-import { onMounted, ref, watchEffect } from "vue";
+import { onMounted, ref, watch, watchEffect } from "vue";
 import MainContainer from '@/components/Container/MainContainer.vue';
 import VikiLogoIcon from '@/assets/icons/VikiLogoIcon.vue';
 import CardButton from '@/components/Buttons/CardButton/CardButton.vue';
@@ -43,11 +52,18 @@ import { useCard } from "@/stores/CardStore.js";
 import { useCookies } from "vue3-cookies";
 const { cookies } = useCookies();
 const cardStore = useCard();
+const totalCost = ref(cookies.get('totalCost') || 0);
 onMounted(() => {
   const raw = cookies.get("cookie");
   if(!raw || cardStore.volume === undefined){
     cardStore.setVolume(0);
   }
+
+  cardStore.total = totalCost.value;
+
+});
+watch(totalCost, (newValue) => {
+  cardStore.total = newValue;
 });
 watchEffect(() => {
   const raw = cookies.get("cookie");
@@ -57,8 +73,8 @@ watchEffect(() => {
     jsonArray = JSON.parse(raw);
   }
   cardStore.volume = jsonArray.length;
-});
 
+});
 const isNavActive = ref(false);
 
 const toggleNav = () => {
