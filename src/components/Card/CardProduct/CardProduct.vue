@@ -1,16 +1,32 @@
 <template>
   <div class="card">
-    <h2>Названия продуктов:</h2>
-    <ul>
-      <li v-for="(product, index) in products" :key="index">
-        {{ product.name }} <span>х{{ product.count }}</span>
-        <button @click="minusProduct(product)">Уменьшить</button>
-        <button @click="plusProduct(product)">Увеличить</button>
-        <button @click="DeleteProduct(product.name)">Удалить</button>
-        <h3>{{product.price * product.count}}</h3>
-      </li>
-    </ul>
-    <h2>Общая стоимость: {{ totalCost }}</h2>
+    <main-container>
+      <head-title>Корзина</head-title>
+      <ul class="card-list">
+        <li v-for="(product, index) in products" :key="index">
+          <div class="name-product">
+            <img  src="@/assets/images/image-default.png" class="card-img" />
+            <p class="title">{{ product.name }}</p>
+          </div>
+          <div class="sum-product">
+            <minus-icon class="change-icon" @click="minusProduct(product)"></minus-icon>
+            <span>{{ product.count }}</span>
+            <plus-icon class="change-icon" @click="plusProduct(product)"></plus-icon>
+          </div>
+          <div class="info-product">
+            <h3>{{ (parseFloat(product.price) * product.count).toFixed(2) }} грн.</h3>
+            <delete-icon class="crutch"></delete-icon>
+          </div>
+          <delete-icon class="delete-icon" @click="DeleteProduct(product.name)"></delete-icon>
+        </li>
+      </ul>
+      <div class="price-block">
+        <h4>Итого: </h4>
+        <h2>{{ (parseFloat(totalCost).toFixed(2)) }}</h2>
+      </div>
+
+<!--      <card-icon class="card-icon"></card-icon>-->
+    </main-container>
   </div>
 </template>
 
@@ -18,6 +34,12 @@
 import { useCard } from "@/stores/CardStore.js";
 import { ref, watch, watchEffect } from "vue";
 import { useCookies } from "vue3-cookies";
+import CardIcon from "@/components/Card/CardProduct/icons/CardIcon.vue";
+import MainContainer from "@/components/Container/MainContainer.vue";
+import PlusIcon from "@/components/Card/CardProduct/icons/PlusIcon.vue";
+import MinusIcon from "@/components/Card/CardProduct/icons/MinusIcon.vue";
+import DeleteIcon from "@/components/Card/CardProduct/icons/DeleteIcon.vue";
+import HeadTitle from "@/components/HeadTitle/HeadTitle.vue";
 
 const { cookies } = useCookies();
 
@@ -31,7 +53,7 @@ watchEffect(() => {
   const jsonArray = raw ? JSON.parse(raw) : [];
   products.value = jsonArray.map(item => ({
     name: item.name,
-    price: item.price,
+    price: parseFloat(item.price).toFixed(2),
     count: item.count || 1,
   }));
 
@@ -59,7 +81,6 @@ const DeleteProduct = (productName) => {
     products.value.splice(index, 1);
     cardStore.volume--;
     cookies.set('cookie', JSON.stringify(products.value), expireTimes);
-    console.log("product delete");
     calculateTotalCost();
   }
 };

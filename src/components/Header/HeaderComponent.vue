@@ -35,7 +35,7 @@
             <card-button
               v-else
               class="card-button volume"
-            >Корзина {{ cardStore.volume }} | {{cardStore.total}} грн. </card-button>
+            >Корзина {{ cardStore.volume }} | {{parseFloat(cardStore.total).toFixed(2)}} грн. </card-button>
           </transition>
         </router-link>
       </div>

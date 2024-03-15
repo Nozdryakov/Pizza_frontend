@@ -62,7 +62,7 @@ onMounted(async () => {
       list: category.products.map(product => ({
         name: product.title,
         description: product.description,
-        price: parseFloat(product.price),
+        price: parseFloat(product.price).toFixed(2),
         addedToCart: false
       }))
     }));
