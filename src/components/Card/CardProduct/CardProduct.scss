@@ -82,9 +82,6 @@
   position: absolute;
   top: 0;
   right: 0;
-  &:hover{
-    stroke: #121010;
-  }
 }
 .crutch{
   opacity: 0;
@@ -105,5 +102,37 @@
     color: #ff1313;
     font-family: 'Raleway-700', serif;
     font-size: 32px;
+  }
+}
+@media (max-width: 990px) {
+  .name-product{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .title{
+    font-size: 20px;
+    margin-left: 0;
+    margin-top: 10px;
+    width: 120px;
+  }
+  .sum-product span{
+    font-size: 20px;
+  }
+  .info-product h3{
+    font-size: 20px;
+    width: 100%;
+    margin-right: 0;
+  }
+}
+@media (max-width: 560px) {
+  .card-img{
+    width: 90px;
+    height: 90px;
+  }
+  .title{
+    font-size: 16px;
+  }
+  .info-product h3{
+    font-size: 14px;
   }
 }
