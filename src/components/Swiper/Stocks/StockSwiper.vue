@@ -1,7 +1,6 @@
 <template>
   <head-title id="actions">Акции</head-title>
-  <main-container>
-  </main-container>
+  <main-container> </main-container>
   <div class="wrapper-slider">
     <main-container>
       <swiper
@@ -14,7 +13,8 @@
         :modules="modules"
       >
         <swiper-slide><img class="swiper-img" src="@/assets/images/pizza-no.jpg" /></swiper-slide>
-        <swiper-slide><img class="swiper-img" src="@/assets/images/swiper-card-1.png"
+        <swiper-slide
+          ><img class="swiper-img" src="@/assets/images/swiper-card-1.png"
         /></swiper-slide>
         <swiper-slide
           ><img class="swiper-img" src="@/assets/images/swiper-card-2.png"

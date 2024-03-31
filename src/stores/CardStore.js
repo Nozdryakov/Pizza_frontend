@@ -1,13 +1,13 @@
-import { defineStore } from 'pinia';
+import { defineStore } from 'pinia'
 export const useCard = defineStore('Card', {
   state: () => ({
     volume: 0,
     total: 0,
-    products: [],
+    products: []
   }),
   actions: {
     setVolume(volume) {
-      this.volume = volume;
-    },
-  },
-});
+      this.volume = volume
+    }
+  }
+})

@@ -1,15 +1,15 @@
-.card{
+.card {
   margin-top: 135px;
 }
-.card-icon{
+.card-icon {
   width: 50px;
   height: 50px;
 }
-.card-img{
+.card-img {
   height: 140px;
   width: 140px;
 }
-.card-list{
+.card-list {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -18,7 +18,7 @@
   margin-top: 70px;
   position: relative;
 }
-.card-list li{
+.card-list li {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -38,13 +38,12 @@
     z-index: 1;
     margin-top: 22px;
   }
-
 }
-.name-product{
+.name-product {
   display: flex;
   align-items: center;
 }
-.title{
+.title {
   margin-left: 55px;
   color: #ff1313;
   font-family: 'Raleway-600', serif;
@@ -52,25 +51,25 @@
   word-spacing: 10px;
   width: 210px;
 }
-.change-icon{
+.change-icon {
   height: 35px;
   width: 35px;
   cursor: pointer;
 }
-.sum-product{
+.sum-product {
   display: flex;
   align-items: center;
   font-size: 24px;
   color: #ff1313;
   font-family: 'Raleway-600', serif;
 }
-.sum-product span{
+.sum-product span {
   padding: 0 10px;
 }
-.info-product{
+.info-product {
   display: flex;
   justify-content: space-between;
-  & h3{
+  & h3 {
     margin-right: 60px;
     color: #ff1313;
     font-size: 24px;
@@ -78,61 +77,61 @@
     width: 150px;
   }
 }
-.delete-icon{
+.delete-icon {
   position: absolute;
   top: 0;
   right: 0;
 }
-.crutch{
+.crutch {
   opacity: 0;
 }
-.price-block{
+.price-block {
   margin-top: 75px;
 
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  & h4{
+  & h4 {
     font-family: 'Raleway-700', serif;
     color: #121010;
     font-size: 24px;
     margin-right: 20px;
   }
-  & h2{
+  & h2 {
     color: #ff1313;
     font-family: 'Raleway-700', serif;
     font-size: 32px;
   }
 }
 @media (max-width: 990px) {
-  .name-product{
+  .name-product {
     flex-direction: column;
     align-items: flex-start;
   }
-  .title{
+  .title {
     font-size: 20px;
     margin-left: 0;
     margin-top: 10px;
     width: 120px;
   }
-  .sum-product span{
+  .sum-product span {
     font-size: 20px;
   }
-  .info-product h3{
+  .info-product h3 {
     font-size: 20px;
     width: 100%;
     margin-right: 0;
   }
 }
 @media (max-width: 560px) {
-  .card-img{
+  .card-img {
     width: 90px;
     height: 90px;
   }
-  .title{
+  .title {
     font-size: 16px;
   }
-  .info-product h3{
+  .info-product h3 {
     font-size: 14px;
   }
 }

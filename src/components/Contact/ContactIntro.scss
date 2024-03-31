@@ -6,65 +6,63 @@
   position: relative;
   height: 100vh;
 }
-.intro__inner{
+.intro__inner {
   display: flex;
   justify-content: space-between;
-
 }
-.intro__item{
+.intro__item {
   display: flex;
   flex-direction: column;
-
 }
-.intro__item:first-child{
+.intro__item:first-child {
   width: 60%;
 }
-.intro__item:last-child{
+.intro__item:last-child {
   width: 25%;
 }
-.head-title{
-  color: #FF1313;
+.head-title {
+  color: #ff1313;
   font-size: 16px;
-  font-family: "Raleway-600", serif;
+  font-family: 'Raleway-600', serif;
   font-style: italic;
 }
-.title{
-  font-family: "Raleway-700", serif;
+.title {
+  font-family: 'Raleway-700', serif;
   display: flex;
   font-size: 72px;
   letter-spacing: 4px;
 }
-.title__text{
+.title__text {
   color: #ff1313;
   padding-right: 20px;
 }
-.subtitle{
+.subtitle {
   font-size: 16px;
-  font-family: "Raleway-400", serif;
+  font-family: 'Raleway-400', serif;
   margin-top: 50px;
   line-height: 24px;
 }
-.subtitle__text{
+.subtitle__text {
   margin-bottom: 30px;
 }
-.block__button{
+.block__button {
   margin-top: 10px;
 }
-.btn:first-child{
+.btn:first-child {
   background-color: #ff1313;
   color: #ffffff;
   margin-right: 22px;
 }
-.btn{
+.btn {
   width: 155px;
 }
-.intro__item:last-child{
+.intro__item:last-child {
   justify-content: flex-end;
 }
-.item__element{
+.item__element {
   margin: 28px 0;
 }
-.title-block{
+.title-block {
   font-family: 'Raleway-700', serif;
   font-size: 20px;
   color: #121010;
@@ -87,38 +85,38 @@
   }
 }
 @media (max-width: 660px) {
-  .title{
+  .title {
     font-size: 54px;
     margin-top: 20px;
   }
-  .subtitle{
+  .subtitle {
     margin-top: 40px;
   }
-  .intro__item:last-child{
+  .intro__item:last-child {
     display: none;
   }
-  .intro__item:first-child{
+  .intro__item:first-child {
     width: 100%;
   }
 }
 @media (max-width: 395px) {
-  .intro__inner{
+  .intro__inner {
     margin-top: 30px;
   }
 }
 @media (max-width: 395px) {
-  .title{
+  .title {
     font-size: 32px;
   }
-  .subtitle{
+  .subtitle {
     font-size: 14px;
   }
-  .btn{
+  .btn {
     width: 45%;
   }
 }
 @media (max-height: 695px) {
-  .intro{
+  .intro {
     height: 100%;
     margin-top: 100px;
   }

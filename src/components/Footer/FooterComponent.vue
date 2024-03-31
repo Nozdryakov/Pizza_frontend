@@ -53,18 +53,18 @@ import FacebookIcon from '@/components/Footer/icons/FacebookIcon.vue'
 import AppStoteIcon from '@/components/Footer/icons/AppStoteIcon.vue'
 import PlayMarketIcon from '@/components/Footer/icons/PlayMarketIcon.vue'
 const scrollToSection = (event) => {
-  event.preventDefault();
+  event.preventDefault()
 
-  const targetId = event.target.getAttribute('href');
-  const targetElement = document.querySelector(targetId);
+  const targetId = event.target.getAttribute('href')
+  const targetElement = document.querySelector(targetId)
   if (targetElement) {
-    const offsetTop = targetElement.offsetTop - 65;
+    const offsetTop = targetElement.offsetTop - 65
     window.scrollTo({
       top: offsetTop,
       behavior: 'smooth'
-    });
+    })
   }
-};
+}
 </script>
 
 <style lang="scss" src="./FooterComponent.scss" scoped></style>
