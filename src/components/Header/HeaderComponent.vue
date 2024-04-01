@@ -25,7 +25,6 @@
           <a class="nav__link" href="#contacts" @click="scrollToSection">Контакты</a>
           <a class="nav__link" href="#about" @click="scrollToSection">О нас</a>
         </nav>
-        <div class="card-header-fon"></div>
         <router-link to="/card" class="card-link">
           <transition name="slide-up">
             <card-button v-if="cardStore.volume === 0" class="card-button">Корзина</card-button>

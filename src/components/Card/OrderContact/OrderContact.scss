@@ -1,0 +1,14 @@
+.btn-order{
+  color: #A4A4A4;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: none;
+  background-color: white;
+  font-family: "Raleway-600" ,serif;
+  font-size: 28px;
+  padding-right: 55px;
+}
+.btn-order.active{
+  color: #FF1313;
+  text-decoration: underline;
+}

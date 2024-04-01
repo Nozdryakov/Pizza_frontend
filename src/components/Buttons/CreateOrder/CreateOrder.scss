@@ -1,0 +1,16 @@
+.wrapper{
+  display: flex;
+  justify-content: center;
+}
+.btn {
+  border: none;
+  font-size: 14px;
+  padding: 12px 30px;
+  background-color: #ff1313;
+  color: white;
+  text-decoration: none;
+  font-family: 'Inter-500', serif;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  border-radius: 23px;
+}

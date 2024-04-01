@@ -24,8 +24,7 @@
         <h4>Итого:</h4>
         <h2>{{ parseFloat(totalCost).toFixed(2) }}</h2>
       </div>
-
-      <!--      <card-icon class="card-icon"></card-icon>-->
+      <create-order>Оформить заказ</create-order>
     </main-container>
   </div>
 </template>
@@ -40,6 +39,7 @@ import PlusIcon from '@/components/Card/CardProduct/icons/PlusIcon.vue'
 import MinusIcon from '@/components/Card/CardProduct/icons/MinusIcon.vue'
 import DeleteIcon from '@/components/Card/CardProduct/icons/DeleteIcon.vue'
 import HeadTitle from '@/components/HeadTitle/HeadTitle.vue'
+import CreateOrder from "@/components/Buttons/CreateOrder/CreateOrder.vue";
 
 const { cookies } = useCookies()
 
