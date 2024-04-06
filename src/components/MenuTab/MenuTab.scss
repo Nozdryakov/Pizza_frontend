@@ -127,7 +127,6 @@ h2 {
 }
 .btn-buy {
   appearance: none;
-  border: none;
   font-size: 12px;
   padding: 10px 28px;
   background-color: #ff1313;
@@ -138,6 +137,7 @@ h2 {
   cursor: pointer;
   border-radius: 23px;
   position: relative;
+  border: 1px solid transparent;
 
 }
 .added-btn{

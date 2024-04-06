@@ -5,17 +5,52 @@
         <button class="btn-order" @click="activeTab = 'delivery'" :class="{ 'active': activeTab === 'delivery' }">Доставка</button>
         <button class="btn-order" @click="activeTab = 'pickup'" :class="{ 'active': activeTab === 'pickup' }">Самовывоз</button>
       </div>
-      <div v-if="activeTab === 'delivery'">
-        <h2>Содержимое вкладки Доставка</h2>
-        <!-- Здесь размещаете элементы для вкладки "Доставка" -->
+      <div class="wrapper" v-if="activeTab === 'delivery'">
+        <div class="inner">
+          <div class="inner-el-column">
+            <p class="title">Имя</p>
+            <div class="block-inputs">
+              <input-contact class="in-name"></input-contact>
+            </div>
+          </div>
+          <div class="inner-el-column">
+            <p class="title">Телефон</p>
+            <div class="block-inputs">
+              <input-contact placeholder="+38 (095)"></input-contact>
+              <input-contact class="in-phone"></input-contact>
+            </div>
+          </div>
+          <div class="inner-el-flex">
+            <div class="block-inputs-column-one">
+              <p class="title">Улица</p>
+              <input-contact class="in-st"></input-contact>
+            </div>
+            <div class="block-inputs-column">
+              <p class="title">Дом</p>
+              <input-contact class="in-st"></input-contact>
+            </div>
+            <div class="block-inputs-column">
+              <p class="title">Квартира</p>
+              <input-contact class="in-st"></input-contact>
+            </div>
+            <div class="block-inputs-column">
+              <p class="title">Подъезд</p>
+              <input-contact class="in-st"></input-contact>
+            </div>
+            <div class="block-inputs-column">
+              <p class="title">Этаж</p>
+              <input-contact class="in-st"></input-contact>
+            </div>
+          </div>
+
+        </div>
+
       </div>
       <div v-else-if="activeTab === 'pickup'">
         <h2>Содержимое вкладки Самовывоз</h2>
         <!-- Здесь размещаете элементы для вкладки "Самовывоз" -->
       </div>
-      <input-contact>
 
-      </input-contact>
     </main-container>
   </div>
 </template>
