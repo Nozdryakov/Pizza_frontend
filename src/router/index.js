@@ -19,9 +19,9 @@ const router = createRouter({
     {
       path: '/card',
       name: 'card',
-      component: CardView
-    }
-  ]
+      component: CardView,
+    },
+  ],
 })
 
 export default router

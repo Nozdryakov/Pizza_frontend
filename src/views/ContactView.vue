@@ -10,8 +10,9 @@ import HeaderComponent from '@/components/Header/HeaderComponent.vue'
 import ContactIntro from '@/components/Contact/ContactIntro.vue'
 
 export default {
-  components: { ContactIntro, HeaderComponent }
+  components: { ContactIntro, HeaderComponent },
 }
+
 </script>
 
 <style lang="scss" scoped></style>

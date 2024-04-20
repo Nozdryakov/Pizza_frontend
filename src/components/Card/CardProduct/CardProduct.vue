@@ -22,7 +22,7 @@
       </ul>
       <div class="price-block">
         <h4>Итого:</h4>
-        <h2>{{ parseFloat(totalCost).toFixed(2) }}</h2>
+        <h2>{{ parseFloat(totalCost).toFixed(2) }} грн.</h2>
       </div>
       <create-order>Оформить заказ</create-order>
     </main-container>
@@ -47,7 +47,14 @@ const cardStore = useCard()
 const totalCost = ref(cookies.get('totalCost') || 0)
 
 const products = ref([])
+const cartDiv = ref(null);
 
+const scrollIntoView = () => {
+  if (cartDiv.value) {
+    cartDiv.value.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+};
+scrollIntoView();
 watchEffect(() => {
   const raw = cookies.get('cookie')
   const jsonArray = raw ? JSON.parse(raw) : []

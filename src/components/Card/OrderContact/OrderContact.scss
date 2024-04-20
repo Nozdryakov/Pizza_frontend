@@ -71,3 +71,51 @@
 .block-inputs-column-one{
   width: 55%;
 }
+
+.change_wrapper_btn{
+  margin-top: 120px;
+}
+.title_change{
+  font-family: "Raleway-600", serif;
+  color: #FF1313;
+  font-size: 24px;
+}
+.block-btn{
+  margin-top: 60px;
+}
+.btn-order-ch{
+  padding: 20px 40px;
+  color: #161616;
+  background-color: #ffffff;
+  box-shadow: 0px 1px 11px 0px rgba(138, 138, 138, 0.19);
+  border-radius: 80px;
+  border: #333333;
+  font-size: 20px;
+  cursor: pointer;
+  font-family: "Raleway-600", serif;
+}
+.btn-order-ch:last-child{
+  margin-left: 20px;
+}
+.btn-order-ch.active{
+  box-shadow: 0px 2px 15px 0px rgba(190, 90, 76, 0.58);
+}
+.price-block {
+  margin-top: 75px;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  & h4 {
+    font-family: 'Raleway-700', serif;
+    color: #121010;
+    font-size: 24px;
+    margin-right: 20px;
+  }
+  & h2 {
+    color: #ff1313;
+    font-family: 'Raleway-700', serif;
+    font-size: 32px;
+  }
+}
+

@@ -1,17 +1,22 @@
 <template>
   <header-component></header-component>
-  <card-product></card-product>
+  <card-product id="cart-div"></card-product>
   <order-contact></order-contact>
 </template>
 
-<script>
-import HeaderComponent from '@/components/Header/HeaderComponent.vue'
-import CardProduct from '@/components/Card/CardProduct/CardProduct.vue'
+
+<script setup>
+import { onMounted } from 'vue';
+import HeaderComponent from "@/components/Header/HeaderComponent.vue";
+import CardProduct from "@/components/Card/CardProduct/CardProduct.vue";
 import OrderContact from "@/components/Card/OrderContact/OrderContact.vue";
 
-export default {
-  components: { OrderContact, CardProduct, HeaderComponent }
-}
+onMounted(() => {
+  const cartDiv = document.getElementById('cart-div');
+  if (cartDiv) {
+    cartDiv.scrollIntoView({ behavior: 'smooth' });
+  }
+});
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss"></style>
