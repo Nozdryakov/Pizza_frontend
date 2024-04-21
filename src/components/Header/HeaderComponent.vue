@@ -25,13 +25,13 @@
           <a class="nav__link" href="#contacts" @click="scrollToSection">Контакты</a>
           <a class="nav__link" href="#about" @click="scrollToSection">О нас</a>
         </nav>
-        <a href="/card" class="card-link">
+        <router-link to="/card" href="/card" class="card-link">
           <transition name="slide-up">
             <card-button v-if="cardStore.volume === 0" class="card-button">Корзина</card-button>
             <card-button v-else class="card-button volume">Корзина {{ cardStore.volume }} | {{ parseFloat(cardStore.total).toFixed(2) }} грн.
             </card-button>
           </transition>
-        </a>
+        </router-link>
       </div>
     </main-container>
   </div>

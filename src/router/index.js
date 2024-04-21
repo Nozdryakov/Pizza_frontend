@@ -20,8 +20,11 @@ const router = createRouter({
       path: '/card',
       name: 'card',
       component: CardView,
-    },
+    }
   ],
+  scrollBehavior(to, from, savedPosition) {    // always scroll to top
+    return { top: 0 }
+  }
 })
 
 export default router
