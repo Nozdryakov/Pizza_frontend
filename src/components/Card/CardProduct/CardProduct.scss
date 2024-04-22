@@ -104,6 +104,9 @@
   }
 }
 @media (max-width: 990px) {
+  .card{
+    margin-top: 110px;
+  }
   .name-product {
     flex-direction: column;
     align-items: flex-start;
@@ -133,5 +136,23 @@
   }
   .info-product h3 {
     font-size: 14px;
+  }
+}
+@media (max-width: 990px) {
+  .card-list{
+    margin-top: 10px;
+  }
+}
+@media (max-width: 730px) {
+  .price-block{
+    margin-top: 40px;
+    margin-bottom: 30px;
+    & h2{
+      font-size: 22px;
+    }
+    & h4{
+      font-size: 20px;
+    }
+
   }
 }

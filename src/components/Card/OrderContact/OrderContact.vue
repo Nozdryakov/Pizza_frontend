@@ -16,7 +16,7 @@
           <div class="inner-el-column">
             <p class="title">Телефон</p>
             <div class="block-inputs">
-              <input-contact placeholder="+38 (095)"></input-contact>
+              <input-contact class="in-code" placeholder="+38(095)"></input-contact>
               <input-contact class="in-phone"></input-contact>
             </div>
           </div>
@@ -75,7 +75,7 @@
           <div class="inner-el-column">
             <p class="title">Телефон</p>
             <div class="block-inputs">
-              <input-contact placeholder="+38 (095)"></input-contact>
+              <input-contact class="in-code" placeholder="+38 (095)"></input-contact>
               <input-contact class="in-phone"></input-contact>
             </div>
           </div>

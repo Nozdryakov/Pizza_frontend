@@ -196,6 +196,11 @@
     -moz-box-shadow: 4px 4px 21px 0px rgba(81, 42, 42, 0.2);
     box-shadow: 4px 4px 21px 0px rgba(81, 42, 42, 0.2);
   }
+  .card-button{
+    &:focus {
+      -webkit-tap-highlight-color: transparent;
+    }
+  }
 
   .nav.active {
     display: flex;
