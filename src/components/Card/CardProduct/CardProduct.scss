@@ -2,8 +2,8 @@
   margin-top: 135px;
 }
 .card-icon {
-  width: 50px;
-  height: 50px;
+  width: 150px;
+  height: 150px;
 }
 .card-img {
   height: 140px;
@@ -101,6 +101,23 @@
     color: #ff1313;
     font-family: 'Raleway-700', serif;
     font-size: 32px;
+  }
+}
+.card-empty{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.empty-inner{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  & h1{
+    font-size: 36px;
+    font-family: "Raleway-700", serif;
+    margin-bottom: 20px;
   }
 }
 @media (max-width: 990px) {

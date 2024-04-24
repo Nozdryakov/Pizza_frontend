@@ -11,12 +11,23 @@
 }
 .card-link {
   position: relative;
+  text-decoration: none !important;
+}
+.icon-cart{
+  width: 18px;
+  height: 18px;
+  fill: white;
+  margin-right: 8px;
 }
 .volume {
   background-color: #ff1313;
   color: #ffffff;
   border: none;
-  min-width: 230px;
+  text-decoration: none;
+  min-width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .slide-up-enter-active {

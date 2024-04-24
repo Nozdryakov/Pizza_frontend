@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card"  v-show="cardStore.volume > 0">
     <main-container>
       <head-title>Корзина</head-title>
       <ul class="card-list">
@@ -27,6 +27,12 @@
       <create-order>Оформить заказ</create-order>
     </main-container>
   </div>
+  <div v-show="cardStore.volume === 0 || cardStore.volume === undefined" class="card-empty">
+    <div class="empty-inner">
+      <h1>Ваша корзина пуста</h1>
+      <card-icon class="card-icon"></card-icon>
+    </div>
+  </div>
 </template>
 
 <script setup>
@@ -48,6 +54,16 @@ const totalCost = ref(cookies.get('totalCost') || 0)
 
 const products = ref([])
 const cartDiv = ref(null);
+
+watchEffect(() => {
+  const raw = cookies.get('cookie')
+  let jsonArray = []
+
+  if (raw) {
+    jsonArray = JSON.parse(raw)
+  }
+  cardStore.volume = jsonArray.length
+});
 
 const scrollIntoView = () => {
   if (cartDiv.value) {

@@ -1,5 +1,5 @@
 <template>
-  <div class="order-contact">
+  <div class="order-contact" v-show="cardStore.volume > 0">
     <main-container>
       <div class="tabs">
         <button class="btn-order" @click="activeTab = 'delivery'" :class="{ 'active': activeTab === 'delivery' }">Доставка</button>
