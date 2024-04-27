@@ -54,7 +54,13 @@ const data = ref({
 
 onMounted(async () => {
   try {
-    const response = await axios.get('http://localhost:8000/api/applications/index')
+    const response = await axios.get('/api', {
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      },
+      mode: 'cors'
+    });
     data.value = response.data
 
     data.value.list = data.value.products.map((category) => ({
