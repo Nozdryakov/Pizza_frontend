@@ -8,11 +8,14 @@
           placeholder="Пароль"
           type="password"
         ></auth-input>
-        <auth-button>Войти</auth-button>
+        <auth-input
+          placeholder="Повторите пароль"
+          type="password"
+        ></auth-input>
+        <auth-button>Зарегистрироваться</auth-button>
         <span>или</span>
-
-        <router-link to="/register">
-          <auth-reg-log-btn>Зарегистрироваться</auth-reg-log-btn>
+        <router-link to="/login">
+          <auth-reg-log-btn>Войти</auth-reg-log-btn>
         </router-link>
       </auth-form>
     </auth-content-section>
