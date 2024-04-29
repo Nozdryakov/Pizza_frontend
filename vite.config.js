@@ -12,11 +12,10 @@ export default defineConfig({
   },
   server: {
     proxy: {
-      '/api': {
+      '/product': {
         target: 'http://localhost:8000/api/applications/index',
         changeOrigin: true,
-        secure: false,
-        rewrite: (path) => path.replace(/^\/api/, ''),
+        rewrite: (path) => path.replace(/^\/product/, ''),
       },
     },
   },

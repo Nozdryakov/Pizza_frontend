@@ -54,7 +54,7 @@ const data = ref({
 
 onMounted(async () => {
   try {
-    const response = await axios.get('/api', {
+    const response = await axios.get('/product', {
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*'
