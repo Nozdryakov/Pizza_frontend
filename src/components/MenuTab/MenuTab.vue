@@ -17,7 +17,7 @@
           <h2>{{ category.id }}</h2>
           <ul class="product">
             <li v-for="(product, i) in category.list" :key="i" class="product__item">
-              <img src="@/assets/images/image-default.png" class="tab-img" />
+              <img :src="`/src/assets/images/products/${product.image}`" alt="" class="tab-img">
               <div class="title">{{ product.name }}</div>
               <div class="subtitle">{{ product.description }}</div>
               <div class="buy__block">
@@ -67,6 +67,7 @@ onMounted(async () => {
       id: category.title,
       show: false,
       list: category.products.map((product) => ({
+        image: product.image,
         name: product.title,
         description: product.description,
         price: parseFloat(product.price).toFixed(2),
@@ -126,6 +127,7 @@ const addToCart = (product) => {
       name: product.name,
       price: product.price,
       count: 1,
+      image: product.image,
       addedToCart: true
     })
   }

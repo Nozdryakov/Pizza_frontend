@@ -5,7 +5,7 @@
       <ul class="card-list">
         <li v-for="(product, index) in products" :key="index">
           <div class="name-product">
-            <img src="@/assets/images/image-default.png" class="card-img" />
+            <img :src="`/src/assets/images/products/${product.image}`" alt="" class="card-img">
             <p class="title">{{ product.name }}</p>
           </div>
           <div class="sum-product">
@@ -76,6 +76,7 @@ watchEffect(() => {
   const jsonArray = raw ? JSON.parse(raw) : []
   products.value = jsonArray.map((item) => ({
     name: item.name,
+    image: item.image,
     price: parseFloat(item.price).toFixed(2),
     count: item.count || 1
   }))
