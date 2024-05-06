@@ -4,8 +4,6 @@
   </button>
 </template>
 
-<script>
-
-</script>
+<script></script>
 
 <style lang="scss" src="./AuthButton.scss" scoped></style>

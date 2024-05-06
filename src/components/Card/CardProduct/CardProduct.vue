@@ -1,11 +1,11 @@
 <template>
-  <div class="card"  v-show="cardStore.volume > 0">
+  <div class="card" v-show="cardStore.volume > 0">
     <main-container>
       <head-title>Корзина</head-title>
       <ul class="card-list">
         <li v-for="(product, index) in products" :key="index">
           <div class="name-product">
-            <img :src="`/src/assets/images/products/${product.image}`" alt="" class="card-img">
+            <img :src="`/src/assets/images/products/${product.image}`" alt="" class="card-img" />
             <p class="title">{{ product.name }}</p>
           </div>
           <div class="sum-product">
@@ -45,7 +45,7 @@ import PlusIcon from '@/components/Card/CardProduct/icons/PlusIcon.vue'
 import MinusIcon from '@/components/Card/CardProduct/icons/MinusIcon.vue'
 import DeleteIcon from '@/components/Card/CardProduct/icons/DeleteIcon.vue'
 import HeadTitle from '@/components/HeadTitle/HeadTitle.vue'
-import CreateOrder from "@/components/Buttons/CreateOrder/CreateOrder.vue";
+import CreateOrder from '@/components/Buttons/CreateOrder/CreateOrder.vue'
 
 const { cookies } = useCookies()
 
@@ -53,7 +53,7 @@ const cardStore = useCard()
 const totalCost = ref(cookies.get('totalCost') || 0)
 
 const products = ref([])
-const cartDiv = ref(null);
+const cartDiv = ref(null)
 
 watchEffect(() => {
   const raw = cookies.get('cookie')
@@ -63,14 +63,14 @@ watchEffect(() => {
     jsonArray = JSON.parse(raw)
   }
   cardStore.volume = jsonArray.length
-});
+})
 
 const scrollIntoView = () => {
   if (cartDiv.value) {
-    cartDiv.value.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    cartDiv.value.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
-};
-scrollIntoView();
+}
+scrollIntoView()
 watchEffect(() => {
   const raw = cookies.get('cookie')
   const jsonArray = raw ? JSON.parse(raw) : []

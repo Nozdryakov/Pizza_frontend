@@ -1,8 +1,7 @@
 <template>
-  <input class="input">
+  <input class="input" />
 </template>
 
-<script>
-</script>
+<script></script>
 
-<style lang="scss" src="./AuthInput.scss" scoped> </style>
+<style lang="scss" src="./AuthInput.scss" scoped></style>

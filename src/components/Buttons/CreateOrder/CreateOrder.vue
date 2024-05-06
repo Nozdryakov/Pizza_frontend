@@ -6,8 +6,6 @@
   </div>
 </template>
 
-<script setup>
+<script setup></script>
 
-</script>
-
-<style lang="scss"  src="./CreateOrder.scss" scoped></style>
+<style lang="scss" src="./CreateOrder.scss" scoped></style>

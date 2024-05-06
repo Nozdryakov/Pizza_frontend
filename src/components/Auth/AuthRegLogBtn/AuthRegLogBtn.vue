@@ -4,10 +4,6 @@
   </button>
 </template>
 
-<script setup>
+<script setup></script>
 
-</script>
-
-<style lang="scss" src="./AuthRegLogBtn.scss" scoped>
-
-</style>
+<style lang="scss" src="./AuthRegLogBtn.scss" scoped></style>

@@ -4,10 +4,6 @@
   </div>
 </template>
 
-<script setup>
+<script setup></script>
 
-</script>
-
-<style lang="scss" scoped src="./CenterBlock.scss" >
-
-</style>
+<style lang="scss" scoped src="./CenterBlock.scss"></style>

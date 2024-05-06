@@ -17,7 +17,7 @@
           <h2>{{ category.id }}</h2>
           <ul class="product">
             <li v-for="(product, i) in category.list" :key="i" class="product__item">
-              <img :src="`/src/assets/images/products/${product.image}`" alt="" class="tab-img">
+              <img :src="`/src/assets/images/products/${product.image}`" alt="" class="tab-img" />
               <div class="title">{{ product.name }}</div>
               <div class="subtitle">{{ product.description }}</div>
               <div class="buy__block">
@@ -45,7 +45,7 @@ import { useCookies } from 'vue3-cookies'
 import { computed, ref } from 'vue'
 import { onMounted } from 'vue'
 import axios from 'axios'
-import CardButton from "@/components/Buttons/CardButton/CardButton.vue";
+import CardButton from '@/components/Buttons/CardButton/CardButton.vue'
 
 // const data = ref(null);
 const data = ref({
@@ -60,7 +60,7 @@ onMounted(async () => {
         'Access-Control-Allow-Origin': '*'
       },
       mode: 'cors'
-    });
+    })
     data.value = response.data
 
     data.value.list = data.value.products.map((category) => ({

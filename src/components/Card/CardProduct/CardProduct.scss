@@ -103,25 +103,25 @@
     font-size: 32px;
   }
 }
-.card-empty{
+.card-empty {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
 }
-.empty-inner{
+.empty-inner {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  & h1{
+  & h1 {
     font-size: 36px;
-    font-family: "Raleway-700", serif;
+    font-family: 'Raleway-700', serif;
     margin-bottom: 20px;
   }
 }
 @media (max-width: 990px) {
-  .card{
+  .card {
     margin-top: 110px;
   }
   .name-product {
@@ -156,20 +156,19 @@
   }
 }
 @media (max-width: 990px) {
-  .card-list{
+  .card-list {
     margin-top: 10px;
   }
 }
 @media (max-width: 730px) {
-  .price-block{
+  .price-block {
     margin-top: 40px;
     margin-bottom: 30px;
-    & h2{
+    & h2 {
       font-size: 22px;
     }
-    & h4{
+    & h4 {
       font-size: 20px;
     }
-
   }
 }

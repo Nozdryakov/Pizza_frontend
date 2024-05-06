@@ -1,9 +1,7 @@
 <template>
-  <input class="input"/>
+  <input class="input" />
 </template>
 
-<script setup>
-
-</script>
+<script setup></script>
 
 <style lang="scss" scoped src="./InputContact.scss"></style>

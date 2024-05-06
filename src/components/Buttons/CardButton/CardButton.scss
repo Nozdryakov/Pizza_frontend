@@ -36,9 +36,9 @@
 .btn:hover:before {
   left: 100%;
 }
-@media(max-width: 990px){
-  .btn{
-    &:focus{
+@media (max-width: 990px) {
+  .btn {
+    &:focus {
       -webkit-tap-highlight-color: transparent;
     }
   }
@@ -46,4 +46,3 @@
     outline: none;
   }
 }
-

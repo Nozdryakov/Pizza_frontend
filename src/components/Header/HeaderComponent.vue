@@ -28,7 +28,9 @@
         <router-link to="/card" href="/card" class="card-link">
           <transition name="slide-up">
             <card-button v-if="cardStore.volume === 0" class="card-button">Корзина</card-button>
-            <card-button v-else class="card-button volume"><card-icon class="icon-cart"></card-icon> {{ cardStore.volume }} | {{ parseFloat(cardStore.total).toFixed(2) }} грн.
+            <card-button v-else class="card-button volume"
+              ><card-icon class="icon-cart"></card-icon> {{ cardStore.volume }} |
+              {{ parseFloat(cardStore.total).toFixed(2) }} грн.
             </card-button>
           </transition>
         </router-link>
@@ -44,7 +46,7 @@ import VikiLogoIcon from '@/assets/icons/VikiLogoIcon.vue'
 import CardButton from '@/components/Buttons/CardButton/CardButton.vue'
 import { useCard } from '@/stores/CardStore.js'
 import { useCookies } from 'vue3-cookies'
-import CardIcon from "@/components/Card/CardProduct/icons/CardIcon.vue";
+import CardIcon from '@/components/Card/CardProduct/icons/CardIcon.vue'
 const { cookies } = useCookies()
 const cardStore = useCard()
 const totalCost = ref(cookies.get('totalCost') || 0)
@@ -67,7 +69,7 @@ watchEffect(() => {
     jsonArray = JSON.parse(raw)
   }
   cardStore.volume = jsonArray.length
-});
+})
 const isNavActive = ref(false)
 
 const toggleNav = () => {

@@ -4,8 +4,6 @@
   </span>
 </template>
 
-<script>
-
-</script>
+<script></script>
 
 <style scoped lang="scss" src="./AuthTitle.scss"></style>

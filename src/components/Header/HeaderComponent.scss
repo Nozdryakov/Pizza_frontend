@@ -13,7 +13,7 @@
   position: relative;
   text-decoration: none !important;
 }
-.icon-cart{
+.icon-cart {
   width: 18px;
   height: 18px;
   fill: white;
@@ -207,7 +207,7 @@
     -moz-box-shadow: 4px 4px 21px 0px rgba(81, 42, 42, 0.2);
     box-shadow: 4px 4px 21px 0px rgba(81, 42, 42, 0.2);
   }
-  .card-button{
+  .card-button {
     &:focus {
       -webkit-tap-highlight-color: transparent;
     }
@@ -234,5 +234,19 @@
   }
   .card-header-fon {
     height: 0;
+  }
+}
+@media (max-width: 500px) {
+  .logo-container{
+    display: none;
+  }
+  .volume{
+    min-width: 150px;
+    padding: 12px 28px;
+    font-size: 12px;
+  }
+  .icon-cart{
+    height: 15px;
+    width: 15px;
   }
 }
