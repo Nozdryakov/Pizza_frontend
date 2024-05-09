@@ -8,12 +8,12 @@
             <div class="title red">Viki</div>
             <div class="title black">Pizza</div>
           </div>
-          <nav class="nav">
-            <a class="nav__link" href="#actions" @click="scrollToSection">Акции</a>
-            <a class="nav__link" href="#menu" @click="scrollToSection">Меню</a>
-            <a class="nav__link" href="#delivery" @click="scrollToSection">Доставка</a>
-            <a class="nav__link" href="#contacts" @click="scrollToSection">Контакты</a>
-            <a class="nav__link" href="#about" @click="scrollToSection">О нас</a>
+          <nav class="nav" :class="{ active: isNavActive }">
+            <router-link :to="{ name: 'home', hash: '#actions' }" class="nav__link">Акции</router-link>
+            <router-link :to="{ name: 'home', hash: '#menu' }" class="nav__link">Меню</router-link>
+            <router-link :to="{ name: 'home', hash: '#delivery' }" class="nav__link">Доставка</router-link>
+            <router-link :to="{ name: 'home', hash: '#contacts' }" class="nav__link">Контакты</router-link>
+            <router-link :to="{ path: '/contacts', }" class="nav__link">О нас</router-link>
           </nav>
           <div class="phone">
             +3803047076
@@ -52,19 +52,7 @@ import VkIcon from '@/components/Footer/icons/VkIcon.vue';
 import FacebookIcon from '@/components/Footer/icons/FacebookIcon.vue';
 import AppStoteIcon from '@/components/Footer/icons/AppStoteIcon.vue';
 import PlayMarketIcon from '@/components/Footer/icons/PlayMarketIcon.vue';
-const scrollToSection = (event) => {
-  event.preventDefault();
 
-  const targetId = event.target.getAttribute('href');
-  const targetElement = document.querySelector(targetId);
-  if (targetElement) {
-    const offsetTop = targetElement.offsetTop - 65;
-    window.scrollTo({
-      top: offsetTop,
-      behavior: 'smooth'
-    });
-  }
-};
 </script>
 
 <style lang="scss" src="./FooterComponent.scss" scoped></style>

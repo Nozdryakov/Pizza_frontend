@@ -1,7 +1,7 @@
 <template>
-  <div class="payment-info" id="delivery">
+  <div class="payment-info">
     <main-container>
-      <head-title>Доставка и оплата</head-title>
+      <head-title id="delivery">Доставка и оплата</head-title>
       <div class="payment-info__inner">
         <div class="payment-info__item">
           <div class="title">60 минут или пицца бесплатно</div>

@@ -4,7 +4,6 @@ import ContactView from '@/views/ContactView.vue';
 import CardView from '@/views/CardView.vue';
 import LoginView from '@/views/LoginView.vue';
 import RegisterView from '@/views/RegisterView.vue';
-
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -35,14 +34,20 @@ const router = createRouter({
     }
   ],
   scrollBehavior(to, from, savedPosition) {
-    const element = document.querySelector(to.hash);
-    if (to.hash) {
-      return {
-        top: element.offsetTop - 120,
-        behavior: 'smooth'
-      };
+    if (to.hash && to.hash !== '') {
+      const element = document.querySelector(to.hash);
+      if (element) {
+        setTimeout(() => {
+          const scrollToOffset = element.offsetTop - 120;
+          window.scrollTo({
+            top: scrollToOffset,
+            behavior: 'smooth'
+          });
+        }, 100);
+      }
     }
     return { top: 0 };
   }
 });
+
 export default router;

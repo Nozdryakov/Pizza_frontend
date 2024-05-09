@@ -13,7 +13,7 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import HeaderComponent from '@/components/Header/HeaderComponent.vue'
 import IntroMain from '@/components/Intro/IntroMain.vue'
 import StockSwiper from '@/components/Swiper/Stocks/StockSwiper.vue'
@@ -23,21 +23,5 @@ import MenuTab from '@/components/MenuTab/MenuTab.vue'
 import ShippingPayment from '@/components/ShippingPayment/ShippingPayment.vue'
 import MapInfo from '@/components/MapInfo/MapInfo.vue'
 import FooterComponent from '@/components/Footer/FooterComponent.vue'
-import { useRouter } from "vue-router";
-
-export default {
-  components: {
-    FooterComponent,
-    MapInfo,
-    ShippingPayment,
-    MenuTab,
-    Background,
-    OftenBuySwiper,
-    StockSwiper,
-    IntroMain,
-    HeaderComponent
-  },
-};
 </script>
-
 <style lang="scss" scoped></style>

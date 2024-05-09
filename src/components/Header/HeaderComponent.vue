@@ -48,7 +48,6 @@ import CardButton from '@/components/Buttons/CardButton/CardButton.vue';
 import { useCard } from '@/stores/CardStore.js';
 import { useCookies } from 'vue3-cookies';
 import CardIcon from '@/components/Card/CardProduct/icons/CardIcon.vue';
-import router from '@/router/index.js';
 const { cookies } = useCookies();
 const cardStore = useCard();
 const totalCost = ref(cookies.get('totalCost') || 0);
