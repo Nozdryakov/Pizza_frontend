@@ -46,10 +46,10 @@
 </template>
 
 <script setup>
-import MainContainer from '@/components/Container/MainContainer.vue'
-import HeadTitle from '@/components/HeadTitle/HeadTitle.vue'
-import LocationIcon from '@/components/MapInfo/icons/LocationIcon.vue'
-import ContactIcon from '@/components/MapInfo/icons/ContactIcon.vue'
+import MainContainer from '@/components/Container/MainContainer.vue';
+import HeadTitle from '@/components/HeadTitle/HeadTitle.vue';
+import LocationIcon from '@/components/MapInfo/icons/LocationIcon.vue';
+import ContactIcon from '@/components/MapInfo/icons/ContactIcon.vue';
 </script>
 
 <style lang="scss" src="./MapInfo.scss" scoped></style>

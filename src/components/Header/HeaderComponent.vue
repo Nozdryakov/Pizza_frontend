@@ -13,23 +13,24 @@
             <span class="nav-toggle__item">Menu</span>
           </button>
         </div>
-        <div class="logo-container">
-          <viki-logo-icon></viki-logo-icon>
-          <div class="title red">Viki</div>
-          <div class="title black">Pizza</div>
-        </div>
+        <router-link to="/">
+          <div class="logo-container">
+            <viki-logo-icon></viki-logo-icon>
+            <div class="title red">Viki</div>
+            <div class="title black">Pizza</div>
+          </div>
+        </router-link>
         <nav class="nav" :class="{ active: isNavActive }">
-          <a class="nav__link" href="#actions" @click="scrollToSection">Акции</a>
-          <a class="nav__link" href="#menu" @click="scrollToSection">Меню</a>
-          <a class="nav__link" href="#delivery" @click="scrollToSection">Доставка</a>
-          <a class="nav__link" href="#contacts" @click="scrollToSection">Контакты</a>
-          <a class="nav__link" href="#about" @click="scrollToSection">О нас</a>
+          <router-link :to="{ name: 'home', hash: '#actions' }" class="nav__link">Акции</router-link>
+          <router-link :to="{ name: 'home', hash: '#menu' }" class="nav__link">Меню</router-link>
+          <router-link :to="{ name: 'home', hash: '#delivery' }" class="nav__link">Доставка</router-link>
+          <router-link :to="{ name: 'home', hash: '#contacts' }" class="nav__link">Контакты</router-link>
+          <router-link :to="{ path: '/contacts', }" class="nav__link">О нас</router-link>
         </nav>
         <router-link to="/card" href="/card" class="card-link">
           <transition name="slide-up">
             <card-button v-if="cardStore.volume === 0" class="card-button">Корзина</card-button>
-            <card-button v-else class="card-button volume"
-              ><card-icon class="icon-cart"></card-icon> {{ cardStore.volume }} |
+            <card-button v-else class="card-button volume"><card-icon class="icon-cart"></card-icon> {{ cardStore.volume }} |
               {{ parseFloat(cardStore.total).toFixed(2) }} грн.
             </card-button>
           </transition>
@@ -40,64 +41,52 @@
 </template>
 
 <script setup>
-import { onMounted, ref, watch, watchEffect } from 'vue'
-import MainContainer from '@/components/Container/MainContainer.vue'
-import VikiLogoIcon from '@/assets/icons/VikiLogoIcon.vue'
-import CardButton from '@/components/Buttons/CardButton/CardButton.vue'
-import { useCard } from '@/stores/CardStore.js'
-import { useCookies } from 'vue3-cookies'
-import CardIcon from '@/components/Card/CardProduct/icons/CardIcon.vue'
-const { cookies } = useCookies()
-const cardStore = useCard()
-const totalCost = ref(cookies.get('totalCost') || 0)
+import { onMounted, ref, watch, watchEffect } from 'vue';
+import MainContainer from '@/components/Container/MainContainer.vue';
+import VikiLogoIcon from '@/assets/icons/VikiLogoIcon.vue';
+import CardButton from '@/components/Buttons/CardButton/CardButton.vue';
+import { useCard } from '@/stores/CardStore.js';
+import { useCookies } from 'vue3-cookies';
+import CardIcon from '@/components/Card/CardProduct/icons/CardIcon.vue';
+import router from '@/router/index.js';
+const { cookies } = useCookies();
+const cardStore = useCard();
+const totalCost = ref(cookies.get('totalCost') || 0);
 onMounted(() => {
-  const raw = cookies.get('cookie')
+  const raw = cookies.get('cookie');
   if (!raw || cardStore.volume === undefined) {
-    cardStore.setVolume(0)
+    cardStore.setVolume(0);
   }
 
-  cardStore.total = totalCost.value
-})
+  cardStore.total = totalCost.value;
+});
 watch(totalCost, (newValue) => {
-  cardStore.total = newValue
-})
+  cardStore.total = newValue;
+});
 watchEffect(() => {
-  const raw = cookies.get('cookie')
-  let jsonArray = []
+  const raw = cookies.get('cookie');
+  let jsonArray = [];
 
   if (raw) {
-    jsonArray = JSON.parse(raw)
+    jsonArray = JSON.parse(raw);
   }
-  cardStore.volume = jsonArray.length
-})
-const isNavActive = ref(false)
+  cardStore.volume = jsonArray.length;
+});
+const isNavActive = ref(false);
 
 const toggleNav = () => {
-  isNavActive.value = !isNavActive.value
-}
-const scrollToSection = (event) => {
-  event.preventDefault()
+  isNavActive.value = !isNavActive.value;
+};
 
-  const targetId = event.target.getAttribute('href')
-  const targetElement = document.querySelector(targetId)
-  if (targetElement) {
-    const offsetTop = targetElement.offsetTop - 65
-    window.scrollTo({
-      top: offsetTop,
-      behavior: 'smooth'
-    })
-  }
-  isNavActive.value = false
-}
 document.addEventListener('click', (event) => {
-  const navToggle = document.getElementById('nav_toggle')
-  const navMenu = document.querySelector('.nav')
+  const navToggle = document.getElementById('nav_toggle');
+  const navMenu = document.querySelector('.nav');
 
   if (navToggle.contains(event.target) || navMenu.contains(event.target)) {
-    return
+    return;
   }
-  isNavActive.value = false
-})
+  isNavActive.value = false;
+});
 </script>
 
 <style lang="scss" src="./HeaderComponent.scss" scoped></style>

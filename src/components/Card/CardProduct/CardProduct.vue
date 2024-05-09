@@ -36,58 +36,58 @@
 </template>
 
 <script setup>
-import { useCard } from '@/stores/CardStore.js'
-import { ref, watch, watchEffect } from 'vue'
-import { useCookies } from 'vue3-cookies'
-import CardIcon from '@/components/Card/CardProduct/icons/CardIcon.vue'
-import MainContainer from '@/components/Container/MainContainer.vue'
-import PlusIcon from '@/components/Card/CardProduct/icons/PlusIcon.vue'
-import MinusIcon from '@/components/Card/CardProduct/icons/MinusIcon.vue'
-import DeleteIcon from '@/components/Card/CardProduct/icons/DeleteIcon.vue'
-import HeadTitle from '@/components/HeadTitle/HeadTitle.vue'
-import CreateOrder from '@/components/Buttons/CreateOrder/CreateOrder.vue'
+import { useCard } from '@/stores/CardStore.js';
+import { ref, watch, watchEffect } from 'vue';
+import { useCookies } from 'vue3-cookies';
+import CardIcon from '@/components/Card/CardProduct/icons/CardIcon.vue';
+import MainContainer from '@/components/Container/MainContainer.vue';
+import PlusIcon from '@/components/Card/CardProduct/icons/PlusIcon.vue';
+import MinusIcon from '@/components/Card/CardProduct/icons/MinusIcon.vue';
+import DeleteIcon from '@/components/Card/CardProduct/icons/DeleteIcon.vue';
+import HeadTitle from '@/components/HeadTitle/HeadTitle.vue';
+import CreateOrder from '@/components/Buttons/CreateOrder/CreateOrder.vue';
 
-const { cookies } = useCookies()
+const { cookies } = useCookies();
 
-const cardStore = useCard()
-const totalCost = ref(cookies.get('totalCost') || 0)
+const cardStore = useCard();
+const totalCost = ref(cookies.get('totalCost') || 0);
 
-const products = ref([])
-const cartDiv = ref(null)
+const products = ref([]);
+const cartDiv = ref(null);
 
 watchEffect(() => {
-  const raw = cookies.get('cookie')
-  let jsonArray = []
+  const raw = cookies.get('cookie');
+  let jsonArray = [];
 
   if (raw) {
-    jsonArray = JSON.parse(raw)
+    jsonArray = JSON.parse(raw);
   }
-  cardStore.volume = jsonArray.length
-})
+  cardStore.volume = jsonArray.length;
+});
 
 const scrollIntoView = () => {
   if (cartDiv.value) {
-    cartDiv.value.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    cartDiv.value.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
-}
-scrollIntoView()
+};
+scrollIntoView();
 watchEffect(() => {
-  const raw = cookies.get('cookie')
-  const jsonArray = raw ? JSON.parse(raw) : []
+  const raw = cookies.get('cookie');
+  const jsonArray = raw ? JSON.parse(raw) : [];
   products.value = jsonArray.map((item) => ({
     name: item.name,
     image: item.image,
     price: parseFloat(item.price).toFixed(2),
     count: item.count || 1
-  }))
+  }));
 
-  cookies.set('cookie', JSON.stringify(products.value))
+  cookies.set('cookie', JSON.stringify(products.value));
 
   if (cardStore) {
-    cardStore.products = products.value
-    cardStore.volume = jsonArray.length
+    cardStore.products = products.value;
+    cardStore.volume = jsonArray.length;
   }
-})
+});
 
 // Конфиг для настройик жизни куки
 const config = {
@@ -96,47 +96,47 @@ const config = {
     path: '; path=/',
     secure: false
   }
-}
+};
 
-const expireTimes = config.current_default_config.expireTimes
+const expireTimes = config.current_default_config.expireTimes;
 const DeleteProduct = (productName) => {
-  const index = products.value.findIndex((item) => item.name === productName)
+  const index = products.value.findIndex((item) => item.name === productName);
   if (index !== -1) {
-    products.value.splice(index, 1)
-    cardStore.volume--
-    cookies.set('cookie', JSON.stringify(products.value), expireTimes)
-    calculateTotalCost()
+    products.value.splice(index, 1);
+    cardStore.volume--;
+    cookies.set('cookie', JSON.stringify(products.value), expireTimes);
+    calculateTotalCost();
   }
-}
+};
 
 const minusProduct = (product) => {
   if (product.count > 1) {
-    product.count--
-    updateCookie()
+    product.count--;
+    updateCookie();
   }
-}
+};
 
 const plusProduct = (product) => {
-  product.count++
-  updateCookie()
-}
+  product.count++;
+  updateCookie();
+};
 
 const updateCookie = () => {
-  cookies.set('cookie', JSON.stringify(products.value))
-}
+  cookies.set('cookie', JSON.stringify(products.value));
+};
 
 function calculateTotalCost() {
   const totalCostValue = products.value.reduce(
     (total, product) => total + product.price * product.count,
     0
-  )
-  totalCost.value = totalCostValue
-  cookies.set('totalCost', totalCostValue.toString())
+  );
+  totalCost.value = totalCostValue;
+  cookies.set('totalCost', totalCostValue.toString());
 }
 watch(totalCost, (newValue) => {
-  cardStore.total = newValue
-})
-watch(products, calculateTotalCost, { deep: true })
+  cardStore.total = newValue;
+});
+watch(products, calculateTotalCost, { deep: true });
 </script>
 
 <style lang="scss" src="./CardProduct.scss" scoped></style>

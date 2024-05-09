@@ -17,13 +17,13 @@
 </template>
 
 <script setup>
-import AuthForm from '@/components/Auth/AuthForm/AuthForm.vue'
-import AuthInput from '@/components/Auth/AuthInput/AuthInput.vue'
-import AuthTitle from '@/components/Auth/AuthTitle/AuthTitle.vue'
-import AuthButton from '@/components/Auth/AuthButton/AuthButton.vue'
-import AuthAccountSection from '@/components/Auth/AuthAccountSection/AuthAccountSection.vue'
-import AuthContentSection from '@/components/Auth/AuthContentSection/AuthContentSection.vue'
-import AuthRegLogBtn from '@/components/Auth/AuthRegLogBtn/AuthRegLogBtn.vue'
+import AuthForm from '@/components/Auth/AuthForm/AuthForm.vue';
+import AuthInput from '@/components/Auth/AuthInput/AuthInput.vue';
+import AuthTitle from '@/components/Auth/AuthTitle/AuthTitle.vue';
+import AuthButton from '@/components/Auth/AuthButton/AuthButton.vue';
+import AuthAccountSection from '@/components/Auth/AuthAccountSection/AuthAccountSection.vue';
+import AuthContentSection from '@/components/Auth/AuthContentSection/AuthContentSection.vue';
+import AuthRegLogBtn from '@/components/Auth/AuthRegLogBtn/AuthRegLogBtn.vue';
 </script>
 
 <style lang="scss" scoped>

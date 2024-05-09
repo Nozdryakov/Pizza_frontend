@@ -23,6 +23,7 @@ import MenuTab from '@/components/MenuTab/MenuTab.vue'
 import ShippingPayment from '@/components/ShippingPayment/ShippingPayment.vue'
 import MapInfo from '@/components/MapInfo/MapInfo.vue'
 import FooterComponent from '@/components/Footer/FooterComponent.vue'
+import { useRouter } from "vue-router";
 
 export default {
   components: {
@@ -35,8 +36,8 @@ export default {
     StockSwiper,
     IntroMain,
     HeaderComponent
-  }
-}
+  },
+};
 </script>
 
 <style lang="scss" scoped></style>

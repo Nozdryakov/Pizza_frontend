@@ -1,9 +1,9 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '@/views/HomeView.vue'
-import ContactView from '@/views/ContactView.vue'
-import CardView from '@/views/CardView.vue'
-import LoginView from '@/views/LoginView.vue'
-import RegisterView from '@/views/RegisterView.vue'
+import { createRouter, createWebHistory } from 'vue-router';
+import HomeView from '@/views/HomeView.vue';
+import ContactView from '@/views/ContactView.vue';
+import CardView from '@/views/CardView.vue';
+import LoginView from '@/views/LoginView.vue';
+import RegisterView from '@/views/RegisterView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -35,9 +35,14 @@ const router = createRouter({
     }
   ],
   scrollBehavior(to, from, savedPosition) {
-    // always scroll to top
-    return { top: 0 }
+    const element = document.querySelector(to.hash);
+    if (to.hash) {
+      return {
+        top: element.offsetTop - 120,
+        behavior: 'smooth'
+      };
+    }
+    return { top: 0 };
   }
-})
-
-export default router
+});
+export default router;

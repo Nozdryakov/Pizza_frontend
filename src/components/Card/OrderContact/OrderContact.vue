@@ -200,39 +200,39 @@
 </template>
 
 <script setup>
-import { onMounted, ref, watch } from 'vue'
-import MainContainer from '@/components/Container/MainContainer.vue'
-import InputContact from '@/components/Inputs/InputContact/InputContact.vue'
-import { useCard } from '@/stores/CardStore.js'
-import { useCookies } from 'vue3-cookies'
-import CreateOrder from '@/components/Buttons/CreateOrder/CreateOrder.vue'
-import CenterBlock from '@/components/Center/CenterBlock.vue'
+import { onMounted, ref, watch } from 'vue';
+import MainContainer from '@/components/Container/MainContainer.vue';
+import InputContact from '@/components/Inputs/InputContact/InputContact.vue';
+import { useCard } from '@/stores/CardStore.js';
+import { useCookies } from 'vue3-cookies';
+import CreateOrder from '@/components/Buttons/CreateOrder/CreateOrder.vue';
+import CenterBlock from '@/components/Center/CenterBlock.vue';
 
-const { cookies } = useCookies()
-const cardStore = useCard()
-const totalCost = ref(cookies.get('totalCost') || 0)
-const activeTab = ref('delivery')
-const activeButton = ref('cash')
-const activeMin = ref('min-40')
+const { cookies } = useCookies();
+const cardStore = useCard();
+const totalCost = ref(cookies.get('totalCost') || 0);
+const activeTab = ref('delivery');
+const activeButton = ref('cash');
+const activeMin = ref('min-40');
 
 const toggleActive = (buttonType) => {
-  activeButton.value = buttonType
-}
+  activeButton.value = buttonType;
+};
 const minActive = (buttonType) => {
-  activeMin.value = buttonType
-}
+  activeMin.value = buttonType;
+};
 
 onMounted(() => {
-  const raw = cookies.get('cookie')
+  const raw = cookies.get('cookie');
   if (!raw || cardStore.volume === undefined) {
-    cardStore.setVolume(0)
+    cardStore.setVolume(0);
   }
 
-  cardStore.total = totalCost.value
-})
+  cardStore.total = totalCost.value;
+});
 watch(totalCost, (newValue) => {
-  cardStore.total = newValue
-})
+  cardStore.total = newValue;
+});
 </script>
 
 <style lang="scss" src="./OrderContact.scss" scoped></style>

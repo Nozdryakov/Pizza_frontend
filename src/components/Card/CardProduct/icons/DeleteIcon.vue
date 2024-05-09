@@ -18,7 +18,7 @@
 </template>
 
 <script setup>
-let strokeColor = '#D3D3D3'
+let strokeColor = '#D3D3D3';
 </script>
 
 <style scoped>

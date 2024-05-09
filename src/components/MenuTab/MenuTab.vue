@@ -38,19 +38,19 @@
 </template>
 
 <script setup>
-import MainContainer from '@/components/Container/MainContainer.vue'
-import HeadTitle from '@/components/HeadTitle/HeadTitle.vue'
-import { useCard } from '@/stores/CardStore.js'
-import { useCookies } from 'vue3-cookies'
-import { computed, ref } from 'vue'
-import { onMounted } from 'vue'
-import axios from 'axios'
-import CardButton from '@/components/Buttons/CardButton/CardButton.vue'
+import MainContainer from '@/components/Container/MainContainer.vue';
+import HeadTitle from '@/components/HeadTitle/HeadTitle.vue';
+import { useCard } from '@/stores/CardStore.js';
+import { useCookies } from 'vue3-cookies';
+import { computed, ref } from 'vue';
+import { onMounted } from 'vue';
+import axios from 'axios';
+import CardButton from '@/components/Buttons/CardButton/CardButton.vue';
 
 // const data = ref(null);
 const data = ref({
   list: []
-})
+});
 
 onMounted(async () => {
   try {
@@ -60,8 +60,8 @@ onMounted(async () => {
         'Access-Control-Allow-Origin': '*'
       },
       mode: 'cors'
-    })
-    data.value = response.data
+    });
+    data.value = response.data;
 
     data.value.list = data.value.products.map((category) => ({
       id: category.title,
@@ -73,33 +73,33 @@ onMounted(async () => {
         price: parseFloat(product.price).toFixed(2),
         addedToCart: false
       }))
-    }))
+    }));
     if (data.value.list.length > 0) {
-      data.value.list[0].show = true
+      data.value.list[0].show = true;
     }
-    const existingProducts = cookies.get('cookie') ? JSON.parse(cookies.get('cookie')) : []
+    const existingProducts = cookies.get('cookie') ? JSON.parse(cookies.get('cookie')) : [];
     data.value.list.forEach((category) => {
       category.list.forEach((product) => {
-        const existingProduct = existingProducts.find((item) => item.name === product.name)
+        const existingProduct = existingProducts.find((item) => item.name === product.name);
         if (existingProduct) {
-          product.addedToCart = true
+          product.addedToCart = true;
         }
-      })
-    })
+      });
+    });
   } catch (error) {
-    console.error('Произошла ошибка при выполнении запроса:', error)
+    console.error('Произошла ошибка при выполнении запроса:', error);
   }
-})
+});
 
 const visibleTabs = computed(() => {
-  return data.value.list.filter((item) => item.show)
-})
+  return data.value.list.filter((item) => item.show);
+});
 
 const showCategory = (itemId) => {
   data.value.list.forEach((item) => {
-    item.show = item.id === itemId
-  })
-}
+    item.show = item.id === itemId;
+  });
+};
 
 // Конфиг для настройик жизни куки
 const config = {
@@ -108,20 +108,20 @@ const config = {
     path: '; path=/',
     secure: false
   }
-}
+};
 
-const expireTimes = config.current_default_config.expireTimes
-const cardStore = useCard()
-const { cookies } = useCookies()
+const expireTimes = config.current_default_config.expireTimes;
+const cardStore = useCard();
+const { cookies } = useCookies();
 
 const addToCart = (product) => {
-  const existingProducts = cookies.get('cookie') ? JSON.parse(cookies.get('cookie')) : []
-  const existingProductIndex = existingProducts.findIndex((item) => item.name === product.name)
+  const existingProducts = cookies.get('cookie') ? JSON.parse(cookies.get('cookie')) : [];
+  const existingProductIndex = existingProducts.findIndex((item) => item.name === product.name);
 
   if (existingProductIndex !== -1) {
     existingProducts[existingProductIndex].count =
-      (existingProducts[existingProductIndex].count || 1) + 1
-    existingProducts[existingProductIndex].addedToCart = true
+      (existingProducts[existingProductIndex].count || 1) + 1;
+    existingProducts[existingProductIndex].addedToCart = true;
   } else {
     existingProducts.push({
       name: product.name,
@@ -129,43 +129,43 @@ const addToCart = (product) => {
       count: 1,
       image: product.image,
       addedToCart: true
-    })
+    });
   }
-  product.addedToCart = true
-  cookies.set('cookie', JSON.stringify(existingProducts), expireTimes)
-  cardStore.products = existingProducts
-  cardStore.volume = existingProducts.length
+  product.addedToCart = true;
+  cookies.set('cookie', JSON.stringify(existingProducts), expireTimes);
+  cardStore.products = existingProducts;
+  cardStore.volume = existingProducts.length;
 
   const totalCost = existingProducts.reduce((total, item) => {
-    return total + item.price * item.count
-  }, 0)
-  cardStore.total = totalCost
-  cookies.set('totalCost', totalCost.toString())
-}
+    return total + item.price * item.count;
+  }, 0);
+  cardStore.total = totalCost;
+  cookies.set('totalCost', totalCost.toString());
+};
 
 const isCookieExpired = () => {
-  const cookieValue = cookies.get('cookie')
+  const cookieValue = cookies.get('cookie');
   if (!cookieValue) {
-    return true
+    return true;
   }
 
-  const currentTime = new Date().getTime()
-  const cookieExpirationTime = cookies.expireTimes
+  const currentTime = new Date().getTime();
+  const cookieExpirationTime = cookies.expireTimes;
 
   if (cookieExpirationTime <= currentTime) {
-    cookies.remove('cookie')
+    cookies.remove('cookie');
 
-    return true
+    return true;
   }
-  return false
-}
+  return false;
+};
 
 function checkCookieStatus() {
   if (isCookieExpired()) {
-    cardStore.setVolume(0)
+    cardStore.setVolume(0);
   }
 }
-setInterval(checkCookieStatus, 600000)
+setInterval(checkCookieStatus, 600000);
 </script>
 
 <style scoped lang="scss" src="./MenuTab.scss"></style>

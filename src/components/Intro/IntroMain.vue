@@ -52,8 +52,8 @@
 </template>
 
 <script setup>
-import MainContainer from '@/components/Container/MainContainer.vue'
-import CardButton from '@/components/Buttons/CardButton/CardButton.vue'
+import MainContainer from '@/components/Container/MainContainer.vue';
+import CardButton from '@/components/Buttons/CardButton/CardButton.vue';
 </script>
 
 <style lang="scss" scoped src="./IntroMain.scss"></style>

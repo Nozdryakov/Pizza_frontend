@@ -1,7 +1,7 @@
 <template>
-  <div class="payment-info">
+  <div class="payment-info" id="delivery">
     <main-container>
-      <head-title id="delivery">Доставка и оплата</head-title>
+      <head-title>Доставка и оплата</head-title>
       <div class="payment-info__inner">
         <div class="payment-info__item">
           <div class="title">60 минут или пицца бесплатно</div>
@@ -45,11 +45,11 @@
 </template>
 
 <script setup>
-import MainContainer from '@/components/Container/MainContainer.vue'
-import HeadTitle from '@/components/HeadTitle/HeadTitle.vue'
-import CardButton from '@/components/Buttons/CardButton/CardButton.vue'
-import VisaIcon from '@/components/ShippingPayment/icons/VisaIcon.vue'
-import MasterCardIcon from '@/components/ShippingPayment/icons/MasterCardIcon.vue'
+import MainContainer from '@/components/Container/MainContainer.vue';
+import HeadTitle from '@/components/HeadTitle/HeadTitle.vue';
+import CardButton from '@/components/Buttons/CardButton/CardButton.vue';
+import VisaIcon from '@/components/ShippingPayment/icons/VisaIcon.vue';
+import MasterCardIcon from '@/components/ShippingPayment/icons/MasterCardIcon.vue';
 </script>
 
 <style lang="scss" scoped src="./ShippingPayment.scss"></style>
