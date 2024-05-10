@@ -5,13 +5,14 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import HeaderComponent from '@/components/Header/HeaderComponent.vue';
 import ContactIntro from '@/components/Contact/ContactIntro.vue';
+import { onMounted } from "vue";
 
-export default {
-  components: { ContactIntro, HeaderComponent }
-};
+onMounted(() => {
+  document.title = 'О нас';
+});
 </script>
 
 <style lang="scss" scoped></style>

@@ -13,7 +13,7 @@
             <span class="nav-toggle__item">Menu</span>
           </button>
         </div>
-        <router-link to="/">
+        <router-link to="/" class="logo-link">
           <div class="logo-container">
             <viki-logo-icon></viki-logo-icon>
             <div class="title red">Viki</div>

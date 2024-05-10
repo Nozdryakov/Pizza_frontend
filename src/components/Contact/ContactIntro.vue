@@ -21,8 +21,13 @@
             <p class="subtitle__text">Наша миссия - расширять границы возможного!</p>
           </div>
           <div class="block__button">
-            <card-button class="btn">Меню</card-button>
-            <card-button class="btn">Главная</card-button>
+            <router-link :to="{ name: 'home', hash: '#menu' }">
+              <card-button class="btn">Меню</card-button>
+            </router-link>
+            <router-link :to="{ path: '/' }">
+              <card-button class="white">Главная</card-button>
+            </router-link>
+
           </div>
         </div>
         <div class="intro__item">

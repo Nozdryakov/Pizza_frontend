@@ -10,9 +10,13 @@ import HeaderComponent from '@/components/Header/HeaderComponent.vue';
 import CardProduct from '@/components/Card/CardProduct/CardProduct.vue';
 import OrderContact from '@/components/Card/OrderContact/OrderContact.vue';
 import FooterComponent from '@/components/Footer/FooterComponent.vue';
+import { onMounted } from "vue";
 
 window.scrollTo({
   top: 0,
+});
+onMounted(() => {
+  document.title = 'Корзина';
 });
 </script>
 

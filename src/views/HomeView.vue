@@ -23,5 +23,9 @@ import MenuTab from '@/components/MenuTab/MenuTab.vue'
 import ShippingPayment from '@/components/ShippingPayment/ShippingPayment.vue'
 import MapInfo from '@/components/MapInfo/MapInfo.vue'
 import FooterComponent from '@/components/Footer/FooterComponent.vue'
+import { onMounted } from "vue";
+onMounted(() => {
+  document.title = 'VikiPizza';
+});
 </script>
 <style lang="scss" scoped></style>

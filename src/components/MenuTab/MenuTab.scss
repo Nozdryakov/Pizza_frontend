@@ -85,7 +85,7 @@ h2 {
 .product:after {
   content: '';
   flex: auto;
-  min-width: 0;
+  min-width: 250px;
 }
 .product__item {
   width: 25%;
@@ -145,9 +145,16 @@ h2 {
   font-size: 12px;
   padding: 10px 28px;
   border: 1px solid #d3d3d3;
+  font-family: "Raleway-700", serif;
 }
 
 @media (max-width: 990px) {
+  .buy__block{
+    display: flex;
+    height: 80px;
+    flex-direction: column;
+    justify-content: space-between;
+  }
   .tabs__wrapper {
     margin: 100px auto 0;
   }
@@ -156,12 +163,15 @@ h2 {
   }
   .price {
     font-size: 22px;
+    margin-bottom: 15px;
   }
   .btn-buy {
-    padding: 10px 20px;
+    padding: 10px 22px;
+    width: 75%;
   }
   .added-btn {
-    padding: 10px 20px;
+    padding: 10px 22px;
+    width: 75%;
   }
 }
 @media (max-width: 775px) {
@@ -178,12 +188,6 @@ h2 {
   }
   .subtitle {
     margin-top: 10px;
-  }
-  .btn-buy {
-    padding: 10px 30px;
-  }
-  .added-btn {
-    padding: 10px 30px;
   }
 }
 @media (max-width: 650px) {
@@ -206,6 +210,9 @@ h2 {
   }
   .buy__block {
     margin-top: 8px;
+  }
+  .price{
+    font-size: 18px;
   }
 }
 @media (max-width: 500px) {

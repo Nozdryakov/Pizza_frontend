@@ -15,7 +15,9 @@
           <div class="btns-block">
             <card-button class="btn red">Купить</card-button>
             <div class="btn-blur">
-              <card-button class="btn btn-menu">Меню</card-button>
+              <router-link :to="{ name: 'home', hash: '#menu' }" class="nav__link">
+                <card-button class="btn btn-menu">Меню</card-button>
+              </router-link>
               <img class="fon-blur blur-one" src="@/assets/images/menu-fon-intro.png" />
             </div>
           </div>

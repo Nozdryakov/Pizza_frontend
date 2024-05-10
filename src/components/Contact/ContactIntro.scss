@@ -48,13 +48,24 @@
 .block__button {
   margin-top: 10px;
 }
-.btn:first-child {
+.btn {
   background-color: #ff1313;
   color: #ffffff;
   margin-right: 22px;
-}
-.btn {
   width: 155px;
+}
+.white{
+  background-color: #f9f9fd;
+  text-decoration: none;
+  font-family: 'Raleway-700', serif;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  border-radius: 45px;
+  color: #121010;
+  border: 1px solid #fcefef;
+  position: relative;
+  overflow: hidden;
+  transition: width 0.8s ease;
 }
 .intro__item:last-child {
   justify-content: flex-end;

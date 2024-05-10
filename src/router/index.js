@@ -46,7 +46,6 @@ const router = createRouter({
         }, 100);
       }
     }
-    return { top: 0 };
   }
 });
 

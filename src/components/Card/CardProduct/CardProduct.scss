@@ -119,8 +119,22 @@
     font-family: 'Raleway-700', serif;
     margin-bottom: 20px;
   }
+  .menu__link{
+    margin-top: 150px;
+    font-family: "Raleway-400", serif;
+    text-decoration: none;
+    color: #ffffff;
+    letter-spacing: 1px;
+    padding: 8px 16px;
+    background-color: #121010;
+    border-radius: 10px;
+  }
 }
+
 @media (max-width: 990px) {
+  .card-list {
+    margin-top: 10px;
+  }
   .card {
     margin-top: 110px;
   }
@@ -142,6 +156,15 @@
     width: 100%;
     margin-right: 0;
   }
+  .empty-inner{
+    & h1{
+      font-size: 28px;
+    }
+  }
+  .card-icon{
+    height: 100px;
+    width: 100px;
+  }
 }
 @media (max-width: 560px) {
   .card-img {
@@ -154,12 +177,18 @@
   .info-product h3 {
     font-size: 14px;
   }
-}
-@media (max-width: 990px) {
-  .card-list {
-    margin-top: 10px;
+  .empty-inner{
+    & h1{
+      font-size: 22px;
+    }
   }
+  .card-icon{
+    height: 75px;
+    width: 75px;
+  }
+
 }
+
 @media (max-width: 730px) {
   .price-block {
     margin-top: 40px;
