@@ -1,12 +1,12 @@
 <template>
-  <crud-product></crud-product>
+  <admin-element></admin-element>
 </template>
 
 <script>
-import CrudProduct from "@/components/Admin/CrudProduct/CrudProduct.vue";
+import AdminElement from "@/components/Admin/AdminElements/AdminElement.vue";
 
 export default {
-  components: { CrudProduct },
+  components: { AdminElement },
   setup() {
     return {};
   }
