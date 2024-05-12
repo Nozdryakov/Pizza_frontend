@@ -7,7 +7,7 @@
 <script setup>
 
 import MainContainer from "@/components/Container/MainContainer.vue";
-import CrudProduct from "@/components/Admin/CreateForm/CreateProduct.vue";
+import CrudProduct from "@/components/Admin/CrudProduct/CrudProduct.vue";
 </script>
 
 <style lang="scss" src="./AdminElement.scss" scoped></style>

@@ -1,0 +1,57 @@
+.tabs__wrapper {
+  margin: 160px auto 0;
+  width: 90%;
+}
+.product {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 0;
+  list-style: none;
+  margin-top: 70px;
+}
+.product:after {
+  content: '';
+  flex: auto;
+  min-width: 250px;
+}
+.product__item {
+  width: 25%;
+  padding: 0 15px;
+  flex-wrap: wrap;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 70px;
+}
+.tab-img {
+  width: 100%;
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+.title {
+  margin-top: 24px;
+  font-size: 22px;
+  color: #ff1313;
+  font-family: 'Raleway-600', serif;
+}
+.subtitle {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #626262;
+  font-family: 'Raleway-400', serif;
+  height: 90px;
+  overflow: hidden;
+  line-height: 22px;
+}
+.buy__block {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2px;
+}
+.price {
+  font-size: 24px;
+  font-family: 'Raleway-600', serif;
+  color: #121010;
+}
