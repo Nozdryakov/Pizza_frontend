@@ -9,7 +9,7 @@
     <label for="price">Цена</label>
     <create-update-input v-model="formData.price" id="price" type="text" required></create-update-input>
     <button type="submit">Сохранить</button>
-    <h1 v-if="message">Запись сохранена успешно!</h1>
+    <h1>{{message}}</h1>
   </form>
 </template>
 

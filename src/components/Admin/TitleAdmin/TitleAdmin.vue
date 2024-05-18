@@ -1,5 +1,5 @@
 <template>
-  <h1 class="title">
+  <h1 class="title-admin">
     <slot></slot>
   </h1>
 </template>

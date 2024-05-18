@@ -2,6 +2,9 @@
   margin: 160px auto 0;
   width: 90%;
 }
+.tabs-content{
+  margin-top: 45px;
+}
 .product {
   display: flex;
   justify-content: space-between;
@@ -41,7 +44,6 @@
   font-size: 14px;
   color: #626262;
   font-family: 'Raleway-400', serif;
-  height: 90px;
   overflow: hidden;
   line-height: 22px;
 }
