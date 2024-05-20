@@ -27,6 +27,11 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/delete-product/, ''),
       },
+      '/update-product': {
+        target: 'http://localhost:8000/admin/admins/update-product',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/update-product/, ''),
+      },
     },
   },
 });

@@ -57,3 +57,14 @@
   font-family: 'Raleway-600', serif;
   color: #121010;
 }
+.change__block{
+  display: flex;
+  justify-content: flex-end;
+}
+.crud-icon{
+  width: 30px;
+  height: 30px;
+  &:first-child{
+    margin-right: 10px;
+  }
+}
