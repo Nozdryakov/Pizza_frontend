@@ -17,7 +17,7 @@
           <h2>{{ category.id }}</h2>
           <ul class="product">
             <li v-for="(product, i) in category.list" :key="i" class="product__item">
-              <img :src="`/src/assets/images/products/${product.image}`" alt="" class="tab-img" />
+              <img :src="`http://localhost:8000/images/products/${product.image}`" alt="" class="tab-img" />
               <div class="title">{{ product.name }}</div>
               <div class="subtitle">{{ product.description }}</div>
               <div class="buy__block">

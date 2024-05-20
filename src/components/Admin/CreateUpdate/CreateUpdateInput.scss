@@ -1,6 +1,6 @@
 input {
   border: none;
-  border-radius: 18px;
+  border-radius: 11px;
   padding: 12px 20px;
   font-size: 14px;
   font-family: 'Raleway-600', serif;
@@ -8,6 +8,7 @@ input {
   margin-bottom: 30px;
   max-width: 265px;
   width: 100%;
+  margin-top: 5px;
   &:focus {
     outline: none;
   }

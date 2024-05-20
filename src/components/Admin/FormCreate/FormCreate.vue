@@ -1,5 +1,6 @@
 <template>
   <form @submit.prevent="CreateProduct">
+    <label for="image">Изображение</label>
     <div v-if="imageUrl" class="image-preview">
       <img :src="imageUrl" alt="Uploaded Image" class="uploaded-image" />
     </div>
@@ -11,11 +12,19 @@
     <create-update-input v-model="formData.title" id="title" type="text" required></create-update-input>
 
     <label for="description">Описание</label>
-    <create-update-input v-model="formData.description" id="description" required></create-update-input>
+    <textarea
+      v-model="formData.description"
+      id="description"
+      class="text-area text-area-fixed"
+      required
+    >
+</textarea>
 
     <label for="price">Цена</label>
     <create-update-input v-model="formData.price" id="price" type="text" required></create-update-input>
-    <button type="submit">Сохранить</button>
+    <div class="price-block">
+      <button type="submit" class="btn-save">Сохранить</button>
+    </div>
   </form>
 </template>
 

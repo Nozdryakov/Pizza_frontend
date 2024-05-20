@@ -10,19 +10,30 @@
           <li v-for="(product, i) in category.list" :key="i" class="product__item">
             <div class="change__block">
               <crud-update-icon class="crud-icon" @click="startEditing(product.id)" ></crud-update-icon>
-              <crud-delete-icon class="crud-icon" @click="deleteProduct(product.id, category.id)"></crud-delete-icon>
+              <crud-delete-icon class="crud-icon" @click="deleteProduct(product.id)"></crud-delete-icon>
             </div>
-            <img :src="`/src/assets/images/products/${product.image}`" alt="" class="tab-img" />
-            <div class="title">{{ product.name }}</div>
-            <div class="subtitle">{{ product.description }}</div>
-            <div class="buy__block">
-              <p class="price">{{ product.price }} ₴</p>
+            <div v-if="!(editingProductId === product.id && isEditing)" class="info-product">
+              <img :src="`http://localhost:8000/images/products/${product.image}`" alt="" class="tab-img" />
+              <div class="title">{{ product.name }}</div>
+              <div class="subtitle">{{ product.description }}</div>
+              <div class="buy__block">
+                <p class="price">{{ product.price }} ₴</p>
+              </div>
             </div>
-            <div v-if="editingProductId === product.id && isEditing">
+            <div v-else>
+              <div v-if="product.image" class="image-preview" @click="getFile">
+                <img :src="`http://localhost:8000/images/products/${product.image}`" alt="" class="tab-img" />
+                <input type="file" id="fileUpload" style="display: none;" @change="handleFileChange($event)" />
+              </div>
+              <div v-else class="addImageBlock" @click="getFile">
+                <create-plus-icon></create-plus-icon>
+                <input type="file" id="fileUpload" style="display: none;" @change="handleFileChange($event)" />
+              </div>
               <input v-model="product.name" type="text" />
               <input v-model="product.description" type="text" />
               <input v-model="product.price" type="number" />
-              <button @click="updateProduct(product)">Сохранить</button>
+              <button @click="updateProduct(product)" class="btn-save">Сохранить</button>
+
             </div>
           </li>
         </ul>
@@ -40,10 +51,12 @@ import TitleAdmin from "@/components/Admin/TitleAdmin/TitleAdmin.vue";
 import FormCreate from "@/components/Admin/FormCreate/FormCreate.vue";
 import CrudDeleteIcon from "@/components/Admin/CrudProduct/icons/CrudDeleteIcon.vue";
 import CrudUpdateIcon from "@/components/Admin/CrudProduct/icons/CrudUpdateIcon.vue";
+import CreatePlusIcon from "@/components/Admin/FormCreate/icons/CreatePlusIcon.vue";
 
 const data = ref({
   list: []
 });
+const imageName = ref(null);
 const loadData = async () => {
   try {
     const response = await axios.get('/product', {
@@ -71,7 +84,7 @@ const loadData = async () => {
   }
 };
 onMounted(loadData);
-const handleProductAdded = async (newProduct) =>  {
+const handleProductAdded = async (newProduct) => {
   const categoryId = newProduct.category_id;
   console.log(newProduct);
 
@@ -99,11 +112,6 @@ const deleteProduct = async (productId) => {
       mode: 'cors'
     });
     await loadData();
-    // const category = data.value.list.find(category => category.id === categoryId);
-    // if (category) {
-    //   category.list = category.list.filter((product) => product.id !== productId);
-    //   console.log(category.list);
-    // }
 
   } catch (error) {
     console.error('Error deleting product:', error);
@@ -112,7 +120,6 @@ const deleteProduct = async (productId) => {
 const editingProductId = ref(null)
 const isEditing = ref(false);
 const startEditing = (id) => {
-  console.log(isEditing.value);
   if (isEditing.value) {
     isEditing.value = false;
   } else {
@@ -124,20 +131,44 @@ const startEditing = (id) => {
 
 const updateProduct = async (product) => {
   try {
-    const data = {
-      product_id: product.id,
-      title: product.name,
-      description: product.description,
-      price: product.price
-    };
-    await axios.post('/update-product', data);
-    console.log('Товар успешно обновлен');
-    isEditing.value = false;
+    const formData = new FormData();
+    formData.append('product_id', product.id);
+    formData.append('title', product.name);
+    formData.append('description', product.description);
+    formData.append('price', product.price);
+    if (imageName.value) {
+      formData.append('imageFile', imageName.value);
+    }
+
+    const response = await axios.post('/update-product', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    });
+    if (response.data.error === false) {
+      isEditing.value = false;
+
+    }
+    console.log("succsess");
+    await loadData();
   } catch (error) {
     console.error('Ошибка:', error);
   }
 };
 
+const getFile = function () {
+  let fileUpload = document.getElementById('fileUpload');
+  if (fileUpload != null) {
+    fileUpload.click();
+  }
+};
+
+const handleFileChange = (event) => {
+  const file = event.target.files[0];
+  if (file) {
+    imageName.value = file;
+  }
+};
 
 </script>
 
