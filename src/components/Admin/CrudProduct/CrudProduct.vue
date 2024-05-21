@@ -29,9 +29,14 @@
                 <create-plus-icon></create-plus-icon>
                 <input type="file" id="fileUpload" style="display: none;" @change="handleFileChange($event)" />
               </div>
-              <input v-model="product.name" type="text" />
-              <input v-model="product.description" type="text" />
-              <input v-model="product.price" type="number" />
+              <label for="title">Название</label>
+              <create-update-input v-model="product.name" id="title" type="text" required></create-update-input>
+
+              <label for="description">Описание</label>
+              <textarea v-model="product.description" id="description" class="text-area text-area-fixed" required></textarea>
+
+              <label for="price">Цена</label>
+              <create-update-input v-model="product.price" id="price" type="text" required></create-update-input>
               <button @click="updateProduct(product)" class="btn-save">Сохранить</button>
 
             </div>
@@ -52,6 +57,7 @@ import FormCreate from "@/components/Admin/FormCreate/FormCreate.vue";
 import CrudDeleteIcon from "@/components/Admin/CrudProduct/icons/CrudDeleteIcon.vue";
 import CrudUpdateIcon from "@/components/Admin/CrudProduct/icons/CrudUpdateIcon.vue";
 import CreatePlusIcon from "@/components/Admin/FormCreate/icons/CreatePlusIcon.vue";
+import CreateUpdateInput from "@/components/Admin/CreateUpdate/CreateUpdateInput.vue";
 
 const data = ref({
   list: []

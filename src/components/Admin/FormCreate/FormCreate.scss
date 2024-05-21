@@ -1,6 +1,6 @@
 form {
   width: 25%;
-  padding: 0 15px;
+  padding: 0 15px 0 0;
   flex-wrap: wrap;
   display: flex;
   flex-direction: column;
@@ -15,6 +15,19 @@ form {
     margin-bottom: 5px;
   }
 
+}
+#title{
+  color: #ff1313;
+  font-size: 22px;
+  font-family: "Raleway-600", serif;
+}
+#description{
+  color: #626262;
+  font-size: 14px;
+  font-family: "Raleway-400", serif;
+}
+#price{
+  font-size: 24px;
 }
 .text-area-fixed {
   height: 100px;

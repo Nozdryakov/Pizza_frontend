@@ -31,6 +31,7 @@
   display: block;
   max-width: 100%;
   height: auto;
+  margin-bottom: 10px;
 }
 .title {
   font-size: 22px;
@@ -80,4 +81,41 @@
   border-radius: 23px;
   position: relative;
   border: 1px solid transparent;
+}
+.text-area {
+  height: 100px;
+  width: 100%;
+  resize: none;
+
+  border: none;
+  border-radius: 11px;
+  padding: 12px 20px;
+  font-size: 14px;
+  font-family: 'Raleway-500', serif;
+  background-color: #f6f5f5;
+  margin-bottom: 30px;
+  max-width: 265px;
+  margin-top: 5px;
+  &:focus {
+    outline: none;
+  }
+}
+label{
+  color: #333333;
+  font-size: 14px;
+  font-family: "Raleway-400", serif;
+  margin-bottom: 5px;
+}
+#title{
+  color: #ff1313;
+  font-size: 22px;
+  font-family: "Raleway-600", serif;
+}
+#description{
+  color: #626262;
+  font-size: 14px;
+  font-family: "Raleway-400", serif;
+}
+#price{
+  font-size: 24px;
 }

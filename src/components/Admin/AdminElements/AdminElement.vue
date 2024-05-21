@@ -1,5 +1,6 @@
 <template>
   <main-container>
+    <h1 class="title-admin">Админ панель</h1>
     <crud-product></crud-product>
   </main-container>
 </template>
