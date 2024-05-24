@@ -29,6 +29,12 @@
                 <create-plus-icon></create-plus-icon>
                 <input type="file" id="fileUpload" style="display: none;" @change="handleFileChange($event)" />
               </div>
+              <label for="image">Изображение</label>
+              <div v-if="imageUrl" class="image-preview" @click="getFile">
+                <img :src="imageUrl" alt="Uploaded Image" class="uploaded-image" />
+                <input type="file" id="fileUpload" style="display: none;" @change="handleFileChange($event)" />
+              </div>
+
               <label for="title">Название</label>
               <create-update-input v-model="product.name" id="title" type="text" required></create-update-input>
 
@@ -168,11 +174,12 @@ const getFile = function () {
     fileUpload.click();
   }
 };
-
+const imageUrl = ref(null);
 const handleFileChange = (event) => {
   const file = event.target.files[0];
   if (file) {
     imageName.value = file;
+    imageUrl.value = URL.createObjectURL(file);
   }
 };
 
