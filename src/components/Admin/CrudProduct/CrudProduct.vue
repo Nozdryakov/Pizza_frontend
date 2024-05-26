@@ -64,16 +64,22 @@ import CrudDeleteIcon from "@/components/Admin/CrudProduct/icons/CrudDeleteIcon.
 import CrudUpdateIcon from "@/components/Admin/CrudProduct/icons/CrudUpdateIcon.vue";
 import CreatePlusIcon from "@/components/Admin/FormCreate/icons/CreatePlusIcon.vue";
 import CreateUpdateInput from "@/components/Admin/CreateUpdate/CreateUpdateInput.vue";
+import router from "@/router/index.js";
 
 const data = ref({
   list: []
 });
+const token = localStorage.getItem('accessToken');
 const imageName = ref(null);
 const loadData = async () => {
   try {
+    if (!token){
+      router.push('/login');
+    }
     const response = await axios.get('/product', {
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
         'Access-Control-Allow-Origin': '*'
       },
       mode: 'cors'
@@ -119,6 +125,7 @@ const deleteProduct = async (productId) => {
       data: { product_id: productId }, // Передача данных в теле запроса
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
         'Access-Control-Allow-Origin': '*'
       },
       mode: 'cors'
@@ -129,11 +136,12 @@ const deleteProduct = async (productId) => {
     console.error('Error deleting product:', error);
   }
 };
-const editingProductId = ref(null)
+const editingProductId = ref(null);
 const isEditing = ref(false);
 const startEditing = (id) => {
   if (isEditing.value) {
     isEditing.value = false;
+    imageUrl.value = null;
   } else {
     editingProductId.value = id;
     isEditing.value = true;
@@ -154,7 +162,8 @@ const updateProduct = async (product) => {
 
     const response = await axios.post('/update-product', formData, {
       headers: {
-        'Content-Type': 'multipart/form-data'
+        'Content-Type': 'multipart/form-data',
+        'Authorization': `Bearer ${token}`
       }
     });
     if (response.data.error === false) {
@@ -162,6 +171,7 @@ const updateProduct = async (product) => {
 
     }
     console.log("succsess");
+    imageUrl.value = null;
     await loadData();
   } catch (error) {
     console.error('Ошибка:', error);

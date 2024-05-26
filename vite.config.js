@@ -12,6 +12,11 @@ export default defineConfig({
   },
   server: {
     proxy: {
+      '/login-admin': {
+        target: 'http://localhost:8000/AuthAdmin/auths/login',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/login-admin/, ''),
+      },
       '/product': {
         target: 'http://localhost:8000/api/applications/index',
         changeOrigin: true,

@@ -39,6 +39,7 @@ const formData = ref({
   category_id: null
 });
 const message = ref(false);
+const token = localStorage.getItem('accessToken');
 const clearForm = () => {
   formData.value.title = '';
   formData.value.description = '';
@@ -73,7 +74,8 @@ const createProduct = async () => {
 
     const response = await axios.post('/insert-product', form, {
       headers: {
-        'Content-Type': 'multipart/form-data'
+        'Content-Type': 'multipart/form-data',
+        'Authorization': `Bearer ${token}`
       }
     });
 

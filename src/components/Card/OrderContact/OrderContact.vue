@@ -80,9 +80,7 @@
 
           <create-order>Оформить заказ</create-order>
           <center-block>
-            <router-link to="/" class="subtitle-back">
-              Вернуться к редактированию заказа
-            </router-link>
+            <router-link :to="{ name: 'home', hash: '#menu' }" class="subtitle-back">Вернуться к редактированию заказа</router-link>
           </center-block>
         </div>
       </div>
@@ -189,9 +187,7 @@
 
           <create-order>Оформить заказ</create-order>
           <center-block>
-            <router-link to="/" class="subtitle-back">
-              Вернуться к редактированию заказа
-            </router-link>
+            <router-link :to="{ name: 'home', hash: '#menu' }" class="subtitle-back">Вернуться к редактированию заказа</router-link>
           </center-block>
         </div>
       </div>
