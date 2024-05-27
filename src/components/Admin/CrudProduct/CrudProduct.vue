@@ -13,7 +13,9 @@
               <crud-delete-icon class="crud-icon" @click="deleteProduct(product.id)"></crud-delete-icon>
             </div>
             <div v-if="!(editingProductId === product.id && isEditing)" class="info-product">
-              <img :src="`http://localhost:8000/images/products/${product.image}`" alt="" class="tab-img" />
+              <div class="img-block" @click="startEditing(product.id)">
+                <img :src="`images/${product.image}`" alt="" class="tab-img" />
+              </div>
               <div class="title">{{ product.name }}</div>
               <div class="subtitle">{{ product.description }}</div>
               <div class="buy__block">
@@ -22,29 +24,38 @@
             </div>
             <div v-else>
               <div v-if="product.image" class="image-preview" @click="getFile">
-                <img :src="`http://localhost:8000/images/products/${product.image}`" alt="" class="tab-img" />
-                <input type="file" id="fileUpload" style="display: none;" @change="handleFileChange($event)" />
+                <div class="img-block" @click="startEditing(product.id)">
+                  <img :src="`images/${product.image}`" alt="" class="tab-img" />
+                </div>
+                <div class="download-overlay">
+                  <input type="file" id="fileUpload" style="display: none;" @change="handleFileChange($event)" />
+                  <div class="block-download">Загрузить</div>
+                </div>
               </div>
               <div v-else class="addImageBlock" @click="getFile">
                 <create-plus-icon></create-plus-icon>
                 <input type="file" id="fileUpload" style="display: none;" @change="handleFileChange($event)" />
               </div>
-              <label for="image">Изображение</label>
               <div v-if="imageUrl" class="image-preview" @click="getFile">
+                <label for="image">Изображение</label>
                 <img :src="imageUrl" alt="Uploaded Image" class="uploaded-image" />
                 <input type="file" id="fileUpload" style="display: none;" @change="handleFileChange($event)" />
               </div>
+              <div class="input-block">
+                <label for="title">Название</label>
+                <create-update-input v-model="product.name" id="title" type="text" required></create-update-input>
+              </div>
 
-              <label for="title">Название</label>
-              <create-update-input v-model="product.name" id="title" type="text" required></create-update-input>
+              <div class="input-block">
+                <label for="description">Описание</label>
+                <textarea v-model="product.description" id="description" class="text-area text-area-fixed" required></textarea>
+              </div>
 
-              <label for="description">Описание</label>
-              <textarea v-model="product.description" id="description" class="text-area text-area-fixed" required></textarea>
-
-              <label for="price">Цена</label>
-              <create-update-input v-model="product.price" id="price" type="text" required></create-update-input>
-              <button @click="updateProduct(product)" class="btn-save">Сохранить</button>
-
+              <div class="input-block">
+                <label for="price">Цена</label>
+                <create-update-input v-model="product.price" id="price" type="text" required></create-update-input>
+                <button @click="updateProduct(product)" class="btn-save">Сохранить</button>
+              </div>
             </div>
           </li>
         </ul>

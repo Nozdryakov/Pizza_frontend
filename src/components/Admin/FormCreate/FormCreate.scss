@@ -41,7 +41,6 @@ form {
   font-family: 'Raleway-600', serif;
   background-color: #f6f5f5;
   margin-bottom: 30px;
-  max-width: 265px;
   margin-top: 5px;
   &:focus {
     outline: none;
@@ -86,4 +85,23 @@ form {
   border-radius: 23px;
   position: relative;
   border: 1px solid transparent;
+}
+@media (max-width: 910px) {
+  form{
+    width: 33%;
+  }
+}
+@media (max-width: 770px) {
+  form{
+    width: 49%;
+  }
+}
+@media (max-width: 540px) {
+  form{
+    width: 100%;
+  }
+  .addImageBlock{
+    height: 100px;
+  }
+
 }

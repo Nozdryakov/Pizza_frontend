@@ -1,5 +1,5 @@
 <template>
-  <h1 class="subtitle"><slot></slot></h1>
+  <h1 class="subtitle-admin"><slot></slot></h1>
 </template>
 
 <script setup>

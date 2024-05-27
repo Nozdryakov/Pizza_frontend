@@ -12,6 +12,11 @@ export default defineConfig({
   },
   server: {
     proxy: {
+      '/images': {
+        target: 'http://localhost:8000/images/products',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/images/, ''),
+      },
       '/login-admin': {
         target: 'http://localhost:8000/AuthAdmin/auths/login',
         changeOrigin: true,

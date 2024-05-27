@@ -1,5 +1,11 @@
-.subtitle{
+.subtitle-admin{
   font-family: "Raleway-400", serif;
   font-size: 14px;
-  margin-top: 15px;
+  margin-top: 20px;
+  color: #626262;
+}
+@media (max-width: 910px) {
+  .subtitle-admin{
+    margin-top: 14px;
+  }
 }
