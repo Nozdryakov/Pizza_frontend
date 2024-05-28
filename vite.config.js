@@ -17,6 +17,11 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/images/, ''),
       },
+      '/st-img': {
+        target: 'http://localhost:8000/images/stocks',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/st-img/, ''),
+      },
       '/login-admin': {
         target: 'http://localhost:8000/AuthAdmin/auths/login',
         changeOrigin: true,
@@ -41,6 +46,11 @@ export default defineConfig({
         target: 'http://localhost:8000/admin/admins/update-product',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/update-product/, ''),
+      },
+      '/get-stocks': {
+        target: 'http://localhost:8000/api/applications/get-stocks',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/get-stocks/, ''),
       },
     },
   },

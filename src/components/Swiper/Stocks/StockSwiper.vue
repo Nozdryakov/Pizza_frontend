@@ -12,22 +12,25 @@
         }"
         :modules="modules"
       >
-        <swiper-slide><img class="swiper-img" src="@/assets/images/pizza-no.jpg" /></swiper-slide>
-        <swiper-slide><img class="swiper-img" src="@/assets/images/swiper-card-1.png"/></swiper-slide>
-        <swiper-slide><img class="swiper-img" src="@/assets/images/swiper-card-2.png"/></swiper-slide>
-        <swiper-slide><img class="swiper-img" src="@/assets/images/swiper-card-3.png"/></swiper-slide>
-        <swiper-slide><img class="swiper-img" src="@/assets/images/swiper-card-4.png"/></swiper-slide>
-        <swiper-slide><img class="swiper-img" src="@/assets/images/swiper-card-5.png"/></swiper-slide>
-        <swiper-slide><img class="swiper-img" src="@/assets/images/swiper-card-6.png"/></swiper-slide>
+        <swiper-slide v-for="stock in stocks" :key="stock.stock_id" class="swiper-slide">
+          <div class="swiper-slide-container">
+            <img class="swiper-img" :src="`st-img/${stock.image}`" />
+          </div>
+          <button class="btn-buy">
+            <span>Выбрать</span>
+          </button>
+        </swiper-slide>
       </swiper>
       <arrow-prev-icon class="swiper-button-prev-stock"></arrow-prev-icon>
       <arrow-next-icon class="swiper-button-next-stock"></arrow-next-icon>
     </main-container>
   </div>
 </template>
+
 <script setup>
 import { ref, onMounted, onBeforeUnmount, watch } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
+import axios from 'axios';
 import ArrowPrevIcon from '@/components/Swiper/icons/ArrowPrevIcon.vue';
 import ArrowNextIcon from '@/components/Swiper/icons/ArrowNextIcon.vue';
 import MainContainer from '@/components/Container/MainContainer.vue';
@@ -40,6 +43,7 @@ const screenWidth = ref(window.innerWidth);
 const slidesPerView = ref(getSlidesPerView());
 
 const modules = [Navigation];
+const stocks = ref([]);
 
 function getSlidesPerView() {
   if (screenWidth.value <= 500) {
@@ -51,7 +55,34 @@ function getSlidesPerView() {
   }
 }
 
+const fetchStocks = async () => {
+  try {
+    const response = await axios.get('/get-stocks', {
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      },
+      mode: 'cors'
+    });
+
+    if (response.data.stocks) {
+      stocks.value = response.data.stocks.map(stock => ({
+        stock_id: stock.stocks.stock_id,
+        image: stock.stocks.image,
+        discount: stock.stocks.discount,
+        productId: stock.stocks.product_id
+      }));
+    } else {
+      console.error('Response data does not contain "stocks" property');
+    }
+  } catch (error) {
+    console.error('Failed to fetch stocks:', error);
+  }
+};
+
+
 onMounted(() => {
+  fetchStocks();
   window.addEventListener('resize', handleResize);
 });
 
