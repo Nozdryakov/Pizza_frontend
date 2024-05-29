@@ -1,6 +1,6 @@
 <template>
   <main-container>
-    <h1>Часто покупают</h1>
+    <h1>Часто замовляють</h1>
   </main-container>
   <div class="wrapper-slider">
     <main-container>

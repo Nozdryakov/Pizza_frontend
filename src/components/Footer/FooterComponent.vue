@@ -9,22 +9,22 @@
             <div class="title black">Pizza</div>
           </div>
           <nav class="nav" :class="{ active: isNavActive }">
-            <router-link :to="{ name: 'home', hash: '#actions' }" class="nav__link">Акции</router-link>
+            <router-link :to="{ name: 'home', hash: '#actions' }" class="nav__link">Акції</router-link>
             <router-link :to="{ name: 'home', hash: '#menu' }" class="nav__link">Меню</router-link>
             <router-link :to="{ name: 'home', hash: '#delivery' }" class="nav__link">Доставка</router-link>
-            <router-link :to="{ name: 'home', hash: '#contacts' }" class="nav__link">Контакты</router-link>
-            <router-link :to="{ path: '/contacts', }" class="nav__link">О нас</router-link>
+            <router-link :to="{ name: 'home', hash: '#contacts' }" class="nav__link">Контакти</router-link>
+            <router-link :to="{ path: '/contacts', }" class="nav__link">Про нас</router-link>
           </nav>
           <div class="phone">
             +3803047076
-            <p class="label">(номер телефона)</p>
+            <p class="label">(номер телефону)</p>
           </div>
         </div>
         <div class="social">
           <div class="el">
             <div class="text none"></div>
             <div class="text"></div>
-            <div class="text store__spacing">Доступно в</div>
+            <div class="text store__spacing">Ми є у:</div>
           </div>
           <div class="el">
             <div class="text none"></div>

@@ -1,16 +1,11 @@
 <template>
   <auth-account-section>
     <auth-content-section>
-      <auth-title>Введите ваш логин и пароль</auth-title>
+      <auth-title>Введіть ваш логін і пароль</auth-title>
       <auth-form @submit.prevent="login">
-        <auth-input v-model="username" placeholder="Логин"></auth-input>
+        <auth-input v-model="username" placeholder="Логін"></auth-input>
         <auth-input v-model="password" placeholder="Пароль" type="password"></auth-input>
-        <auth-button type="submit">Войти</auth-button>
-        <span>или</span>
-
-        <router-link to="/register">
-          <auth-reg-log-btn>Зарегистрироваться</auth-reg-log-btn>
-        </router-link>
+        <auth-button type="submit">Увійти</auth-button>
       </auth-form>
     </auth-content-section>
   </auth-account-section>

@@ -1,6 +1,6 @@
 <template>
   <form @submit.prevent="createProduct">
-    <label for="image">Изображение</label>
+    <label for="image">Зображення</label>
     <div v-if="imageUrl" class="image-preview">
       <img :src="imageUrl" alt="Uploaded Image" class="uploaded-image" />
     </div>
@@ -9,17 +9,17 @@
       <input type="file" ref="fileInput" @change="handleFileUpload" style="display: none;" />
     </div>
 
-    <label for="title">Название</label>
+    <label for="title">Назва</label>
     <create-update-input v-model="formData.title" id="title" type="text" required></create-update-input>
 
-    <label for="description">Описание</label>
+    <label for="description">Опис</label>
     <textarea v-model="formData.description" id="description" class="text-area text-area-fixed" required></textarea>
 
-    <label for="price">Цена</label>
+    <label for="price">Ціна</label>
     <create-update-input v-model="formData.price" id="price" type="text" required></create-update-input>
 
     <div class="price-block">
-      <button type="submit" class="btn-save">Сохранить</button>
+      <button type="submit" class="btn-save">Зберегти</button>
     </div>
   </form>
 </template>

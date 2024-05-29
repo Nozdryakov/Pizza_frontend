@@ -9,12 +9,12 @@
           :class="{ active: category.show }"
           @click="showCategory(category.id)"
         >
-          {{ category.id }}
+          {{ category.title }}
         </li>
       </ul>
       <div class="tabs-content">
         <div v-for="(category, index) in visibleTabs" :key="index">
-          <h2>{{ category.id }}</h2>
+          <h2>{{ category.title }}</h2>
           <ul class="product">
             <li v-for="(product, i) in category.list" :key="i" class="product__item">
               <img :src="`http://localhost:8000/images/products/${product.image}`" alt="" class="tab-img" />
@@ -64,7 +64,8 @@ onMounted(async () => {
     data.value = response.data;
 
     data.value.list = data.value.products.map((category) => ({
-      id: category.title,
+      id: category.category_id,
+      title: category.title,
       show: false,
       list: category.products.map((product) => ({
         image: product.image,

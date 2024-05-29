@@ -1,7 +1,7 @@
 <template>
   <div class="card" v-show="cardStore.volume > 0">
     <main-container>
-      <head-title>Корзина</head-title>
+      <head-title>Кошик</head-title>
       <ul class="card-list">
         <li v-for="(product, index) in products" :key="index">
           <div class="name-product">
@@ -29,7 +29,7 @@
   </div>
   <div v-show="cardStore.volume === 0 || cardStore.volume === undefined" class="card-empty">
     <div class="empty-inner">
-      <h1>Ваша корзина пуста</h1>
+      <h1>Ваш кошик пустий</h1>
       <card-icon class="card-icon"></card-icon>
       <router-link :to="{ name: 'home', hash: '#menu' }" class="menu__link">Перейти в меню</router-link>
     </div>

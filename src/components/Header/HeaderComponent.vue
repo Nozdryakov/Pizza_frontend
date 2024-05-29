@@ -21,15 +21,15 @@
           </div>
         </router-link>
         <nav class="nav" :class="{ active: isNavActive }">
-          <router-link :to="{ name: 'home', hash: '#actions' }" class="nav__link">Акции</router-link>
+          <router-link :to="{ name: 'home', hash: '#actions' }" class="nav__link">Акції</router-link>
           <router-link :to="{ name: 'home', hash: '#menu' }" class="nav__link">Меню</router-link>
           <router-link :to="{ name: 'home', hash: '#delivery' }" class="nav__link">Доставка</router-link>
-          <router-link :to="{ name: 'home', hash: '#contacts' }" class="nav__link">Контакты</router-link>
-          <router-link :to="{ path: '/contacts', }" class="nav__link">О нас</router-link>
+          <router-link :to="{ name: 'home', hash: '#contacts' }" class="nav__link">Контакти</router-link>
+          <router-link :to="{ path: '/contacts', }" class="nav__link">Про нас</router-link>
         </nav>
         <router-link to="/card" href="/card" class="card-link">
           <transition name="slide-up">
-            <card-button v-if="cardStore.volume === 0" class="card-button">Корзина</card-button>
+            <card-button v-if="cardStore.volume === 0" class="card-button">Кошик</card-button>
             <card-button v-else class="card-button volume"><card-icon class="icon-cart"></card-icon> {{ cardStore.volume }} |
               {{ parseFloat(cardStore.total).toFixed(2) }} грн.
             </card-button>

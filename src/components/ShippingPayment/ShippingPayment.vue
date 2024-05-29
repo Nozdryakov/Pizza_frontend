@@ -1,16 +1,16 @@
 <template>
   <div class="payment-info">
     <main-container>
-      <head-title id="delivery">Доставка и оплата</head-title>
+      <head-title id="delivery">Доставка та оплата</head-title>
       <div class="payment-info__inner">
         <div class="payment-info__item">
-          <div class="title">60 минут или пицца бесплатно</div>
+          <div class="title">60 хвилин або піца безкоштовно</div>
           <div class="subtitle">
-            Если мы не успеем доставить любые продукт в течение 60 минут, курьер подарит вам
-            сертификат на большую пиццу.
+            Якщо ми не встигнемо доставити будь-який продукт протягом 60 хвилин, кур'єр подарує вам
+            сертифікат на велику піцу.
           </div>
           <div class="bottom-block">
-            <div class="bt-title">Принимаем к оплате</div>
+            <div class="bt-title">Приймаємо до оплати</div>
             <div class="bt-item">
               <div class="el"><visa-icon></visa-icon></div>
               <div class="el ml-position"><master-card-icon></master-card-icon></div>
@@ -18,22 +18,22 @@
           </div>
         </div>
         <div class="payment-info__item">
-          <div class="title">Минимальная сумма доставки 15,90</div>
+          <div class="title">Мінімальна сума доставки 250 грн</div>
           <div class="subtitle">
-            Минимальная сумма доставки 15,90 . Заказы на меньшую сумму оформляются на условиях
-            самовывоза.
+            Мінімальна сума доставки 250грн. Замовлення на меншу суму оформляються на умовах
+            самовивозу.
           </div>
           <div class="bottom-block">
-            <div class="bt-title">Способ оплаты</div>
+            <div class="bt-title">Спосіб оплати</div>
             <div class="bt-item">
-              <p class="el">Наличный расчет</p>
-              <p class="el ml-position">Банковская карта</p>
+              <p class="el">Готівковий розрахунок</p>
+              <p class="el ml-position">Банківська картка</p>
             </div>
           </div>
         </div>
         <div class="payment-info__item third-el">
-          <div class="title">Зона доставки ограничена</div>
-          <div class="subtitle">Зона доставки указана на карте</div>
+          <div class="title">Зона доставки обмежена</div>
+          <div class="subtitle">Зона доставки вказана на карті</div>
           <div class="fon">
             <card-button class="btn">Карта Доставки</card-button>
             <div class="card-header-fon"></div>

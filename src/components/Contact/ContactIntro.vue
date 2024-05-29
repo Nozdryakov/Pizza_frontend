@@ -3,53 +3,52 @@
     <main-container>
       <div class="intro__inner">
         <div class="intro__item">
-          <div class="head-title">О нас</div>
+          <div class="head-title">Про нас</div>
           <div class="title">
             <p class="title__text">Viki</p>
             <p>Pizza</p>
           </div>
           <div class="subtitle">
             <p class="subtitle__text">
-              Viki Pizza — пиццерия г. Киева, которая открылась совсем недавно и уже радует своих
-              покупателей изысканными вкусами и быстрой доставкой, Для нас Viki Pizza — каждое утро
-              просыпаться и с интересом продолжать работу.
+              Viki Pizza - піцерія м. Києва, яка відкрилася зовсім недавно і вже радує своїх
+              покупців вишуканими смаками та швидкою доставкою, Для нас Viki Pizza - щоранку прокидатися і з цікавістю
+              прокидатися і з цікавістю продовжувати роботу.
             </p>
             <p class="subtitle__text">
-              Для нас Viki Pizza —  это то дело, которое вдохновляет нас, заставляет каждое утро
-              просыпаться и с интересом продолжать работу.
+              Для нас Viki Pizza - це та справа, яка надихає нас, змушує щоранку прокидатися і з цікавістю продовжувати роботу.
             </p>
-            <p class="subtitle__text">Наша миссия - расширять границы возможного!</p>
+            <p class="subtitle__text">Наша місія - розширювати межі можливого!</p>
           </div>
           <div class="block__button">
             <router-link :to="{ name: 'home', hash: '#menu' }">
               <card-button class="btn">Меню</card-button>
             </router-link>
             <router-link :to="{ path: '/' }">
-              <card-button class="white">Главная</card-button>
+              <card-button class="white">Головна</card-button>
             </router-link>
 
           </div>
         </div>
         <div class="intro__item">
           <div class="item__element">
-            <div class="title-block">Лучшие ингридиенты</div>
+            <div class="title-block">Найкращі інгредієнти</div>
             <div class="subtitle-block">
-              <p>Наши пиццы состоят из лучших</p>
-              <p>отборных ингредиентов</p>
+              <p>Наші піци складаються з найкращих</p>
+              <p>відбірних інгредієнтів</p>
             </div>
           </div>
           <div class="item__element">
-            <div class="title-block">Лучшие мастера</div>
+            <div class="title-block">Найкращі майстри</div>
             <div class="subtitle-block">
-              <p>Готовятся лучшими</p>
-              <p>мастерами своего дела</p>
+              <p>Готуються найкращими</p>
+              <p>майстрами своєї справи</p>
             </div>
           </div>
           <div class="item__element">
-            <div class="title-block">Быстрая доставка</div>
+            <div class="title-block">Швидка доставка</div>
             <div class="subtitle-block">
-              <p>Доставим пиццу быстро</p>
-              <p>за 45 минут</p>
+              <p>Доставимо піцу швидко</p>
+              <p>за 45 хвилин</p>
             </div>
           </div>
         </div>

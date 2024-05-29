@@ -1,7 +1,7 @@
 <template>
   <div>
     <title-admin>Меню</title-admin>
-    <subtitle-admin>Добавляйте новые варианты меню, удаляйте или меняйте уже имеющиеся</subtitle-admin>
+    <subtitle-admin>Додавайте нові варіанти меню, видаляйте або змінюйте вже наявні</subtitle-admin>
     <div class="tabs-content">
       <div v-for="(category, index) in data.list" :key="index">
         <h2 class="title">{{ category.title }}</h2>
@@ -29,7 +29,7 @@
                 </div>
                 <div class="download-overlay">
                   <input type="file" id="fileUpload" style="display: none;" @change="handleFileChange($event)" />
-                  <div class="block-download">Загрузить</div>
+                  <div class="block-download">Завантажити</div>
                 </div>
               </div>
               <div v-else class="addImageBlock" @click="getFile">
@@ -37,24 +37,24 @@
                 <input type="file" id="fileUpload" style="display: none;" @change="handleFileChange($event)" />
               </div>
               <div v-if="imageUrl" class="image-preview" @click="getFile">
-                <label for="image">Изображение</label>
+                <label for="image">Зображення</label>
                 <img :src="imageUrl" alt="Uploaded Image" class="uploaded-image" />
                 <input type="file" id="fileUpload" style="display: none;" @change="handleFileChange($event)" />
               </div>
               <div class="input-block">
-                <label for="title">Название</label>
+                <label for="title">Назва</label>
                 <create-update-input v-model="product.name" id="title" type="text" required></create-update-input>
               </div>
 
               <div class="input-block">
-                <label for="description">Описание</label>
+                <label for="description">Опис</label>
                 <textarea v-model="product.description" id="description" class="text-area text-area-fixed" required></textarea>
               </div>
 
               <div class="input-block">
-                <label for="price">Цена</label>
+                <label for="price">Ціна</label>
                 <create-update-input v-model="product.price" id="price" type="text" required></create-update-input>
-                <button @click="updateProduct(product)" class="btn-save">Сохранить</button>
+                <button @click="updateProduct(product)" class="btn-save">Зберегти</button>
               </div>
             </div>
           </li>

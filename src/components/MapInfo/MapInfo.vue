@@ -1,7 +1,7 @@
 <template>
   <div class="map-info">
     <main-container>
-      <head-title id="contacts">Контакты</head-title>
+      <head-title id="contacts">Контакти</head-title>
       <div class="map-info__inner">
         <div class="block-map">
           <a
@@ -14,7 +14,7 @@
           <div class="info__item">
             <div class="el">
               <location-icon class="icon"></location-icon>
-              <p class="text left">г. Киев ул, Тиха 92А</p>
+              <p class="text left">м. Київ вул, Тиха 92А</p>
             </div>
             <div class="el">
               <contact-icon class="icon"></contact-icon>
@@ -23,16 +23,16 @@
           </div>
           <div class="info__item">
             <div class="el">
-              <p class="text">Режим работы:</p>
+              <p class="text">Режим роботи:</p>
             </div>
             <div class="el column">
               <p class="m-text">пн.-пт.: 18:00-21:00;</p>
-              <p class="m-text">сб-вс.: выходной</p>
+              <p class="m-text">сб-нд.: вихідний</p>
             </div>
           </div>
           <div class="info__item">
             <div class="el">
-              <p class="text">По различным вопросам:</p>
+              <p class="text">З будь-яких питань:</p>
             </div>
             <div class="el column">
               <p class="m-text">+3803047076</p>

@@ -6,14 +6,14 @@
         <img class="fon-blur blur-third" src="@/assets/images/pizza-fon-2-intro.png" />
         <img class="fon-blur blur-third part-one" src="@/assets/images/pizza-fon-2-intro.png" />
         <div class="item__intro first-el">
-          <span class="price">19.90 р</span>
+          <span class="price">19.90 грн.</span>
           <div class="title">Pizza Delicious</div>
           <div class="subtitle">
-            <p>Куриные кусочки, сладкий перец,</p>
-            <p>моцарелла, соус сладкий чили, соус альфре</p>
+            <p>Курячі шматочки, солодкий перець,</p>
+            <p>моцарела, соус солодкий чилі, соус альфре</p>
           </div>
           <div class="btns-block">
-            <card-button class="btn red">Купить</card-button>
+            <card-button class="btn red">Купити</card-button>
             <div class="btn-blur">
               <router-link :to="{ name: 'home', hash: '#menu' }" class="nav__link">
                 <card-button class="btn btn-menu">Меню</card-button>
@@ -27,24 +27,24 @@
         </div>
         <div class="item__intro third-el">
           <div class="item__element">
-            <div class="title-block">Лучшие ингридиенты</div>
+            <div class="title-block">Найкращі інгредієнти</div>
             <div class="subtitle-block">
-              <p>Наши пиццы состоят из лучших</p>
-              <p>отборных ингредиентов</p>
+              <p>Наші піци складаються з найкращих</p>
+              <p>відбірних інгредієнтів</p>
             </div>
           </div>
           <div class="item__element">
-            <div class="title-block">Лучшие мастера</div>
+            <div class="title-block">Найкращі майстри</div>
             <div class="subtitle-block">
-              <p>Готовятся лучшими</p>
-              <p>мастерами своего дела</p>
+              <p>Готуються найкращими</p>
+              <p>майстрами своєї справи</p>
             </div>
           </div>
           <div class="item__element">
-            <div class="title-block">Быстрая доставка</div>
+            <div class="title-block">Швидка доставка</div>
             <div class="subtitle-block">
-              <p>Доставим пиццу быстро</p>
-              <p>за 45 минут</p>
+              <p>Доставимо піцу швидко</p>
+              <p>за 45 хвилин</p>
             </div>
           </div>
         </div>
