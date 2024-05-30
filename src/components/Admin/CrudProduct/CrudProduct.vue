@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="messageAuth === ''">
     <title-admin>Меню</title-admin>
     <subtitle-admin>Додавайте нові варіанти меню, видаляйте або змінюйте вже наявні</subtitle-admin>
     <div class="tabs-content">
@@ -62,11 +62,15 @@
       </div>
     </div>
   </div>
+  <div v-else>
+    {{messageAuth}}<br>
+    <router-link to="/login">Авторизуватися</router-link>
+  </div>
 </template>
 
 
 <script setup>
-import { onMounted, ref } from "vue";
+import { onMounted, ref, watch } from "vue";
 import axios from "axios";
 import SubtitleAdmin from "@/components/Admin/SubtitleAdmin/SubtitleAdmin.vue";
 import TitleAdmin from "@/components/Admin/TitleAdmin/TitleAdmin.vue";
@@ -76,18 +80,21 @@ import CrudUpdateIcon from "@/components/Admin/CrudProduct/icons/CrudUpdateIcon.
 import CreatePlusIcon from "@/components/Admin/FormCreate/icons/CreatePlusIcon.vue";
 import CreateUpdateInput from "@/components/Admin/CreateUpdate/CreateUpdateInput.vue";
 import router from "@/router/index.js";
+import { useAdmin } from "@/stores/AdminStore.js";
 
 const data = ref({
   list: []
 });
+const messageAuth = ref('');
 const token = localStorage.getItem('accessToken');
 const imageName = ref(null);
+const adminStore = useAdmin();
 const loadData = async () => {
   try {
     if (!token){
       router.push('/login');
     }
-    const response = await axios.get('/product', {
+    const response = await axios.get('/get-products-admin', {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`,
@@ -109,10 +116,25 @@ const loadData = async () => {
       }))
     }));
   } catch (error) {
-    console.error('Произошла ошибка при выполнении запроса:', error);
+    if (error.response) {
+      if (error.response.status === 401) {
+        console.error('Ошибка 401: Не авторизован');
+        messageAuth.value = "З метою безпеки вам потрібно увійти в акаунт наново.";
+      } else {
+        messageAuth.value = "Зверніться до адміністратора сайту";
+        console.error('Произошла ошибка при выполнении запроса:', error.response.status, error.response.data);
+      }
+    } else {
+      console.error('Произошла ошибка при выполнении запроса:', error.message);
+    }
   }
 };
 onMounted(loadData);
+watch(() => adminStore.counter, async (newValue, oldValue) => {
+  if (newValue !== oldValue) {
+    await loadData();
+  }
+});
 const handleProductAdded = async (newProduct) => {
   const categoryId = newProduct.category_id;
   console.log(newProduct);
@@ -152,7 +174,6 @@ const isEditing = ref(false);
 const startEditing = (id) => {
   if (isEditing.value) {
     isEditing.value = false;
-    imageUrl.value = null;
   } else {
     editingProductId.value = id;
     isEditing.value = true;

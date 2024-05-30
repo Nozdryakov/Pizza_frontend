@@ -12,15 +12,16 @@
         }"
         :modules="modules"
       >
-        <swiper-slide v-for="stock in stocks" :key="stock.stock_id" class="swiper-slide">
+        <swiper-slide v-for="stock in data.list" :key="stock.stock_id" class="swiper-slide">
           <div class="swiper-slide-container">
             <img class="swiper-img" :src="`st-img/${stock.image_stock}`" />
-
           </div>
-          <button class="btn-buy" @click="addToCart(stock)">
+          <card-button v-if="stock.addedToCart" class="added-btn">
+            <span>У кошику</span>
+          </card-button>
+          <button v-else class="btn-buy" @click="addToCart(stock)">
             <span>Купити</span>
           </button>
-          {{stock.visible}}
         </swiper-slide>
       </swiper>
       <arrow-prev-icon class="swiper-button-prev-stock"></arrow-prev-icon>
@@ -42,12 +43,15 @@ import 'swiper/css/navigation';
 import HeadTitle from '@/components/HeadTitle/HeadTitle.vue';
 import { useCard } from "@/stores/CardStore.js";
 import { useCookies } from "vue3-cookies";
+import CardButton from "@/components/Buttons/CardButton/CardButton.vue";
 
 const screenWidth = ref(window.innerWidth);
 const slidesPerView = ref(getSlidesPerView());
 
 const modules = [Navigation];
-const stocks = ref([]);
+const data = ref({
+  list: []
+});
 
 function getSlidesPerView() {
   if (screenWidth.value <= 500) {
@@ -70,7 +74,7 @@ const fetchStocks = async () => {
     });
 
     if (response.data.stocks) {
-      stocks.value = response.data.stocks.map(stock => ({
+      data.value.list = response.data.stocks.map(stock => ({
         name: stock.title,
         visible: stock.visible,
         stock_id: stock.stocks.stock_id,
@@ -81,6 +85,13 @@ const fetchStocks = async () => {
         productId: stock.stocks.product_id,
         addedToCart: false
       }));
+      const existingProducts = cookies.get('cookie') ? JSON.parse(cookies.get('cookie')) : [];
+      data.value.list.forEach((product) => {
+        const existingProduct = existingProducts.find((item) => item.name === product.name);
+        if (existingProduct) {
+          product.addedToCart = true;
+        }
+      });
     } else {
       console.error('error');
     }
@@ -88,7 +99,6 @@ const fetchStocks = async () => {
     console.error('Failed to fetch stocks:', error);
   }
 };
-
 
 onMounted(() => {
   fetchStocks();
@@ -106,6 +116,7 @@ function handleResize() {
 watch(screenWidth, () => {
   slidesPerView.value = getSlidesPerView();
 });
+
 const config = {
   current_default_config: {
     expireTimes: '4h',

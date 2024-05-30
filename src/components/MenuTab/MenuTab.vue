@@ -16,12 +16,13 @@
         <div v-for="(category, index) in visibleTabs" :key="index">
           <h2>{{ category.title }}</h2>
           <ul class="product">
-            <li v-for="(product, i) in category.list" :key="i" class="product__item">
+            <li v-for="(product, i) in filteredProducts(category.list)" :key="i" class="product__item">
               <img :src="`http://localhost:8000/images/products/${product.image}`" alt="" class="tab-img" />
               <div class="title">{{ product.name }}</div>
               <div class="subtitle">{{ product.description }}</div>
               <div class="buy__block">
                 <p class="price">{{ product.price }} ₴</p>
+                {{ product.visible }}
                 <card-button v-if="product.addedToCart" class="added-btn">
                   <span>В корзине</span>
                 </card-button>
@@ -72,6 +73,7 @@ onMounted(async () => {
         name: product.title,
         description: product.description,
         price: parseFloat(product.price).toFixed(2),
+        visible: product.visible,
         addedToCart: false
       }))
     }));
@@ -102,7 +104,11 @@ const showCategory = (itemId) => {
   });
 };
 
-// Конфиг для настройик жизни куки
+const filteredProducts = (products) => {
+  return products.filter(product => product.visible == 1);
+};
+
+// Конфиг для настройки жизни куки
 const config = {
   current_default_config: {
     expireTimes: '4h',
