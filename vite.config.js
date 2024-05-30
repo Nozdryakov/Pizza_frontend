@@ -32,6 +32,16 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/product/, ''),
       },
+      '/get-products-admin': {
+        target: 'http://localhost:8000/admin/admins/index',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/get-products-admin/, ''),
+      },
+      '/get-stocks-admin': {
+        target: 'http://localhost:8000/admin/admins/get-stocks',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/get-stocks-admin/, ''),
+      },
       '/insert-product': {
         target: 'http://localhost:8000/admin/admins/insert-product',
         changeOrigin: true,
@@ -51,6 +61,16 @@ export default defineConfig({
         target: 'http://localhost:8000/api/applications/get-stocks',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/get-stocks/, ''),
+      },
+      '/insert-stocks': {
+        target: 'http://localhost:8000/admin/admins/insert-stock',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/insert-stocks/, ''),
+      },
+      '/update-price': {
+        target: 'http://localhost:8000/admin/admins/update-price',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/update-price/, ''),
       },
     },
   },
