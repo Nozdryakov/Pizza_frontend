@@ -13,7 +13,7 @@
               <crud-delete-icon class="crud-icon" @click="deleteProduct(product.id)"></crud-delete-icon>
             </div>
             <div v-if="!(editingProductId === product.id && isEditing)" class="info-product">
-              <div v-if="product.image === null || product.image === ''" class="addImageBlock" @click="startEditing(product.id, product.image)">
+              <div v-if="product.image === null || product.image === '' || product.image === 'null'" class="addImageBlock" @click="startEditing(product.id, product.image)">
               </div>
               <div v-else  class="img-block" @click="startEditing(product.id, product.image)">
                 <img :src="`images/${product.image}`" alt="" class="tab-img"/>
