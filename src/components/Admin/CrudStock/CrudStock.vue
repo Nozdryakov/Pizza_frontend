@@ -85,6 +85,7 @@ const adminStore = useAdmin();
 const messageAuth = ref('');
 const isEditing = ref(false);
 const imageName = ref(null);
+const errorVal = ref(false);
 const fetchStocks = async () => {
   try {
     const response = await axios.get('/get-stocks-admin', {

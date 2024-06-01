@@ -24,6 +24,10 @@
       <button type="submit" class="btn-save">Зберегти</button>
     </div>
   </form>
+  <modal-window :isVisible="errorVal" @update:isVisible="errorVal = $event">
+    <h2>Помилка!</h2>
+    <p>Сталася помилка під час створення продукту. Будь ласка, спробуйте знову.</p>
+  </modal-window>
 </template>
 
 
@@ -33,6 +37,7 @@ import axios from 'axios';
 import CreatePlusIcon from "@/components/Admin/FormCreate/icons/CreatePlusIcon.vue";
 import router from "@/router/index.js";
 import { useAdmin } from "@/stores/AdminStore.js";
+import ModalWindow from "@/components/Admin/ModalWindow/ModalWindow.vue";
 const dataProduct = ref({ list: [] });
 const formData = ref({
   image: null,
@@ -44,6 +49,7 @@ const stocks = ref([]);
 const message = ref(false);
 const token = localStorage.getItem('accessToken');
 const adminStore = useAdmin();
+const errorVal = ref(false);
 const clearForm = () => {
   formData.value.discount = '';
   formData.value.image = null;
@@ -87,10 +93,20 @@ const createProduct = async () => {
       adminStore.counter++;
       console.log("stock create");
     } else {
-      console.error('Product creation failed:', response.data);
+      if (response.data.error === true) {
+        errorVal.value = true;
+        clearForm();
+        console.log(errorVal.value);
+      } else {
+        errorVal.value = true;
+        clearForm();
+      }
+      console.log(errorVal.value);
+      clearForm();
     }
   } catch (error) {
     console.error('Error creating item:', error);
+    clearForm();
   }
 };
 

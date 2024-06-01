@@ -21,7 +21,6 @@
 .product__item {
   width: 25%;
   padding: 0 15px;
-  flex-wrap: wrap;
   display: flex;
   flex-direction: column;
   margin-bottom: 70px;
@@ -203,12 +202,13 @@ label{
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    height: calc(100% - 35px);
+    height: 80%;
   }
 }
 @media (max-width: 770px) {
   .product__item{
     width: 49%;
+    min-height: 570px;
   }
   .image-preview{
     display: block;
@@ -232,9 +232,14 @@ label{
     height: 180px;
     width: 180px;
   }
+  .btn-save{
+    margin-top: 20px;
+  }
 }
 @media (max-width: 540px) {
   .product__item{
     width: 100%;
+    margin-bottom: 15px;
+
   }
 }

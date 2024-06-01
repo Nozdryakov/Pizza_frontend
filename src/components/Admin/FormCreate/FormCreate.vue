@@ -8,20 +8,42 @@
       <create-plus-icon></create-plus-icon>
       <input type="file" ref="fileInput" @change="handleFileUpload" style="display: none;" />
     </div>
-
+    {{errorVal.error}}
     <label for="title">Назва</label>
-    <create-update-input v-model="formData.title" id="title" type="text" required></create-update-input>
+    <create-update-input
+      v-model="formData.title"
+      id="title"
+      type="text"
+      required
+      maxlength="60"
+    ></create-update-input>
 
     <label for="description">Опис</label>
-    <textarea v-model="formData.description" id="description" class="text-area text-area-fixed" required></textarea>
+    <textarea
+      v-model="formData.description"
+      id="description"
+      class="text-area text-area-fixed"
+      required
+      maxlength="500"
+    ></textarea>
 
     <label for="price">Ціна</label>
-    <create-update-input v-model="formData.price" id="price" type="text" required></create-update-input>
+    <create-update-input
+      v-model="formData.price"
+      id="price"
+      type="text"
+      required
+      @input="validatePrice"
+    ></create-update-input>
 
     <div class="price-block">
       <button type="submit" class="btn-save">Зберегти</button>
     </div>
   </form>
+  <modal-window :isVisible="errorVal" @update:isVisible="errorVal = $event">
+    <h2>Помилка!</h2>
+    <p>Сталася помилка під час створення продукту. Будь ласка, спробуйте знову.</p>
+  </modal-window>
 </template>
 
 <script setup>
@@ -29,6 +51,8 @@ import { onMounted, ref } from "vue";
 import axios from 'axios';
 import CreateUpdateInput from "@/components/Admin/CreateUpdate/CreateUpdateInput.vue";
 import CreatePlusIcon from "@/components/Admin/FormCreate/icons/CreatePlusIcon.vue";
+import ModalWindow from "@/components/Admin/ModalWindow/ModalWindow.vue";
+import { useAdmin } from "@/stores/AdminStore.js";
 
 const emits = defineEmits(['productAdded']);
 const formData = ref({
@@ -40,6 +64,8 @@ const formData = ref({
 });
 const message = ref(false);
 const token = localStorage.getItem('accessToken');
+const errorVal = ref(false);
+const adminStore = useAdmin();
 const clearForm = () => {
   formData.value.title = '';
   formData.value.description = '';
@@ -58,6 +84,14 @@ const handleFileUpload = (event) => {
   if (file) {
     formData.value.image = file;
     imageUrl.value = URL.createObjectURL(file);
+  }
+};
+
+const validatePrice = () => {
+  const price = formData.value.price;
+  const regex = /^[0-9]*[.,]?[0-9]{0,2}$/;
+  if (!regex.test(price) || parseFloat(price) > 9999.99) {
+    formData.value.price = price.slice(0, -1);
   }
 };
 
@@ -83,11 +117,24 @@ const createProduct = async () => {
       emits('productAdded', response.data);
       clearForm();
       message.value = true;
+      adminStore.counter++;
     } else {
       console.error('Product creation failed:', response.data);
+      errorVal.value = response.data;
+      clearForm();
+      if(errorVal.value.error === true){
+        errorVal.value.error = true;
+        console.log(errorVal.value.error);
+      }
+      else {
+        errorVal.value.error = true;
+      }
+      console.log(errorVal.value.error);
+
     }
   } catch (error) {
     console.error('Error creating item:', error);
+    errorVal.value.error = true;
   }
 };
 
