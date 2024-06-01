@@ -120,6 +120,7 @@ const loadProducts = async () => {
   } catch (error) {
     if (error.response) {
       if (error.response.status === 401) {
+        localStorage.setItem('accessToken', '');
         console.error('Ошибка 401: Не авторизован');
       } else {
         console.error('Произошла ошибка при выполнении запроса:', error.response.status, error.response.data);

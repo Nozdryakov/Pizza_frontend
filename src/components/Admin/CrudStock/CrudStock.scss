@@ -25,6 +25,7 @@
   display: flex;
   flex-direction: column;
   margin-bottom: 70px;
+  justify-content: space-between;
 }
 
 .title {
@@ -54,6 +55,7 @@
 .change__block{
   display: flex;
   justify-content: flex-end;
+  margin-bottom: 15px;
 }
 .crud-icon{
   width: 30px;
@@ -75,6 +77,13 @@
   border-radius: 23px;
   position: relative;
   border: 1px solid transparent;
+}
+.btn-color-blue{
+  background-color: #2F70AF;
+}
+.edit-btns{
+  display: flex;
+  justify-content: space-between;
 }
 .text-area {
   height: 100px;

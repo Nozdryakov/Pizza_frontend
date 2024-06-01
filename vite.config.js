@@ -67,10 +67,20 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/insert-stocks/, ''),
       },
-      '/update-price': {
-        target: 'http://localhost:8000/admin/admins/update-price',
+      '/update-stock': {
+        target: 'http://localhost:8000/admin/admins/update-stock',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/update-price/, ''),
+        rewrite: (path) => path.replace(/^\/update-stock/, ''),
+      },
+      '/delete-stock': {
+        target: 'http://localhost:8000/admin/admins/delete-stock',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/delete-stock/, ''),
+      },
+      '/update-visible': {
+        target: 'http://localhost:8000/admin/admins/update-visible',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/update-visible/, ''),
       },
     },
   },

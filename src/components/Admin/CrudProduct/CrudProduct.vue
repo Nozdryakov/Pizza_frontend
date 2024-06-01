@@ -9,7 +9,7 @@
           <form-create :categoryId="category.id" @productAdded="handleProductAdded"></form-create>
           <li v-for="(product, i) in category.list" :key="i" class="product__item">
             <div class="change__block">
-              <crud-update-icon class="crud-icon" @click="startEditing(product.id)" ></crud-update-icon>
+              <crud-update-icon class="crud-icon" @click="startEditing(product.id)"></crud-update-icon>
               <crud-delete-icon class="crud-icon" @click="deleteProduct(product.id)"></crud-delete-icon>
             </div>
             <div v-if="!(editingProductId === product.id && isEditing)" class="info-product">
@@ -20,6 +20,22 @@
               <div class="subtitle">{{ product.description }}</div>
               <div class="buy__block">
                 <p class="price">{{ product.price }} ₴</p>
+              </div>
+              <div class="block-visible">
+                <div class="visible__item">
+                  <label class="radio-button">
+                    <input class="input" type="radio" :name="'visible-' + product.id" :id="'yes-' + product.id" v-model="product.visible" :value="1" @change="updateVisibility(product.id, 1)" :checked="product.visible == 1">
+                    <span class="radio"></span>
+                  </label>
+                  <p class="visible-title">Показати</p>
+                </div>
+                <div class="visible__item">
+                  <label class="radio-button">
+                    <input class="input" type="radio" :name="'visible-' + product.id" :id="'no-' + product.id" v-model="product.visible" :value="0" @change="updateVisibility(product.id, 0)" :checked="product.visible == 0">
+                    <span class="radio"></span>
+                  </label>
+                  <p class="visible-title">Сховати</p>
+                </div>
               </div>
             </div>
             <div v-else>
@@ -69,6 +85,7 @@
 </template>
 
 
+
 <script setup>
 import { onMounted, ref, watch } from "vue";
 import axios from "axios";
@@ -89,6 +106,7 @@ const messageAuth = ref('');
 const token = localStorage.getItem('accessToken');
 const imageName = ref(null);
 const adminStore = useAdmin();
+
 const loadData = async () => {
   try {
     if (!token){
@@ -111,6 +129,7 @@ const loadData = async () => {
         id: product.product_id,
         image: product.image,
         name: product.title,
+        visible: product.visible,
         description: product.description,
         price: parseFloat(product.price).toFixed(2),
       }))
@@ -119,6 +138,7 @@ const loadData = async () => {
     if (error.response) {
       if (error.response.status === 401) {
         console.error('Ошибка 401: Не авторизован');
+
         messageAuth.value = "З метою безпеки вам потрібно увійти в акаунт наново.";
       } else {
         messageAuth.value = "Зверніться до адміністратора сайту";
@@ -129,12 +149,15 @@ const loadData = async () => {
     }
   }
 };
+
 onMounted(loadData);
+
 watch(() => adminStore.counter, async (newValue, oldValue) => {
   if (newValue !== oldValue) {
     await loadData();
   }
 });
+
 const handleProductAdded = async (newProduct) => {
   const categoryId = newProduct.category_id;
   console.log(newProduct);
@@ -152,10 +175,11 @@ const handleProductAdded = async (newProduct) => {
   }
   await loadData();
 };
+
 const deleteProduct = async (productId) => {
   try {
     await axios.delete('/delete-product', {
-      data: { product_id: productId }, // Передача данных в теле запроса
+      data: { product_id: productId },
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`,
@@ -163,14 +187,16 @@ const deleteProduct = async (productId) => {
       },
       mode: 'cors'
     });
+    adminStore.counter++;
     await loadData();
-
   } catch (error) {
     console.error('Error deleting product:', error);
   }
 };
+
 const editingProductId = ref(null);
 const isEditing = ref(false);
+
 const startEditing = (id) => {
   if (isEditing.value) {
     isEditing.value = false;
@@ -180,7 +206,6 @@ const startEditing = (id) => {
   }
 };
 
-
 const updateProduct = async (product) => {
   try {
     const formData = new FormData();
@@ -188,8 +213,12 @@ const updateProduct = async (product) => {
     formData.append('title', product.name);
     formData.append('description', product.description);
     formData.append('price', product.price);
-    if (imageName.value) {
+
+    // Проверка, что imageName.value не пустое или не null
+    if (imageName.value && imageName.value !== "") {
       formData.append('imageFile', imageName.value);
+    } else {
+      console.log('Картинка не изменена!');
     }
 
     const response = await axios.post('/update-product', formData, {
@@ -198,11 +227,12 @@ const updateProduct = async (product) => {
         'Authorization': `Bearer ${token}`
       }
     });
+
     if (response.data.error === false) {
       isEditing.value = false;
-
     }
-    console.log("succsess");
+    adminStore.counter++;
+    console.log("Success");
     imageUrl.value = null;
     await loadData();
   } catch (error) {
@@ -216,7 +246,9 @@ const getFile = function () {
     fileUpload.click();
   }
 };
+
 const imageUrl = ref(null);
+
 const handleFileChange = (event) => {
   const file = event.target.files[0];
   if (file) {
@@ -225,7 +257,25 @@ const handleFileChange = (event) => {
   }
 };
 
+const updateVisibility = async (productId, visible) => {
+  try {
+    await axios.post('/update-visible', {
+      product_id: productId,
+      visible: visible
+    }, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
+        'Access-Control-Allow-Origin': '*'
+      }
+    });
+    await loadData();
+  } catch (error) {
+    console.error('Error updating visibility:', error);
+  }
+};
 </script>
+
 
 <style lang="scss" src="./CrudProduct.scss" scoped>
 
