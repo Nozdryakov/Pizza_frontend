@@ -9,12 +9,14 @@
           <form-create :categoryId="category.id" @productAdded="handleProductAdded"></form-create>
           <li v-for="(product, i) in category.list" :key="i" class="product__item">
             <div class="change__block">
-              <crud-update-icon class="crud-icon" @click="startEditing(product.id)"></crud-update-icon>
+              <crud-update-icon class="crud-icon" @click="startEditing(product.id, product.image)"></crud-update-icon>
               <crud-delete-icon class="crud-icon" @click="deleteProduct(product.id)"></crud-delete-icon>
             </div>
             <div v-if="!(editingProductId === product.id && isEditing)" class="info-product">
-              <div class="img-block" @click="startEditing(product.id)">
-                <img :src="`images/${product.image}`" alt="" class="tab-img" />
+              <div v-if="product.image === null || product.image === ''" class="addImageBlock" @click="startEditing(product.id, product.image)">
+              </div>
+              <div v-else  class="img-block" @click="startEditing(product.id, product.image)">
+                <img :src="`images/${product.image}`" alt="" class="tab-img"/>
               </div>
               <div class="title">{{ product.name }}</div>
               <div class="subtitle">{{ product.description }}</div>
@@ -40,7 +42,7 @@
             </div>
             <div v-else>
               <div v-if="product.image" class="image-preview" @click="getFile">
-                <div class="img-block" @click="startEditing(product.id)">
+                <div class="img-block" @click="startEditing(product.id, product.image)">
                   <img :src="`images/${product.image}`" alt="" class="tab-img" />
                 </div>
                 <div class="download-overlay">
@@ -82,6 +84,10 @@
     {{messageAuth}}<br>
     <router-link to="/login">Авторизуватися</router-link>
   </div>
+  <modal-window :isVisible="errorVal" @update:isVisible="errorVal = $event">
+    <h2>Помилка!</h2>
+    <p>Сталася помилка під час створення продукту. Будь ласка, спробуйте знову.</p>
+  </modal-window>
 </template>
 
 
@@ -98,6 +104,7 @@ import CreatePlusIcon from "@/components/Admin/FormCreate/icons/CreatePlusIcon.v
 import CreateUpdateInput from "@/components/Admin/CreateUpdate/CreateUpdateInput.vue";
 import router from "@/router/index.js";
 import { useAdmin } from "@/stores/AdminStore.js";
+import ModalWindow from "@/components/Admin/ModalWindow/ModalWindow.vue";
 
 const data = ref({
   list: []
@@ -106,7 +113,8 @@ const messageAuth = ref('');
 const token = localStorage.getItem('accessToken');
 const imageName = ref(null);
 const adminStore = useAdmin();
-
+const imageDefault = ref(null);
+const errorVal = ref(false);
 const loadData = async () => {
   try {
     if (!token){
@@ -197,11 +205,14 @@ const deleteProduct = async (productId) => {
 const editingProductId = ref(null);
 const isEditing = ref(false);
 
-const startEditing = (id) => {
+const startEditing = (id, image) => {
   if (isEditing.value) {
     isEditing.value = false;
+    console.log(imageDefault.value);
   } else {
     editingProductId.value = id;
+    imageDefault.value = image;
+    console.log(imageDefault.value);
     isEditing.value = true;
   }
 };
@@ -214,11 +225,12 @@ const updateProduct = async (product) => {
     formData.append('description', product.description);
     formData.append('price', product.price);
 
-    // Проверка, что imageName.value не пустое или не null
-    if (imageName.value && imageName.value !== "") {
+    if (imageName.value) {
       formData.append('imageFile', imageName.value);
-    } else {
-      console.log('Картинка не изменена!');
+      formData.append('image', "");
+    }
+    else {
+      formData.append('image', imageDefault.value);
     }
 
     const response = await axios.post('/update-product', formData, {
@@ -228,15 +240,21 @@ const updateProduct = async (product) => {
       }
     });
 
-    if (response.data.error === false) {
+    if (response.data.error === true) {
       isEditing.value = false;
+      errorVal.value = true;
+      imageUrl.value = '';
     }
-    adminStore.counter++;
-    console.log("Success");
-    imageUrl.value = null;
-    await loadData();
+    else {
+      adminStore.counter++;
+      isEditing.value = false;
+      imageUrl.value = '';
+      await loadData();
+    }
+
   } catch (error) {
     console.error('Ошибка:', error);
+    imageUrl.value = '';
   }
 };
 

@@ -57,6 +57,27 @@
   display: flex;
   justify-content: flex-end;
 }
+.addImageBlock{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  background-color: #D3D3D3;
+  width: 100%;
+  max-width: 100%;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  position: relative;
+  &:before{
+    content: "";
+    display: block;
+    padding-top: 100%;
+  }
+  &:hover{
+    background-color: #C0C0C0;
+  }
+}
 .crud-icon{
   width: 30px;
   height: 30px;

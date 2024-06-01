@@ -7,11 +7,15 @@
         <form-create-stock></form-create-stock>
         <div v-for="stock in data.list" :key="stock.stock_id" class="product__item">
           <div class="change__block">
-            <crud-update-icon class="crud-icon" @click="startEditing(stock.product_id)"></crud-update-icon>
+            <crud-update-icon class="crud-icon" @click="startEditing(stock.stock_id, stock.image_stock)"></crud-update-icon>
             <crud-delete-icon class="crud-icon" @click="deleteProduct(stock.stock_id)"></crud-delete-icon>
           </div>
           <div v-if="!(editingProductId === stock.stock_id && isEditing)" class="info-product">
-            <img class="swiper-img" :src="`st-img/${stock.image_stock}`" />
+            <div v-if="stock.image_stock === null || stock.image_stock === ''" class="addImageBlock" @click="startEditing(stock.stock_id, stock.image_stock)">
+            </div>
+            <div v-else class="img-block" @click="startEditing(stock.stock_id, stock.image_stock)">
+              <img :src="`images/${stock.image_stock}`" alt="" class="tab-img"/>
+            </div>
             <div class="title">{{ stock.name }}</div>
             <div class="buy__block">
               <p class="price">{{ stock.discount }} %</p>
@@ -22,9 +26,10 @@
               <label for="newDiscount">Ціна</label>
             </div>
           </div>
+
           <div v-else>
-            <div v-if="stock.image" class="image-preview" @click="getFile">
-              <div class="img-block" @click="startEditing(stock.stock_id)">
+            <div v-if="stock.image_stock" class="image-preview" @click="getFile">
+              <div class="img-block" @click="startEditing(stock.stock_id, stock.image_stock)">
                 <img :src="`st-img/${stock.image_stock}`" alt="" class="tab-img" />
               </div>
               <div class="download-overlay">
@@ -52,7 +57,7 @@
             </div>
           </div>
           <div v-if="!isEditing" class="input-block">
-            <button @click="startEditing(stock.product_id)" class="btn-save">Змінити</button>
+            <button @click="startEditing(stock.stock_id, stock.image_stock)" class="btn-save">Змінити</button>
           </div>
         </div>
       </ul>
@@ -60,9 +65,11 @@
   </div>
   <div v-else>
   </div>
+  <modal-window :isVisible="errorVal" @update:isVisible="errorVal = $event">
+    <h2>Помилка!</h2>
+    <p>Сталася помилка під час редагування акції. Будь ласка, спробуйте знову.</p>
+  </modal-window>
 </template>
-
-
 
 <script setup>
 import { onMounted, ref, watch } from "vue";
@@ -75,6 +82,7 @@ import CrudUpdateIcon from "@/components/Admin/CrudProduct/icons/CrudUpdateIcon.
 import CrudDeleteIcon from "@/components/Admin/CrudProduct/icons/CrudDeleteIcon.vue";
 import CreateUpdateInput from "@/components/Admin/CreateUpdate/CreateUpdateInput.vue";
 import CreatePlusIcon from "@/components/Admin/FormCreate/icons/CreatePlusIcon.vue";
+import ModalWindow from "@/components/Admin/ModalWindow/ModalWindow.vue";
 
 const data = ref({
   list: []
@@ -85,6 +93,7 @@ const adminStore = useAdmin();
 const messageAuth = ref('');
 const isEditing = ref(false);
 const imageName = ref(null);
+const imageDefault = ref(null);
 const errorVal = ref(false);
 const fetchStocks = async () => {
   try {
@@ -140,11 +149,12 @@ watch(() => adminStore.counter, async (newValue, oldValue) => {
   }
 });
 
-const startEditing = (stock_id) => {
+const startEditing = (stock_id, image_stock) => {
   if (isEditing.value) {
     isEditing.value = false;
   } else {
     editingProductId.value = stock_id;
+    imageDefault.value = image_stock;
     isEditing.value = true;
   }
 };
@@ -162,6 +172,10 @@ const updateProduct = async (product_id, newDiscount, stock_id) => {
     formData.append('discount', newDiscount);
     if (imageName.value) {
       formData.append('imageFile', imageName.value);
+      formData.append('image', "");
+    }
+    else {
+      formData.append('image', imageDefault.value);
     }
 
     const response = await axios.post('/update-stock', formData, {
@@ -172,12 +186,19 @@ const updateProduct = async (product_id, newDiscount, stock_id) => {
     });
 
     editingProductId.value = null;
-    if (response.data.error === false) {
+    if (response.data.error === true) {
+      errorVal.value = true;
+      imageUrl.value = '';
+    }
+    else {
       isEditing.value = false;
+      errorVal.value = false;
+      imageUrl.value = '';
     }
     adminStore.counter++;
   } catch (error) {
     console.error('Failed to update product:', error);
+    imageUrl.value = '';
   }
 };
 

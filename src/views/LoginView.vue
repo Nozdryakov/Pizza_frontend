@@ -36,10 +36,10 @@ const login = async () => {
     const data = response.data;
     if (data.token) {
       localStorage.setItem('accessToken', data.token);
-      alert('Успешная авторизация');
+      alert('Авторизація пройшла успішно!');
       await router.push('/admin');
     } else {
-      alert("Ошибка:");
+      alert("Помилка");
     }
   } catch (error) {
     console.error('Ошибка:', error);

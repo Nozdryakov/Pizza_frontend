@@ -1,9 +1,19 @@
 .title-admin{
+  font-size: 60px;
+  text-align: center;
+}
+.header-admin{
+  display: flex;
   margin-top: 100px;
   margin-bottom: 115px;
-  font-size: 60px;
+  align-items: center;
+  justify-content: space-between;
   font-family: "Raleway-700", serif;
-  text-align: center;
+}
+.logout{
+  color: #2F70AF;
+  font-family: "Raleway-500", serif;
+  cursor: pointer;
 }
 @media (max-width: 910px) {
   .title-admin{
