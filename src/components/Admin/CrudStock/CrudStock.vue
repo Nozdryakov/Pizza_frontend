@@ -14,7 +14,7 @@
             <div v-if="stock.image_stock == null || stock.image_stock === '' || stock.image_stock === 'null'" class="addImageBlock" @click="startEditing(stock.stock_id, stock.image_stock)">
             </div>
             <div v-else class="img-block" @click="startEditing(stock.stock_id, stock.image_stock)">
-              <img :src="`images/${stock.image_stock}`" alt="" class="tab-img"/>
+              <img :src="`st-img/${stock.image_stock}`" alt="" class="tab-img"/>
             </div>
             <div class="title">{{ stock.name }}</div>
             <div class="buy__block">
