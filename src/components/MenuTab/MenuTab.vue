@@ -22,12 +22,11 @@
               <div class="subtitle">{{ product.description }}</div>
               <div class="buy__block">
                 <p class="price">{{ product.price }} ₴</p>
-                {{ product.visible }}
                 <card-button v-if="product.addedToCart" class="added-btn">
-                  <span>В корзине</span>
+                  <span>У кошику</span>
                 </card-button>
                 <button v-else class="btn-buy" @click="addToCart(product)">
-                  <span>Выбрать</span>
+                  <span>Купити</span>
                 </button>
               </div>
             </li>

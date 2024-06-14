@@ -21,10 +21,10 @@
         </li>
       </ul>
       <div class="price-block">
-        <h4>Итого:</h4>
+        <h4>Разом:</h4>
         <h2>{{ parseFloat(totalCost).toFixed(2) }} грн.</h2>
       </div>
-      <create-order>Оформить заказ</create-order>
+      <create-order>Перейти до оформлення заказу</create-order>
     </main-container>
   </div>
   <div v-show="cardStore.volume === 0 || cardStore.volume === undefined" class="card-empty">
@@ -62,6 +62,7 @@ watchEffect(() => {
 
   if (raw) {
     jsonArray = JSON.parse(raw);
+    console.log(jsonArray);
   }
   cardStore.volume = jsonArray.length;
 });

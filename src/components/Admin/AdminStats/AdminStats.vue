@@ -5,16 +5,15 @@
       <h2 class="subtitle-admin">Статистика</h2>
       <div class="logout" @click="logout">Вийти з адмін-панелі</div>
     </div>
-    <crud-stock></crud-stock>
-    <crud-product></crud-product>
+    <img src="@/assets/images/stats.jpg" class="stats-img">
+    <br>
+    <img src="@/assets/images/stats2.jpg" class="stats-img">
   </main-container>
 </template>
 
 <script setup>
 
 import MainContainer from "@/components/Container/MainContainer.vue";
-import CrudProduct from "@/components/Admin/CrudProduct/CrudProduct.vue";
-import CrudStock from "@/components/Admin/CrudStock/CrudStock.vue";
 import router from "@/router/index.js";
 const logout = () => {
   localStorage.setItem('accessToken', '');
@@ -22,4 +21,4 @@ const logout = () => {
 };
 </script>
 
-<style lang="scss" src="./AdminElement.scss" scoped></style>
+<style lang="scss" src="./AdminStats.scss" scoped></style>

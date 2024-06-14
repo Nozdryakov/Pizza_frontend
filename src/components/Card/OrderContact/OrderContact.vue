@@ -1,4 +1,5 @@
 <template>
+  {{order}}
   <div class="order-contact" v-show="cardStore.volume > 0">
     <main-container>
       <div class="tabs">
@@ -14,80 +15,13 @@
           @click="activeTab = 'pickup'"
           :class="{ active: activeTab === 'pickup' }"
         >
-          Самовывоз
+          Самовивіз
         </button>
       </div>
       <div class="wrapper" v-if="activeTab === 'delivery'">
         <div class="inner">
           <div class="inner-el-column">
-            <p class="title">Имя</p>
-            <div class="block-inputs">
-              <input-contact class="in-name"></input-contact>
-            </div>
-          </div>
-          <div class="inner-el-column">
-            <p class="title">Телефон</p>
-            <div class="block-inputs">
-              <input-contact class="in-code" placeholder="+38(095)"></input-contact>
-              <input-contact class="in-phone"></input-contact>
-            </div>
-          </div>
-          <div class="inner-el-flex">
-            <div class="block-inputs-column-one">
-              <p class="title">Улица</p>
-              <input-contact class="in-st"></input-contact>
-            </div>
-            <div class="block-inputs-column">
-              <p class="title">Дом</p>
-              <input-contact class="in-st"></input-contact>
-            </div>
-            <div class="block-inputs-column">
-              <p class="title">Квартира</p>
-              <input-contact class="in-st"></input-contact>
-            </div>
-            <div class="block-inputs-column">
-              <p class="title">Подъезд</p>
-              <input-contact class="in-st"></input-contact>
-            </div>
-            <div class="block-inputs-column">
-              <p class="title">Этаж</p>
-              <input-contact class="in-st"></input-contact>
-            </div>
-          </div>
-        </div>
-        <div class="change_wrapper_btn">
-          <h1 class="title_change">Способ оплаты</h1>
-          <div class="block-btn">
-            <button
-              class="btn-order-ch"
-              @click="toggleActive('cash')"
-              :class="{ active: activeButton === 'cash' }"
-            >
-              Наличный расчет
-            </button>
-            <button
-              class="btn-order-ch"
-              @click="toggleActive('card')"
-              :class="{ active: activeButton === 'card' }"
-            >
-              Банковская карта
-            </button>
-          </div>
-          <div class="price-block">
-            <h4>Итого:</h4>
-            <h2>{{ parseFloat(cardStore.total).toFixed(2) }} грн.</h2>
-          </div>
-
-          <create-order>Оформить заказ</create-order>
-          <center-block>
-            <router-link :to="{ name: 'home', hash: '#menu' }" class="subtitle-back">Вернуться к редактированию заказа</router-link>
-          </center-block>
-        </div>
-      </div>
-      <div v-else-if="activeTab === 'pickup'" class="wrapper">
-        <div class="inner">
-          <div class="inner-el-column">
-            <p class="title">Имя</p>
+            <p class="title">Ім'я</p>
             <div class="block-inputs">
               <input-contact class="in-name"></input-contact>
             </div>
@@ -101,11 +35,11 @@
           </div>
           <div class="inner-el-flex">
             <div class="block-inputs-column-one">
-              <p class="title">Улица</p>
+              <p class="title">Вулиця</p>
               <input-contact class="in-st"></input-contact>
             </div>
             <div class="block-inputs-column">
-              <p class="title">Дом</p>
+              <p class="title">Дім</p>
               <input-contact class="in-st"></input-contact>
             </div>
             <div class="block-inputs-column">
@@ -113,75 +47,142 @@
               <input-contact class="in-st"></input-contact>
             </div>
             <div class="block-inputs-column">
-              <p class="title">Подъезд</p>
+              <p class="title">Під'їзд</p>
               <input-contact class="in-st"></input-contact>
             </div>
             <div class="block-inputs-column">
-              <p class="title">Этаж</p>
+              <p class="title">Поверх</p>
               <input-contact class="in-st"></input-contact>
             </div>
           </div>
         </div>
-        <div class="time-order">
-          <h1 class="title_change">Через сколько планируете забрать заказ?</h1>
-          <div class="block-btn-width">
-            <button
-              class="btn-order-time"
-              @click="minActive('min-25')"
-              :class="{ active: activeMin === 'min-25' }"
-            >
-              25 мин
-            </button>
-            <button
-              class="btn-order-time"
-              @click="minActive('min-30')"
-              :class="{ active: activeMin === 'min-30' }"
-            >
-              30 мин
-            </button>
-            <button
-              class="btn-order-time"
-              @click="minActive('min-40')"
-              :class="{ active: activeMin === 'min-40' }"
-            >
-              40 мин
-            </button>
-            <button
-              class="btn-order-time"
-              @click="minActive('min-50')"
-              :class="{ active: activeMin === 'min-50' }"
-            >
-              50 мин
-            </button>
-            <button
-              class="btn-order-time"
-              @click="minActive('min-60')"
-              :class="{ active: activeMin === 'min-60' }"
-            >
-              60 мин
-            </button>
-          </div>
-        </div>
         <div class="change_wrapper_btn">
-          <h1 class="title_change">Способ оплаты</h1>
+          <h1 class="title_change">Спосіб оплати</h1>
           <div class="block-btn">
             <button
               class="btn-order-ch"
               @click="toggleActive('cash')"
               :class="{ active: activeButton === 'cash' }"
             >
-              Наличный расчет
+              Готівкою
             </button>
             <button
               class="btn-order-ch"
               @click="toggleActive('card')"
               :class="{ active: activeButton === 'card' }"
             >
-              Банковская карта
+              Банківська картка
             </button>
           </div>
           <div class="price-block">
             <h4>Итого:</h4>
+            <h2>{{ parseFloat(cardStore.total).toFixed(2) }} грн.</h2>
+          </div>
+
+          <create-order @click="sendOrder">Оформити замовлення</create-order>
+          <center-block>
+            <router-link :to="{ name: 'home', hash: '#menu' }" class="subtitle-back">Повернутися до редагування замовлення</router-link>
+          </center-block>
+        </div>
+      </div>
+      <div v-else-if="activeTab === 'pickup'" class="wrapper">
+        <div class="inner">
+          <div class="inner-el-column">
+            <p class="title">Ім'я</p>
+            <div class="block-inputs">
+              <input-contact class="in-name"></input-contact>
+            </div>
+          </div>
+          <div class="inner-el-column">
+            <p class="title">Телефон</p>
+            <div class="block-inputs">
+              <input-contact class="in-code" placeholder="+38 (095)"></input-contact>
+              <input-contact class="in-phone"></input-contact>
+            </div>
+          </div>
+          <div class="inner-el-flex">
+            <div class="block-inputs-column-one">
+              <p class="title">Вулиця</p>
+              <input-contact class="in-st"></input-contact>
+            </div>
+            <div class="block-inputs-column">
+              <p class="title">Дім</p>
+              <input-contact class="in-st"></input-contact>
+            </div>
+            <div class="block-inputs-column">
+              <p class="title">Квартира</p>
+              <input-contact class="in-st"></input-contact>
+            </div>
+            <div class="block-inputs-column">
+              <p class="title">Під'їзд</p>
+              <input-contact class="in-st"></input-contact>
+            </div>
+            <div class="block-inputs-column">
+              <p class="title">Поверх</p>
+              <input-contact class="in-st"></input-contact>
+            </div>
+          </div>
+        </div>
+        <div class="time-order">
+          <h1 class="title_change">Через скільки плануєте забрати замовлення?</h1>
+          <div class="block-btn-width">
+            <button
+              class="btn-order-time"
+              @click="minActive('min-25')"
+              :class="{ active: activeMin === 'min-25' }"
+            >
+              25 хв
+            </button>
+            <button
+              class="btn-order-time"
+              @click="minActive('min-30')"
+              :class="{ active: activeMin === 'min-30' }"
+            >
+              30 хв
+            </button>
+            <button
+              class="btn-order-time"
+              @click="minActive('min-40')"
+              :class="{ active: activeMin === 'min-40' }"
+            >
+              40 хв
+            </button>
+            <button
+              class="btn-order-time"
+              @click="minActive('min-50')"
+              :class="{ active: activeMin === 'min-50' }"
+            >
+              50 хв
+            </button>
+            <button
+              class="btn-order-time"
+              @click="minActive('min-60')"
+              :class="{ active: activeMin === 'min-60' }"
+            >
+              60 хв
+            </button>
+          </div>
+        </div>
+        <div class="change_wrapper_btn">
+          <h1 class="title_change">Спосіб оплати</h1>
+          <div class="block-btn">
+            <button
+              class="btn-order-ch"
+              @click="toggleActive('cash')"
+              :class="{ active: activeButton === 'cash' }"
+            >
+              Готівкою
+            </button>
+            <button
+              class="btn-order-ch"
+              @click="toggleActive('card')"
+              :class="{ active: activeButton === 'card' }"
+            >
+              Банківська картка
+            </button>
+          </div>
+          <div class="price-block">
+            <h4>Разом:</h4>
             <h2>{{ parseFloat(cardStore.total).toFixed(2) }} грн.</h2>
           </div>
 
@@ -203,6 +204,8 @@ import { useCard } from '@/stores/CardStore.js';
 import { useCookies } from 'vue3-cookies';
 import CreateOrder from '@/components/Buttons/CreateOrder/CreateOrder.vue';
 import CenterBlock from '@/components/Center/CenterBlock.vue';
+import axios from "axios";
+import router from "@/router/index.js";
 
 const { cookies } = useCookies();
 const cardStore = useCard();
@@ -217,8 +220,9 @@ const toggleActive = (buttonType) => {
 const minActive = (buttonType) => {
   activeMin.value = buttonType;
 };
-
+const order = ref();
 onMounted(() => {
+  order.value = cookies.get('cookie');
   const raw = cookies.get('cookie');
   if (!raw || cardStore.volume === undefined) {
     cardStore.setVolume(0);
@@ -229,6 +233,19 @@ onMounted(() => {
 watch(totalCost, (newValue) => {
   cardStore.total = newValue;
 });
+
+const sendOrder = async () => {
+  console.log('Отправка данных:', order.value);
+  try {
+    const response = await axios.post('/send-order', {
+      data: order.value
+    });
+    const data = response.data;
+    console.log(data.error);
+  } catch (error) {
+    console.error('Ошибка:', error);
+  }
+};
 </script>
 
 <style lang="scss" src="./OrderContact.scss" scoped></style>

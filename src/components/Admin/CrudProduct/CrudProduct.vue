@@ -61,17 +61,20 @@
               </div>
               <div class="input-block">
                 <label for="title">Назва</label>
-                <create-update-input v-model="product.name" id="title" type="text" required></create-update-input>
+                <title-error>{{nameError}}</title-error>
+                <create-update-input v-model="product.name" id="title" type="text" required :error="nameError" @input="() => validateName(product.name)"></create-update-input>
               </div>
 
               <div class="input-block">
                 <label for="description">Опис</label>
-                <textarea v-model="product.description" id="description" class="text-area text-area-fixed" required></textarea>
+                <title-error>{{descriptionError}}</title-error>
+                <textarea v-model="product.description" id="description" class="text-area text-area-fixed" required @input="() => validateDescription(product.description)"></textarea>
               </div>
 
               <div class="input-block">
                 <label for="price">Ціна</label>
-                <create-update-input v-model="product.price" id="price" type="text" required></create-update-input>
+                <title-error>{{priceError}}</title-error>
+                <create-update-input v-model="product.price" id="price" type="text" required @input="() => validatePrice(product.price)"></create-update-input>
                 <button @click="updateProduct(product)" class="btn-save">Зберегти</button>
               </div>
             </div>
@@ -105,6 +108,7 @@ import CreateUpdateInput from "@/components/Admin/CreateUpdate/CreateUpdateInput
 import router from "@/router/index.js";
 import { useAdmin } from "@/stores/AdminStore.js";
 import ModalWindow from "@/components/Admin/ModalWindow/ModalWindow.vue";
+import TitleError from "@/components/TitleError/TitleError.vue";
 
 const data = ref({
   list: []
@@ -115,6 +119,54 @@ const imageName = ref(null);
 const adminStore = useAdmin();
 const imageDefault = ref(null);
 const errorVal = ref(false);
+const nameError = ref('');
+const descriptionError = ref('');
+const priceError = ref('');
+
+const validatePrice = (price) => {
+  const regex = /^[0-9]*[.,]?[0-9]{0,2}$/;
+  if (price === ''){
+    priceError.value = "*Поле обов'язкове";
+    return false;
+  }
+  else if (!regex.test(price) || parseFloat(price) > 9999.99) {
+    if (!regex.test(price)) {
+      priceError.value = 'Неправильний формат ціни';
+    } else {
+      priceError.value = 'Ціна не повинна перевищувати 9999.99';
+    }
+    return false;
+  } else {
+    priceError.value = '';
+    return true;
+  }
+};
+
+const validateName = (name) => {
+  const nameRegex = /^[a-zA-Z0-9\sА-Яа-яҐґЄєІіЇї]{1,30}$/;
+  if (name === '') {
+    nameError.value = "*Поле обов'язкове";
+    return false;
+  } else if (!nameRegex.test(name)) {
+    nameError.value = 'Назва має містити від 1 до 30 символів (тільки букви, цифри та пробіли)';
+    return false;
+  } else {
+    nameError.value = '';
+    return true;
+  }
+};
+
+const validateDescription = (description) => {
+  console.log(description);
+  const descriptionRegex = /^[a-zA-Z0-9\sА-Яа-яҐґЄєІіЇї]{1,100}$/;
+  if (description === '') {
+    descriptionError.value = "*Поле обов'язкове";
+  } else if (!descriptionRegex.test(description)) {
+    descriptionError.value = 'Опис має містити від 1 до 100 символів (тільки букви, цифри та пробіли)';
+  } else {
+    descriptionError.value = '';
+  }
+};
 const loadData = async () => {
   try {
     if (!token){
@@ -218,6 +270,10 @@ const startEditing = (id, image) => {
 };
 
 const updateProduct = async (product) => {
+  if (nameError.value || descriptionError.value || priceError.value !== '') {
+    errorVal.value = true;
+    return;
+  }
   try {
     const formData = new FormData();
     formData.append('product_id', product.id);
@@ -292,6 +348,8 @@ const updateVisibility = async (productId, visible) => {
     console.error('Error updating visibility:', error);
   }
 };
+
+
 </script>
 
 

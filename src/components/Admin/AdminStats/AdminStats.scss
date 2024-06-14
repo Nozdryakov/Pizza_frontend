@@ -1,0 +1,32 @@
+.title-admin{
+  font-size: 60px;
+  text-align: center;
+}
+.header-admin{
+  display: flex;
+  margin-top: 100px;
+  margin-bottom: 115px;
+  align-items: center;
+  justify-content: space-between;
+  font-family: "Raleway-700", serif;
+}
+.logout{
+  color: #2F70AF;
+  font-family: "Raleway-500", serif;
+  cursor: pointer;
+}
+.stats-img{
+    padding: 0 290px;
+}
+@media (max-width: 910px) {
+  .title-admin{
+    margin: 60px 0;
+    font-size: 50px;
+  }
+}
+@media (max-width: 910px) {
+  .title-admin{
+    margin: 30px 0;
+    font-size: 36px;
+  }
+}

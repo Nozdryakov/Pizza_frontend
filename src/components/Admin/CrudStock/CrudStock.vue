@@ -49,7 +49,8 @@
 
             <div class="input-block">
               <label for="newDiscount">Введіть новий процент знижки</label>
-              <create-update-input v-model="stock.newDiscount" id="newDiscount" type="text" required></create-update-input>
+              <title-error>{{newDiscountError}}</title-error>
+              <create-update-input v-model="stock.newDiscount" id="newDiscount" type="text" required @input="() => validateNewDiscount(stock.newDiscount)"></create-update-input>
             </div>
             <div class="edit-btns">
               <button type="button" @click="updateProduct(stock.product_id, stock.newDiscount, stock.stock_id)" class="btn-save">Оновити</button>
@@ -83,6 +84,7 @@ import CrudDeleteIcon from "@/components/Admin/CrudProduct/icons/CrudDeleteIcon.
 import CreateUpdateInput from "@/components/Admin/CreateUpdate/CreateUpdateInput.vue";
 import CreatePlusIcon from "@/components/Admin/FormCreate/icons/CreatePlusIcon.vue";
 import ModalWindow from "@/components/Admin/ModalWindow/ModalWindow.vue";
+import TitleError from "@/components/TitleError/TitleError.vue";
 
 const data = ref({
   list: []
@@ -235,7 +237,25 @@ const handleFileChange = (event) => {
     imageUrl.value = URL.createObjectURL(file);
   }
 };
-
+const newDiscountError = ref('');
+const validateNewDiscount = (newDiscount) => {
+  const regex = /^[0-9]*[.,]?[0-9]{0,2}$/;
+  if (newDiscount === '') {
+    newDiscountError.value = "*Поле обов'язкове";
+    return false;
+  }
+  else if (!regex.test(newDiscount) || parseFloat(newDiscount) > 90.00) {
+    if (!regex.test(newDiscount)) {
+      newDiscountError.value = 'Неправильний формат знижки';
+    } else {
+      newDiscountError.value = 'Знижка не повинна перевищувати значення 90.00';
+    }
+    return false;
+  } else {
+    newDiscountError.value = '';
+    return true;
+  }
+};
 </script>
 
 <style lang="scss" src="./CrudStock.scss" scoped>

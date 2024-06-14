@@ -82,6 +82,11 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/update-visible/, ''),
       },
+      '/send-order': {
+        target: 'http://localhost:8000/api/applications/send-order',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/send-order/, ''),
+      },
     },
   },
 });
