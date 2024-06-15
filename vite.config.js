@@ -22,6 +22,11 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/st-img/, ''),
       },
+      '/pop-img': {
+        target: 'http://localhost:8000/images/popular',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/pop-img/, ''),
+      },
       '/login-admin': {
         target: 'http://localhost:8000/AuthAdmin/auths/login',
         changeOrigin: true,
@@ -86,6 +91,11 @@ export default defineConfig({
         target: 'http://localhost:8000/api/applications/send-order',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/send-order/, ''),
+      },
+      '/get-populars': {
+        target: 'http://localhost:8000/api/applications/get-populars',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/get-populars/, ''),
       },
     },
   },

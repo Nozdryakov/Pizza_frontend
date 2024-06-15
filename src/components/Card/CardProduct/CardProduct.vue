@@ -5,7 +5,7 @@
       <ul class="card-list">
         <li v-for="(product, index) in products" :key="index">
           <div class="name-product">
-            <img :src="`/src/assets/images/products/${product.image}`" alt="" class="card-img" />
+            <img :src="`images/${product.image}`" alt="" class="card-img" />
             <p class="title">{{ product.name }}</p>
           </div>
           <div class="sum-product">

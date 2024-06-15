@@ -48,8 +48,8 @@
     </div>
   </form>
   <modal-window :isVisible="errorVal" @update:isVisible="errorVal = $event">
-    <h2>Помилка!</h2>
-    <p>Сталася помилка під час створення продукту. Будь ласка, спробуйте знову.</p>
+    <h2 class="title__modal">Помилка!</h2>
+    <p class="subtitle__modal">Сталася помилка під час створення продукту. Будь ласка, спробуйте знову.</p>
   </modal-window>
 </template>
 

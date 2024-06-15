@@ -8,6 +8,13 @@
         <auth-button type="submit">Увійти</auth-button>
       </auth-form>
     </auth-content-section>
+    <modal-window :isVisible="errorVal" @update:isVisible="errorVal = $event">
+      <h2 class="title__modal">Помилка!</h2>
+      <p class="subtitle__modal">Сталася помилка під час авторизації. Будь ласка, спробуйте знову.</p>
+    </modal-window>
+    <modal-window :isVisible="accsessVal" @update:isVisible="accsessVal = $event">
+      <h2 class="title__modal">Авторизація пройшла успішно!</h2>
+    </modal-window>
   </auth-account-section>
 </template>
 
@@ -22,10 +29,12 @@ import AuthAccountSection from '@/components/Auth/AuthAccountSection/AuthAccount
 import AuthContentSection from '@/components/Auth/AuthContentSection/AuthContentSection.vue';
 import AuthRegLogBtn from '@/components/Auth/AuthRegLogBtn/AuthRegLogBtn.vue';
 import router from "@/router/index.js";
+import ModalWindow from "@/components/Admin/ModalWindow/ModalWindow.vue";
 
 const username = ref('');
 const password = ref('');
-
+const errorVal = ref(false);
+const accsessVal = ref(false);
 const login = async () => {
   console.log('Отправка данных:', username.value, password.value);
   try {
@@ -36,10 +45,12 @@ const login = async () => {
     const data = response.data;
     if (data.token) {
       localStorage.setItem('accessToken', data.token);
-      alert('Авторизація пройшла успішно!');
-      await router.push('/admin');
+      accsessVal.value = true;
+      setTimeout(async () => {
+        await router.push('/admin');
+      }, 1000);
     } else {
-      alert("Помилка");
+      errorVal.value = true;
     }
   } catch (error) {
     console.error('Ошибка:', error);
@@ -53,4 +64,11 @@ span {
   color: #1b1f2c;
   font-family: 'Raleway-600', sans-serif;
 }
+.title__modal{
+  margin: 15px 0;
+}
+.subtitle__modal{
+  margin: 15px 0;
+}
+
 </style>

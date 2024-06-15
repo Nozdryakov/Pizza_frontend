@@ -186,7 +186,7 @@
             <h2>{{ parseFloat(cardStore.total).toFixed(2) }} грн.</h2>
           </div>
 
-          <create-order>Оформить заказ</create-order>
+          <create-order>Оформити замовлення</create-order>
           <center-block>
             <router-link :to="{ name: 'home', hash: '#menu' }" class="subtitle-back">Вернуться к редактированию заказа</router-link>
           </center-block>
