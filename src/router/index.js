@@ -55,7 +55,7 @@ const router = createRouter({
             top: scrollToOffset,
             behavior: 'smooth'
           });
-        }, 100);
+        }, 150);
       }
     }
   }

@@ -97,6 +97,11 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/get-populars/, ''),
       },
+      '/get-areas': {
+        target: 'http://localhost:8000/api/applications/get-areas',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/get-areas/, ''),
+      },
     },
   },
 });
