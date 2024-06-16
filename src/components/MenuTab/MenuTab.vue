@@ -68,6 +68,7 @@ onMounted(async () => {
       title: category.title,
       show: false,
       list: category.products.map((product) => ({
+        product_id: product.product_id,
         image: product.image,
         name: product.title,
         description: product.description,
@@ -130,6 +131,7 @@ const addToCart = (product) => {
     existingProducts[existingProductIndex].addedToCart = true;
   } else {
     existingProducts.push({
+      product_id: product.product_id,
       name: product.name,
       price: product.price,
       count: 1,

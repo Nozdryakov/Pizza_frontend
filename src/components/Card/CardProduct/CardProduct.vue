@@ -62,7 +62,6 @@ watchEffect(() => {
 
   if (raw) {
     jsonArray = JSON.parse(raw);
-    console.log(jsonArray);
   }
   cardStore.volume = jsonArray.length;
 });
@@ -77,6 +76,7 @@ watchEffect(() => {
   const raw = cookies.get('cookie');
   const jsonArray = raw ? JSON.parse(raw) : [];
   products.value = jsonArray.map((item) => ({
+    product_id: item.product_id,
     name: item.name,
     image: item.image,
     price: parseFloat(item.price).toFixed(2),

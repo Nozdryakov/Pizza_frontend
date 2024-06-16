@@ -1,5 +1,4 @@
 <template>
-  {{order}}
   <div class="order-contact" v-show="cardStore.volume > 0">
     <main-container>
       <div class="tabs">
@@ -24,7 +23,7 @@
             <p class="title">Ім'я</p>
             <title-error class="te-error">{{nameError}}</title-error>
             <div class="block-inputs">
-              <input-contact class="in-name" v-model="name" @input="() => validateName(name)"></input-contact>
+              <input-contact class="in-name" v-model="nameUser" @input="() => validateName(nameUser)"></input-contact>
             </div>
           </div>
           <div class="inner-el-column">
@@ -98,6 +97,10 @@
           <center-block>
             <router-link :to="{ name: 'home', hash: '#menu' }" class="subtitle-back">Повернутися до редагування замовлення</router-link>
           </center-block>
+          <div class="auth-block">
+            <p>Ви можете <span @click="actionOpenRegister">зареєструватися</span>, щоб зберегти свої дані для майбутніх покупок</p>
+            <p>або <span @click="actionOpenLogin">авторизуватися</span></p>
+          </div>
         </div>
       </div>
       <div v-else-if="activeTab === 'pickup'" class="wrapper">
@@ -220,14 +223,27 @@
           <center-block>
             <router-link :to="{ name: 'home', hash: '#menu' }" class="subtitle-back">Повернутися до редагування замовлення</router-link>
           </center-block>
+          <div class="auth-block">
+            <p>Ви можете <span @click="actionOpenRegister">зареєструватися</span>, щоб зберегти свої дані для майбутніх покупок</p>
+            <p>або <span @click="actionOpenLogin">авторизуватися</span></p>
+          </div>
         </div>
       </div>
+      <modal-window :isVisible="errorVal" @update:isVisible="errorVal = $event">
+        <h2 class="title__modal">Помилка!</h2>
+        <p class="subtitle__modal">Сталася помилка. Будь ласка, спробуйте знову.</p>
+      </modal-window>
+      <modal-window :isVisible="accsessVal" @update:isVisible="accsessVal = $event">
+        <h2 class="title__modal">Замовлення прийнято, очікуйте дзвінок</h2>
+      </modal-window>
+      <modal-login-user :is-visible="openLogin" @update:isVisible="openLogin = $event"></modal-login-user>
+      <modal-register-user :is-visible="openRegister" @update:isVisible="openRegister = $event"></modal-register-user>
     </main-container>
   </div>
 </template>
 
 <script setup>
-import { computed, onMounted, ref, watch } from "vue";
+import { computed, onMounted, ref, toRaw, watch } from "vue";
 import MainContainer from '@/components/Container/MainContainer.vue';
 import InputContact from '@/components/Inputs/InputContact/InputContact.vue';
 import { useCard } from '@/stores/CardStore.js';
@@ -237,6 +253,9 @@ import CenterBlock from '@/components/Center/CenterBlock.vue';
 import axios from "axios";
 import router from "@/router/index.js";
 import TitleError from "@/components/TitleError/TitleError.vue";
+import ModalWindow from "@/components/Admin/ModalWindow/ModalWindow.vue";
+import ModalLoginUser from "@/components/AuthUser/ModalLoginUser/ModalLoginUser.vue";
+import ModalRegisterUser from "@/components/AuthUser/ModalRegisterUser/ModalRegisterUser.vue";
 
 const { cookies } = useCookies();
 const cardStore = useCard();
@@ -247,38 +266,45 @@ const activeMin = ref('min-40');
 const selectedOperator = ref('+38 (050)');
 const nameError = ref('');
 const phoneNumberError = ref('');
-const name = ref('');
+const nameUser = ref('');
 const streetVal = ref('');
 const streetError = ref('');
 const areas = ref([]);
 const selectedArea = ref('');
 const selectedAreaError = ref('Будь ласка, оберіть район');
-
+const errorVal = ref(false);
+const accsessVal = ref(false);
+const openLogin = ref(false);
+const openRegister = ref(false);
 const operators = [
-  { code: '+38 (050)', label: '+38 (050)' },
-  { code: '+38 (066)', label: '+38 (066)' },
-  { code: '+38 (067)', label: '+38 (067)' },
-  { code: '+38 (068)', label: '+38 (068)' },
-  { code: '+38 (091)', label: '+38 (091)' },
-  { code: '+38 (092)', label: '+38 (092)' },
-  { code: '+38 (093)', label: '+38 (093)' },
-  { code: '+38 (094)', label: '+38 (094)' },
-  { code: '+38 (095)', label: '+38 (095)' },
-  { code: '+38 (096)', label: '+38 (096)' },
-  { code: '+38 (097)', label: '+38 (097)' },
-  { code: '+38 (098)', label: '+38 (098)' },
-  { code: '+38 (099)', label: '+38 (099)' }
+  { code: '+38(050)', label: '+38(050)' },
+  { code: '+38(066)', label: '+38(066)' },
+  { code: '+38(067)', label: '+38(067)' },
+  { code: '+38(068)', label: '+38(068)' },
+  { code: '+38(091)', label: '+38(091)' },
+  { code: '+38(092)', label: '+38(092)' },
+  { code: '+38(093)', label: '+38(093)' },
+  { code: '+38(094)', label: '+38(094)' },
+  { code: '+38(095)', label: '+38(095)' },
+  { code: '+38(096)', label: '+38(096)' },
+  { code: '+38(097)', label: '+38(097)' },
+  { code: '+38(098)', label: '+38(098)' },
+  { code: '+38(099)', label: '+38(099)' }
 ];
 const phoneNumber = ref('');
 const toggleActive = (buttonType) => {
   activeButton.value = buttonType;
 };
+const actionOpenLogin = () => {
+  openLogin.value = true;
+};
+const actionOpenRegister = () => {
+  openRegister.value = true;
+};
 const minActive = (buttonType) => {
   activeMin.value = buttonType;
 };
-const order = ref();
 onMounted(() => {
-  order.value = cookies.get('cookie');
   const raw = cookies.get('cookie');
   if (!raw || cardStore.volume === undefined) {
     cardStore.setVolume(0);
@@ -286,16 +312,7 @@ onMounted(() => {
 
   cardStore.total = totalCost.value;
 });
-watch(totalCost, (newValue) => {
-  cardStore.total = newValue;
-});
-watch(selectedArea, (newValue) => {
-  if (newValue !== '') {
-    selectedAreaError.value = '';
-  } else {
-    selectedAreaError.value = 'Будь ласка, оберіть район';
-  }
-});
+
 const validatePhoneNumber = (phoneNumber) => {
   const regex = /^[0-9]{7}$/;
   if (phoneNumber === '') {
@@ -310,12 +327,19 @@ const validatePhoneNumber = (phoneNumber) => {
     return true;
   }
 };
-const validateName = (name) => {
+watch(selectedArea, (newValue) => {
+  if (newValue !== '') {
+    selectedAreaError.value = '';
+  } else {
+    selectedAreaError.value = 'Будь ласка, оберіть район';
+  }
+});
+const validateName = (nameUser) => {
   const nameRegex = /^[a-zA-Z0-9\sА-Яа-яҐґЄєІіЇї]{1,30}$/;
-  if (name === '') {
+  if (nameUser === '') {
     nameError.value = "*Поле обов'язкове";
     return false;
-  } else if (!nameRegex.test(name)) {
+  } else if (!nameRegex.test(nameUser)) {
     nameError.value = 'Назва має містити від 1 до 30 символів (тільки букви, цифри та пробіли)';
     return false;
   } else {
@@ -323,17 +347,41 @@ const validateName = (name) => {
     return true;
   }
 };
+const order = ref([]);
 const sendOrder = async () => {
+  if (nameError.value || phoneNumberError.value || selectedAreaError.value || streetError.value !== '') {
+    errorVal.value = true;
+    return;
+  }
+  const raw = cookies.get('cookie');
+  const combineNumber = (selectedOperator.value + phoneNumber.value);
+  let fullNum = combineNumber.trim();
+  const jsonArray = raw ? JSON.parse(raw) : [];
+  order.value = jsonArray.map((item) => ({
+    product_id: item.product_id,
+    name: item.name,
+    image: item.image,
+    price: parseFloat(item.price).toFixed(2),
+    count: item.count || 1,
+    phoneNumber: fullNum,
+    area_id: selectedArea.value,
+    streetVal: streetVal.value,
+    nameUser: nameUser.value,
+    paymentMethod: activeButton.value,
+    user_id: ''
+  }));
+  console.log(order.value);
+  try {
+    const response = await axios.post('/send-order', {
+      data: order.value
+    });
+    const data = response.data;
+    console.log(data.error);
+    accsessVal.value = true;
 
-  // try {
-  //   const response = await axios.post('/send-order', {
-  //     data: order.value
-  //   });
-  //   const data = response.data;
-  //   console.log(data.error);
-  // } catch (error) {
-  //   console.error('Ошибка:', error);
-  // }
+  } catch (error) {
+    console.error('Ошибка:', error);
+  }
 };
 const validateStreet = (street) => {
   const nameRegex = /^[a-zA-Z0-9\sА-Яа-яҐґЄєІіЇї]{1,30}$/;

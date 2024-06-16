@@ -116,6 +116,7 @@ const addToCart = (popular) => {
     existingProducts[existingProductIndex].addedToCart = true;
   } else {
     existingProducts.push({
+      product_id: popular.product_id,
       name: popular.name,
       price: popular.price,
       count: 1,

@@ -82,7 +82,7 @@ const fetchStocks = async () => {
         image: stock.image,
         price: parseFloat(stock.price).toFixed(2),
         discount: stock.stocks.discount,
-        productId: stock.stocks.product_id,
+        product_id: stock.stocks.product_id,
         addedToCart: false
       }));
       const existingProducts = cookies.get('cookie') ? JSON.parse(cookies.get('cookie')) : [];
@@ -138,6 +138,7 @@ const addToCart = (stock) => {
     existingProducts[existingProductIndex].addedToCart = true;
   } else {
     existingProducts.push({
+      product_id: stock.product_id,
       name: stock.name,
       price: stock.price,
       count: 1,
