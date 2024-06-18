@@ -3,7 +3,7 @@
     <div class="header-admin">
       <h1 class="title-admin">Адмін панель</h1>
       <router-link to="/orders" class="subtitle-admin">Замовлення</router-link>
-<!--      <router-link class="subtitle-admin">Статистика</router-link>-->
+      <router-link to="/stats" class="subtitle-admin">Статистика</router-link>
       <div class="logout" @click="logout">Вийти з адмін-панелі</div>
     </div>
     <crud-stock></crud-stock>
