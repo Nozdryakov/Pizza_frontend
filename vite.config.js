@@ -102,6 +102,46 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/get-areas/, ''),
       },
+      '/reg-user': {
+        target: 'http://localhost:8000/AuthUser/auth-users/register',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/reg-user/, ''),
+      },
+      '/login-user': {
+        target: 'http://localhost:8000/AuthUser/auth-users/login',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/login-user/, ''),
+      },
+      '/get-address-user': {
+        target: 'http://localhost:8000/api/applications/get-address-user',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/get-address-user/, ''),
+      },
+      '/get-order-guest': {
+        target: 'http://localhost:8000/api/applications/get-order-guest',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/get-order-guest/, ''),
+      },
+      '/send-address-user': {
+        target: 'http://localhost:8000/api/applications/send-address-user',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/send-address-user/, ''),
+      },
+      '/update-admin-access': {
+        target: 'http://localhost:8000/api/applications/update-admin-access',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/update-admin-access/, ''),
+      },
+      '/update-admin-access-zero': {
+        target: 'http://localhost:8000/api/applications/update-admin-access-zero',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/update-admin-access-zero/, ''),
+      },
+      '/get-order-user': {
+        target: 'http://localhost:8000/api/applications/get-order-user',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/get-order-user/, ''),
+      },
     },
   },
 });

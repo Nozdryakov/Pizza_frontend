@@ -6,6 +6,7 @@ import LoginView from '@/views/LoginView.vue';
 import RegisterView from '@/views/RegisterView.vue';
 import AdminView from "@/views/AdminView.vue";
 import AdminStatsView from "@/views/AdminStatsView.vue";
+import AdminOrdersView from "@/views/AdminOrdersView.vue";
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -43,6 +44,11 @@ const router = createRouter({
       path: '/stats',
       name: 'stats',
       component: AdminStatsView
+    },
+    {
+      path: '/orders',
+      name: 'orders',
+      component: AdminOrdersView
     }
   ],
   scrollBehavior(to, from, savedPosition) {

@@ -1,6 +1,10 @@
 <template>
   <div class="order-contact" v-show="cardStore.volume > 0">
-    <main-container>
+    <main-container v-if="accsessUser">
+      <order-user></order-user>
+    </main-container>
+    <main-container v-else>
+
       <div class="tabs">
         <button
           class="btn-order"
@@ -54,19 +58,19 @@
             </div>
             <div class="block-inputs-column">
               <p class="title">Дім</p>
-              <input-contact class="in-st"></input-contact>
+              <input-contact v-model="dom" class="in-st"></input-contact>
             </div>
             <div class="block-inputs-column">
               <p class="title">Квартира</p>
-              <input-contact class="in-st"></input-contact>
+              <input-contact v-model="kvartira" class="in-st"></input-contact>
             </div>
             <div class="block-inputs-column">
               <p class="title">Під'їзд</p>
-              <input-contact class="in-st"></input-contact>
+              <input-contact v-model="podezd" class="in-st"></input-contact>
             </div>
             <div class="block-inputs-column">
               <p class="title">Поверх</p>
-              <input-contact class="in-st"></input-contact>
+              <input-contact v-model="poverh" class="in-st"></input-contact>
             </div>
           </div>
         </div>
@@ -140,19 +144,19 @@
             </div>
             <div class="block-inputs-column">
               <p class="title">Дім</p>
-              <input-contact class="in-st"></input-contact>
+              <input-contact v-model="dom" class="in-st"></input-contact>
             </div>
             <div class="block-inputs-column">
               <p class="title">Квартира</p>
-              <input-contact class="in-st"></input-contact>
+              <input-contact v-model="kvartira" class="in-st"></input-contact>
             </div>
             <div class="block-inputs-column">
               <p class="title">Під'їзд</p>
-              <input-contact class="in-st"></input-contact>
+              <input-contact v-model="podezd" class="in-st"></input-contact>
             </div>
             <div class="block-inputs-column">
               <p class="title">Поверх</p>
-              <input-contact class="in-st"></input-contact>
+              <input-contact v-model="poverh" class="in-st"></input-contact>
             </div>
           </div>
         </div>
@@ -256,9 +260,11 @@ import TitleError from "@/components/TitleError/TitleError.vue";
 import ModalWindow from "@/components/Admin/ModalWindow/ModalWindow.vue";
 import ModalLoginUser from "@/components/AuthUser/ModalLoginUser/ModalLoginUser.vue";
 import ModalRegisterUser from "@/components/AuthUser/ModalRegisterUser/ModalRegisterUser.vue";
+import OrderUser from "@/components/Card/OrderUser/OrderUser.vue";
 
 const { cookies } = useCookies();
 const cardStore = useCard();
+const accsessUser = localStorage.getItem('accessTokenUser');
 const totalCost = ref(cookies.get('totalCost') || 0);
 const activeTab = ref('delivery');
 const activeButton = ref('cash');
@@ -276,6 +282,11 @@ const errorVal = ref(false);
 const accsessVal = ref(false);
 const openLogin = ref(false);
 const openRegister = ref(false);
+const dom = ref('');
+const kvartira = ref('');
+const podezd  = ref('');
+const poverh = ref('');
+
 const operators = [
   { code: '+38(050)', label: '+38(050)' },
   { code: '+38(066)', label: '+38(066)' },
@@ -354,6 +365,7 @@ const sendOrder = async () => {
     return;
   }
   const raw = cookies.get('cookie');
+  const totalCost = ref(cookies.get('totalCost') || 0);
   const combineNumber = (selectedOperator.value + phoneNumber.value);
   let fullNum = combineNumber.trim();
   const jsonArray = raw ? JSON.parse(raw) : [];
@@ -367,8 +379,14 @@ const sendOrder = async () => {
     area_id: selectedArea.value,
     streetVal: streetVal.value,
     nameUser: nameUser.value,
+    kvartira: kvartira.value,
+    dom: dom.value,
+    podezd: podezd.value,
+    type_delivery: activeTab.value,
+    poverh: poverh.value,
+    totalCost: totalCost.value,
     paymentMethod: activeButton.value,
-    user_id: ''
+    address_id: 1
   }));
   console.log(order.value);
   try {
@@ -377,6 +395,12 @@ const sendOrder = async () => {
     });
     const data = response.data;
     console.log(data.error);
+    nameUser.value = '';
+    phoneNumber.value = '';
+    dom.value = '';
+    kvartira.value = '';
+    podezd.value = '';
+    poverh.value = '';
     accsessVal.value = true;
 
   } catch (error) {

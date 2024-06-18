@@ -29,13 +29,13 @@
           <div class="el">
             <div class="text none"></div>
             <div class="text icons__spacing">
-              <a class="link__social" href="#"><twitter-icon></twitter-icon></a>
-              <a class="link__social" href="#"><vk-icon></vk-icon></a>
-              <a class="link__social" href="#"><facebook-icon></facebook-icon></a>
+              <a class="" href="#"><twitter-icon></twitter-icon></a>
+              <div class="link__social"><a href="#"><vk-icon></vk-icon></a></div>
+              <a class="" href="#"><facebook-icon></facebook-icon></a>
             </div>
             <div class="text store__spacing">
-              <a class="link__social" href="#"><app-stote-icon></app-stote-icon></a>
-              <a class="link__social" href="#"><play-market-icon></play-market-icon></a>
+              <a  href="#"><app-stote-icon></app-stote-icon></a>
+              <a  href="#"><play-market-icon></play-market-icon></a>
             </div>
           </div>
         </div>
