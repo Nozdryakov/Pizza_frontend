@@ -127,6 +127,11 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/get-address-user/, ''),
       },
+      '/get-status-user': {
+        target: 'http://localhost:8000/api/applications/get-status-user',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/get-status-user/, ''),
+      },
       '/courier-access-zero': {
         target: 'http://localhost:8000/api/applications/courier-access-zero',
         changeOrigin: true,

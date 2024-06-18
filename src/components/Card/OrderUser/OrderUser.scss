@@ -321,6 +321,59 @@
   justify-content: flex-end;
   font-size: 20px;
 }
+
+
+
+
+
+.orders-list {
+  width: 100%;
+  border-radius: 10px;
+  font-family: "Raleway-600", serif;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.orders-list:after {
+  content: '';
+  flex: auto;
+  min-width: 250px;
+}
+
+.order-itemm {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  width: 25%;
+  padding: 35px;
+  position: relative;
+  cursor: pointer;
+  margin-bottom: 30px;
+  margin-left: 10px;
+}
+
+.order-itemm h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.status{
+  border: none;
+  font-size: 14px;
+  padding: 6px 16px;
+  width: 100%;
+  background-color: #8AED8E;
+  color: #121010;
+  text-decoration: none;
+  font-family: "Inter-500", serif;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  border-radius: 23px;
+  margin-top: 20px;
+}
+
+
+
 @media (max-width: 768px) {
   .order-item {
     padding: 15px;

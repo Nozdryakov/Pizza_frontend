@@ -1,4 +1,26 @@
 <template>
+  <h1 class="title-ac-user">Ваші замовлення:</h1>
+  <div class="orders-list">
+    <div v-for="order in ordersUsers" :key="order.phoneNumber" class="order-itemm">
+      <p class="name-order">{{order.nameUser}}</p>
+      <div class="subtitle-order-block">
+        <p class="subtitle-order">{{ order.phoneNumber }}</p>
+        <p class="subtitle-order">Загальна сума: {{ order.total_cost }} грн</p>
+        <ul class="subtitle-order">
+          <li v-for="product in order.products" :key="product.title" class="product-item">
+            {{ product.title }} - {{ product.count }}
+          </li>
+        </ul>
+      </div>
+      <div class="status-btns">
+        <button class="status" v-if="order.admin_accsess == 1">заявка прийнята</button>
+        <button class="status" v-else-if="order.kitchen_accsess == 1">Готується</button>
+        <button class="status" v-else-if="order.courier_accsess == 1">Готується</button>
+        <button class="status" v-else>Ще не прийнято</button>
+      </div>
+    </div>
+  </div>
+
 
   <div class="block-order">
     <div class="order-item">
@@ -334,6 +356,19 @@ const validatePhoneNumber = (phoneNumber) => {
     return true;
   }
 };
+const ordersUsers = ref([]);
+async function loadOrdersUsers() {
+  try {
+    const response = await axios.get('/get-status-user');
+    ordersUsers.value = response.data.data;
+    console.l
+  } catch (error) {
+    console.error('Error fetching orders:', error);
+  }
+}
+onMounted(() => {
+  loadOrdersUsers();
+});
 watch(selectedArea, (newValue) => {
   if (newValue !== '') {
     selectedAreaError.value = '';
