@@ -107,6 +107,16 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/reg-user/, ''),
       },
+      '/get-order-guest-kitchen': {
+        target: 'http://localhost:8000/api/applications/get-order-guest-kitchen',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/get-order-guest-kitchen/, ''),
+      },
+      '/get-order-user-courier': {
+        target: 'http://localhost:8000/api/applications/get-order-user-courier',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/get-order-user-courier/, ''),
+      },
       '/login-user': {
         target: 'http://localhost:8000/AuthUser/auth-users/login',
         changeOrigin: true,
@@ -116,6 +126,21 @@ export default defineConfig({
         target: 'http://localhost:8000/api/applications/get-address-user',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/get-address-user/, ''),
+      },
+      '/courier-access-zero': {
+        target: 'http://localhost:8000/api/applications/courier-access-zero',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/courier-access-zero/, ''),
+      },
+      '/courier-access': {
+        target: 'http://localhost:8000/api/applications/courier-access',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/courier-access/, ''),
+      },
+      '/get-order-guest-courier': {
+        target: 'http://localhost:8000/api/applications/get-order-guest-courier',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/get-order-guest-courier/, ''),
       },
       '/get-order-guest': {
         target: 'http://localhost:8000/api/applications/get-order-guest',
@@ -137,10 +162,25 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/update-admin-access-zero/, ''),
       },
+      '/get-order-user-kitchen': {
+        target: 'http://localhost:8000/api/applications/get-order-user-kitchen',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/get-order-user-kitchen/, ''),
+      },
       '/get-order-user': {
         target: 'http://localhost:8000/api/applications/get-order-user',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/get-order-user/, ''),
+      },
+      '/kitchen-access-zero': {
+        target: 'http://localhost:8000/api/applications/kitchen-access-zero',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/kitchen-access-zero/, ''),
+      },
+      '/kitchen-access': {
+        target: 'http://localhost:8000/api/applications/kitchen-access',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/kitchen-access/, ''),
       },
     },
   },

@@ -7,6 +7,8 @@ import RegisterView from '@/views/RegisterView.vue';
 import AdminView from "@/views/AdminView.vue";
 import AdminStatsView from "@/views/AdminStatsView.vue";
 import AdminOrdersView from "@/views/AdminOrdersView.vue";
+import KitchenOrdersView from "@/views/KitchenOrdersView.vue";
+import CourierOrdersView from "@/views/CourierOrdersView.vue";
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -49,6 +51,16 @@ const router = createRouter({
       path: '/orders',
       name: 'orders',
       component: AdminOrdersView
+    },
+    {
+      path:'/kitchen',
+      name: 'kitchen',
+      component: KitchenOrdersView
+    },
+    {
+      path: '/courier',
+      name: 'courier',
+      component: CourierOrdersView
     }
   ],
   scrollBehavior(to, from, savedPosition) {

@@ -454,7 +454,7 @@ const sendOrder = async () => {
     image: item.image,
     price: parseFloat(item.price).toFixed(2),
     count: item.count || 1,
-    nameUser: nameUser.value,
+    nameUser: selectedAddress.value.nameUser,
     phoneNumber: fullNum,
     area_id: selectedAddress.value.area_id,
     streetVal: selectedAddress.value.streetVal,

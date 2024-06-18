@@ -1,9 +1,8 @@
 <template>
   <main-container>
     <div class="header-admin">
-      <router-link to="/admin" class="title-admin">Адмін панель</router-link>
-      <router-link to="/orders" class="subtitle-admin">Замовлення</router-link>
-      <div class="logout" @click="logout">Вийти з адмін-панелі</div>
+      <router-link to="/kitchen" class="title-admin">Кур'єр</router-link>
+      <div class="logout" @click="logout">Вийти з акаунта</div>
     </div>
     Незареєстровані:
     <div class="orders-list">
@@ -19,8 +18,8 @@
           </ul>
         </div>
         <div class="status-btns">
-          <button class="status" v-if="order.admin_accsess == 1">Прийнято</button>
-          <button class="status red" v-else-if="order.admin_accsess == 0">Відхилено</button>
+          <button class="status" v-if="order.courier_accsess == 1">Прийнято</button>
+          <button class="status red" v-else-if="order.courier_accsess == 0">Відхилено</button>
           <div class="block-btn" v-else>
             <button class="btn" @click="refuseOrder(order.phoneNumber)">Відхилити</button>
             <button class="btn" @click="acceptOrder(order.phoneNumber)">Прийняти</button>
@@ -42,8 +41,8 @@
           </ul>
         </div>
         <div class="status-btns">
-          <button class="status" v-if="order.admin_accsess == 1">Прийнято</button>
-          <button class="status red" v-else-if="order.admin_accsess == 0">Відхилено</button>
+          <button class="status" v-if="order.courier_accsess == 1">Прийнято</button>
+          <button class="status red" v-else-if="order.courier_accsess == 0">Відхилено</button>
           <div class="block-btn" v-else>
             <button class="btn" @click="refuseOrder(order.phoneNumber)">Відхилити</button>
             <button class="btn" @click="acceptOrder(order.phoneNumber)">Прийняти</button>
@@ -71,7 +70,7 @@ const ordersUsers = ref([]);
 
 async function loadOrdersUsers() {
   try {
-    const response = await axios.get('/get-order-user');
+    const response = await axios.get('/get-order-user-courier');
     ordersUsers.value = response.data.data;
   } catch (error) {
     console.error('Error fetching orders:', error);
@@ -80,7 +79,7 @@ async function loadOrdersUsers() {
 
 async function loadOrders() {
   try {
-    const response = await axios.get('/get-order-guest');
+    const response = await axios.get('/get-order-guest-courier');
     orders.value = response.data.data;
   } catch (error) {
     console.error('Error fetching orders:', error);
@@ -89,7 +88,7 @@ async function loadOrders() {
 
 const acceptOrder = async (phoneNumber) => {
   try {
-    const response = await axios.post('/update-admin-access', { phoneNumber });
+    const response = await axios.post('/courier-access', { phoneNumber });
     if (!response.data.error && response.data.updated) {
       console.log('Order accepted successfully');
       await loadOrders();
@@ -104,7 +103,7 @@ const acceptOrder = async (phoneNumber) => {
 };
 const refuseOrder = async (phoneNumber) => {
   try {
-    const response = await axios.post('/update-admin-access-zero', { phoneNumber });
+    const response = await axios.post('/courier-access-zero', { phoneNumber });
     if (!response.data.error && response.data.updated) {
       console.log('Order refuse successfully');
       await loadOrders();
