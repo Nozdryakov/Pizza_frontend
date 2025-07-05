@@ -13,11 +13,12 @@
         </ul>
       </div>
       <div class="status-btns">
-        <button class="status" v-if="order.admin_accsess == 1">заявка прийнята</button>
-        <button class="status" v-else-if="order.kitchen_accsess == 1">Готується</button>
-        <button class="status" v-else-if="order.courier_accsess == 1">Готується</button>
+        <button class="status" v-if="order.admin_accsess == 1 && order.kitchen_accsess == 1 && order.courier_accsess == 1">В дорозі</button>
+        <button class="status" v-else-if="order.admin_accsess == 1 && order.kitchen_accsess == 1">Готується</button>
+        <button class="status" v-else-if="order.admin_accsess == 1">Замовлення прийнято</button>
         <button class="status" v-else>Ще не прийнято</button>
       </div>
+
     </div>
   </div>
 

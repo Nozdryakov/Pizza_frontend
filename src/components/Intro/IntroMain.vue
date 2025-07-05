@@ -6,45 +6,45 @@
         <img class="fon-blur blur-third" src="@/assets/images/pizza-fon-2-intro.png" />
         <img class="fon-blur blur-third part-one" src="@/assets/images/pizza-fon-2-intro.png" />
         <div class="item__intro first-el">
-          <span class="price">19.90 грн.</span>
-          <div class="title">Pizza Delicious</div>
+          <!-- <span class="price">19.90 грн.</span> -->
+          <div class="title">Дроп платформа</div>
           <div class="subtitle">
-            <p>Курячі шматочки, солодкий перець,</p>
-            <p>моцарела, соус солодкий чилі, соус альфре</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
           </div>
           <div class="btns-block">
-            <card-button class="btn red">Купити</card-button>
+            <!-- <card-button class="btn red">Купити</card-button> -->
             <div class="btn-blur">
               <router-link :to="{ name: 'home', hash: '#menu' }" class="nav__link">
-                <card-button class="btn btn-menu">Меню</card-button>
+                <card-button class="btn btn-menu">Перейти до товарів</card-button>
               </router-link>
               <img class="fon-blur blur-one" src="@/assets/images/menu-fon-intro.png" />
             </div>
           </div>
         </div>
         <div class="item__intro second-el">
-          <img src="@/assets/images/pizza-fon.png" />
+          <!-- <img src="@/assets/images/pizza-fon.png" /> -->
         </div>
         <div class="item__intro third-el">
           <div class="item__element">
-            <div class="title-block">Найкращі інгредієнти</div>
+            <div class="title-block">Lorem ipsum dolor</div>
             <div class="subtitle-block">
-              <p>Наші піци складаються з найкращих</p>
-              <p>відбірних інгредієнтів</p>
+              <p>sit amet consectetur adipisicing elit.</p>
+              <p>sit amet consectetur adipisicing elit.</p>
             </div>
           </div>
           <div class="item__element">
-            <div class="title-block">Найкращі майстри</div>
+            <div class="title-block">Lorem ipsum dolor</div>
             <div class="subtitle-block">
-              <p>Готуються найкращими</p>
-              <p>майстрами своєї справи</p>
+              <p>sit amet consectetur adipisicing elit.</p>
+              <p>sit amet consectetur adipisicing elit.</p>
             </div>
           </div>
           <div class="item__element">
-            <div class="title-block">Швидка доставка</div>
+            <div class="title-block">Lorem ipsum dolor</div>
             <div class="subtitle-block">
-              <p>Доставимо піцу швидко</p>
-              <p>за 45 хвилин</p>
+              <p>sit amet consectetur adipisicing elit.</p>
+              <p>sit amet consectetur adipisicing elit.</p>
             </div>
           </div>
         </div>

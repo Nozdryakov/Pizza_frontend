@@ -18,7 +18,7 @@
             </div>
             <div class="el">
               <contact-icon class="icon"></contact-icon>
-              <p class="text left">info@VikiPizza.2021</p>
+              <p class="text left">info@Drop.2025</p>
             </div>
           </div>
           <div class="info__item">

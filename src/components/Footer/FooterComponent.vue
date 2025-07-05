@@ -5,12 +5,12 @@
         <div class="el">
           <div class="logo-container">
             <viki-logo-icon></viki-logo-icon>
-            <div class="title red">Viki</div>
-            <div class="title black">Pizza</div>
+            <div class="title red">Drop</div>
+            <div class="title black">Drop</div>
           </div>
           <nav class="nav" :class="{ active: isNavActive }">
             <router-link :to="{ name: 'home', hash: '#actions' }" class="nav__link">Акції</router-link>
-            <router-link :to="{ name: 'home', hash: '#menu' }" class="nav__link">Меню</router-link>
+            <router-link :to="{ name: 'home', hash: '#menu' }" class="nav__link">Каталог</router-link>
             <router-link :to="{ name: 'home', hash: '#delivery' }" class="nav__link">Доставка</router-link>
             <router-link :to="{ name: 'home', hash: '#contacts' }" class="nav__link">Контакти</router-link>
             <router-link :to="{ path: '/contacts', }" class="nav__link">Про нас</router-link>

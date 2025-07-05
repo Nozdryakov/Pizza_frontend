@@ -1,7 +1,7 @@
 <template>
   <div v-if="messageAuth === ''">
-    <title-admin>Меню</title-admin>
-    <subtitle-admin>Додавайте нові варіанти меню, видаляйте або змінюйте вже наявні</subtitle-admin>
+    <title-admin>Продукція</title-admin>
+    <subtitle-admin>Додавайте нові варіанти, видаляйте або змінюйте вже наявні</subtitle-admin>
     <div class="tabs-content">
       <div v-for="(category, index) in data.list" :key="index">
         <h2 class="title">{{ category.title }}</h2>

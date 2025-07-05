@@ -1,7 +1,7 @@
 <template>
   <main-container>
     <div id="menu" class="tabs__wrapper">
-      <head-title>Меню</head-title>
+      <head-title>Каталог</head-title>
       <ul class="tabs-list">
         <li
           v-for="(category, index) in data.list"

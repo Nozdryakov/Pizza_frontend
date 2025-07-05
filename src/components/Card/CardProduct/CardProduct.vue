@@ -31,7 +31,7 @@
     <div class="empty-inner">
       <h1>Ваш кошик пустий</h1>
       <card-icon class="card-icon"></card-icon>
-      <router-link :to="{ name: 'home', hash: '#menu' }" class="menu__link">Перейти в меню</router-link>
+      <router-link :to="{ name: 'home', hash: '#menu' }" class="menu__link">Перейти до вибору товарів</router-link>
     </div>
   </div>
 </template>

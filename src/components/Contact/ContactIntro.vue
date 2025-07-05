@@ -5,22 +5,21 @@
         <div class="intro__item">
           <div class="head-title">Про нас</div>
           <div class="title">
-            <p class="title__text">Viki</p>
-            <p>Pizza</p>
+            <p class="title__text">Drop</p>
+            <p>Drop</p>
           </div>
           <div class="subtitle">
             <p class="subtitle__text">
-              Viki Pizza – це нова піцерія в місті Києві, яка відкрилася зовсім недавно і вже завоювала любов своїх клієнтів завдяки вишуканим смакам та швидкій доставці. Наша місія – приносити радість і задоволення від кожного шматочка піци, використовуючи тільки найсвіжіші інгредієнти і дотримуючись найвищих стандартів якості. Щоранку ми прокидаємося з натхненням і цікавістю, щоб продовжувати свою роботу і радувати наших клієнтів.
+             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque aspernatur quibusdam iusto officia, laborum ipsum ea illo molestiae! Numquam, sequi. Suscipit dignissimos porro ex, corporis doloribus ad soluta. Officia, vitae.
             </p>
             <p class="subtitle__text">
-              Ми постійно вдосконалюємо наші рецепти, експериментуємо з новими смаками і прагнемо перевершити очікування кожного нашого відвідувача.
-              Запрошуємо вас відвідати Viki Pizza і насолодитися нашими вишуканими смаками.
+             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo harum veniam placeat saepe nihil, eaque at amet nam. Itaque vitae, consequatur impedit illum esse delectus aliquid. Ut error vero et.
             </p>
-            <p class="subtitle__text">Ми впевнені, що ви будете задоволені якістю нашої піци та рівнем обслуговування. Ваші задоволені посмішки – найкраща винагорода для нас!</p>
+            <p class="subtitle__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam voluptas officia omnis labore totam recusandae quo </p>
           </div>
           <div class="block__button">
             <router-link :to="{ name: 'home', hash: '#menu' }">
-              <card-button class="btn">Меню</card-button>
+              <card-button class="btn">Проду</card-button>
             </router-link>
             <router-link :to="{ path: '/' }">
               <card-button class="white">Головна</card-button>
@@ -30,23 +29,23 @@
         </div>
         <div class="intro__item">
           <div class="item__element">
-            <div class="title-block">Найкращі інгредієнти</div>
+            <div class="title-block">Lorem short short</div>
             <div class="subtitle-block">
-              <p>Наші піци складаються з найкращих</p>
-              <p>відбірних інгредієнтів</p>
+              <p>Lorem short short</p>
+              <p>Lorem short short</p>
             </div>
           </div>
           <div class="item__element">
-            <div class="title-block">Найкращі майстри</div>
+            <div class="title-block">Lorem short short</div>
             <div class="subtitle-block">
-              <p>Готуються найкращими</p>
-              <p>майстрами своєї справи</p>
+              <p>Lorem short short</p>
+              <p>Lorem short short</p>
             </div>
           </div>
           <div class="item__element">
-            <div class="title-block">Швидка доставка</div>
+            <div class="title-block">Lorem short short</div>
             <div class="subtitle-block">
-              <p>Доставимо піцу швидко</p>
+              <p>Lorem short short</p>
               <p>за 45 хвилин</p>
             </div>
           </div>

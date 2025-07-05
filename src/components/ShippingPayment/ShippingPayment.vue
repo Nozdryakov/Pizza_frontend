@@ -4,10 +4,9 @@
       <head-title id="delivery">Доставка та оплата</head-title>
       <div class="payment-info__inner">
         <div class="payment-info__item">
-          <div class="title">60 хвилин або піца безкоштовно</div>
+          <div class="title">60 хвилин</div>
           <div class="subtitle">
-            Якщо ми не встигнемо доставити будь-який продукт протягом 60 хвилин, кур'єр подарує вам
-            сертифікат на велику піцу.
+            Lorem short short Lorem short short Lorem short short Lorem short short Lorem short short
           </div>
           <div class="bottom-block">
             <div class="bt-title">Приймаємо до оплати</div>
